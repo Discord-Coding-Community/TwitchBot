@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { Util } = require('discord.js')
 const { Command } = require('discord.js-commando');
 module.exports = class newsCommand extends Command {
     constructor(client) {
@@ -33,7 +34,7 @@ module.exports = class newsCommand extends Command {
         embed.setThumbnail('https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
         embed.setColor('RANDOM')
         embed.setTitle('Announcement')
-        embed.setDescription(`${text}`)
+        embed.setDescription(`${Util.cleanContent(text)}`)
         embed.setTimestamp(new Date().toISOString())
         embed.setFooter('Twitchbot | twitchbot.newhorizon.dev', 'https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
         ch.send(embed = embed)
