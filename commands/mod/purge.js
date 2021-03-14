@@ -38,7 +38,7 @@ module.exports = class PurgeCommand extends Command {
                     var userPins = deletedMessages.filter(m => m.pinned);
                     var userMessages = deletedMessages.filter(m => !m.author.bot);
 
-                    if (numToPurge <= 0) {
+                    if (purgeamnt <= 0) {
                         return msg.reply('Please input a number between 0 and 100.');
                     } else if (channel => channel.type === 'text') {
 
