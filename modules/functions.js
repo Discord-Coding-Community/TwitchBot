@@ -1,3 +1,9 @@
+// const Discord = require('discord.js);
+// const sqlite = require('sqlite');
+// const sqlite3 = require('sqlite3');
+// const Commando = require('discord.js-commando');
+
+
 module.exports = (client) => {
 
     client.permlevel = message => {
@@ -18,19 +24,19 @@ module.exports = (client) => {
 
     const defaultSettings = {
         "prefix": "t!",
-        "modLogChannel": "📋｜mod-log",
-        "actionLogChannel": "📋｜action-log",
-        "voiceLogChannel": "📋｜voice-log",
-        "messageLogChannel": "📋｜message-log",
-        "inviteLogChannel": "📋｜invite-log",
-        "streamAlertChannel": "📣｜streaming",
-        "announcementsChannel": "📣｜announcements",
-        "reactRolesChannel": "📛｜role-claim",
-        "rulesChannel": "📋｜rules",
+        "modLogChannel": "modlog",
+        "actionLogChannel": "actionlog",
+        "voiceLogChannel": "voicelog",
+        "messageLogChannel": "messagelog",
+        "inviteLogChannel": "invitelog",
+        "streamAlertChannel": "streaming",
+        "announcementsChannel": "announcements",
+        "reactRolesChannel": "roles",
+        "rulesChannel": "rules",
         "modRole": "Moderator",
         "adminRole": "Administrator",
         "systemNotice": "true",
-        "welcomeChannel": "👋｜welcome",
+        "welcomeChannel": "welcome",
         "welcomeMessage": "Say hello to {{user}}, everyone! We all need a warm welcome sometimes :D",
         "welcomeEnabled": "false",
         "modLogEnabled": "false",
