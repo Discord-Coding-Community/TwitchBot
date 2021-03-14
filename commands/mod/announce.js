@@ -27,7 +27,7 @@ module.exports = class newsCommand extends Command {
     run(msg, { text }) {
         msg.guild.channels.cache
         let embed = new Discord.RichEmbed();
-        let ch = message.mentions.channels.first()
+        let ch = msg.mentions.channels.first()
             .setAuthor({
                 name = `${client.user.name}`,
                 icon = `${icon = client.user.avatarUrl}`
@@ -48,7 +48,7 @@ module.exports = class newsCommand extends Command {
             .then(console.log)
             .catch(err => {
                 console.error(err);
-                message.channel.send('```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```');
+                msg.channel.send('```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```');
             });
 
     }

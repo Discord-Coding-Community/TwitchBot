@@ -34,7 +34,7 @@ module.exports = class broadcastCommand extends Command {
                     .then(console.log)
                     .catch(err => {
                         console.error(err);
-                        message.channel.send('```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```');
+                        msg.channel.send('```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```');
                     });
             })
     }
