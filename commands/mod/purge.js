@@ -28,7 +28,7 @@ module.exports = class PurgeCommand extends Command {
     }
 
     async run(msg, args) {
-        let ch = msg.channel;
+        let channel = msg.channel;
 
 
         const amount = Number(args.amount)
@@ -60,13 +60,13 @@ module.exports = class PurgeCommand extends Command {
                 embed.addField("User Pins Purged", userPins.size, false)
                 embed.addField("User Messages Purged", userMessages.size, false)
                 embed.addField("Total Messages Purged", deletedMessages.size, false);
-                ch.send(embed = embed);
+                channel.send({ embed = embed });
 
             })
             .then(console.log(args[0]))
             .catch(err => {
                 console.error(err);
-                msg.reply('```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```');
+                channel.send('```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```');
             })
     }
 };
