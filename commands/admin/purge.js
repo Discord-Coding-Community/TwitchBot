@@ -15,8 +15,8 @@ module.exports = class PurgeCommand extends Command {
                 usages: 1,
                 duration: 3
             },
-            clientPermissions: ['MANAGE_CHANNELS'],
-            userPermissions: ['MANAGE_CHANNELS'],
+            clientPermissions: ['MANAGE_CHANNELS', 'MANAGE_MESSAGES'],
+            userPermissions: ['MANAGE_CHANNELS', 'MANAGE_MESSAGES'],
 
             args: [{
                 key: 'amount',
@@ -30,8 +30,8 @@ module.exports = class PurgeCommand extends Command {
     run(msg, args) {
         var purgeamnt = args[0];
         var purgelimit = Number(purgeamnt) + 1;
-        message.channel.messages.fetch({ limit: purgelimit }).then(messages => {
-            message.channel.bulkDelete(messages).then(deletedMessages => {
+        msg.channel.messages.fetch({ limit: purgelimit }).then(messages => {
+            msg.channel.bulkDelete(messages).then(deletedMessages => {
                     var botMessages = deletedMessages.filter(m => m.author.bot);
                     var userPins = deletedMessages.filter(m => m.pinned);
                     var userMessages = deletedMessages.filter(m => !m.author.bot);
