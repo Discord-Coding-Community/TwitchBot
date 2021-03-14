@@ -43,8 +43,8 @@ module.exports = class PurgeCommand extends Command {
         }
 
         const limit = amount + 1
-        const messages = await msg.channel.messages.fetch({ limit })
-        const deletedMessages = await msg.channel.bulkDelete(messages).then(deletedMessages => {
+        const messages = msg.channel.messages.fetch({ limit })
+        const deletedMessages = msg.channel.bulkDelete(messages).then(deletedMessages => {
                 var botMessages = deletedMessages.filter(m => m.author.bot);
                 var userPins = deletedMessages.filter(m => m.pinned);
                 var userMessages = deletedMessages.filter(m => !m.author.bot);
