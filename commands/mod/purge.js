@@ -58,10 +58,10 @@ module.exports = class PurgeCommand extends Command {
                 .setFooter('Twitchbot | twitchbot.newhorizon.dev', 'https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
                 .setThumbnail('https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
                 .setTimestamp(new Date().toISOString())
-                .addField("Bot Messages Purged", botMessages.size, true)
-                .addField("User Pins Purged", userPins.size, true)
-                .addField("User Messages Purged", userMessages.size, true)
-                .addField("Total Messages Purged", deletedMessages.size, true);
+                .addField("Bot Messages", botMessages.size, false)
+                .addField("User Pins", userPins.size, false)
+                .addField("User Messages", userMessages.size, false)
+                .addField("Total", deletedMessages.size, false);
             channel.send(embed);
         } catch (err) {
             console.error(err)
