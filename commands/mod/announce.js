@@ -29,20 +29,22 @@ module.exports = class newsCommand extends Command {
         let embed = new Discord.RichEmbed();
         let ch = msg.mentions.channels.first()
             .setAuthor({
-                name = `${client.name}`,
-                icon = `${icon = client.avatarUrl}`
+                name = 'Twitchbot',
+                icon = 'https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png'
             })
             .setFooter({
-                text = clientname + '| twitchbot.newhorizon.dev',
-                icon = client.avatarUrl
+                text = 'Twitchbot | twitchbot.newhorizon.dev',
+                icon = 'https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png'
             })
-            .setThumbnail(client.avatarUrl)
+            .setThumbnail({
+                url = 'https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png'
+            })
             .setTitle('Announcement')
             .setDescription(`${text}`)
             .setTimestamp(new Date().toISOString())
             .setFooter({
-                text = client.name + '| twitchbot.newhorizon.dev',
-                icon_url = client.avatarUrl
+                text = 'Twitchbot | twitchbot.newhorizon.dev',
+                icon_url = 'https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png'
             })
         ch.send(embed)
             .then(console.log)
