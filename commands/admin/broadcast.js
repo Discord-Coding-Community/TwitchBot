@@ -1,4 +1,4 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 const { Command } = require('discord.js-commando');
 
 module.exports = class broadcastCommand extends Command {
