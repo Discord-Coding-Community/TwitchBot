@@ -43,30 +43,29 @@ module.exports = class PurgeCommand extends Command {
         }
 
         const limit = amount + 1
-        const messages = await msg.channel.messages.fetch({ limit })
-        const deletedMessages = await msg.channel.bulkDelete(messages).then(deletedMessages => {
-                var botMessages = deletedMessages.filter(m => m.author.bot);
-                var userPins = deletedMessages.filter(m => m.pinned);
-                var userMessages = deletedMessages.filter(m => !m.author.bot);
-                let embed = new Discord.MessageEmbed();
-                embed.setAuthor('Twitchbot', 'https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
-                embed.setTitle("Purge Command Issued")
-                embed.setDescription('The following messages have been purged.')
-                embed.setColor('RANDOM')
-                embed.setFooter('Twitchbot | twitchbot.newhorizon.dev', 'https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
-                embed.setThumbnail('https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
-                embed.setTimestamp(new Date().toISOString())
-                embed.addField("Bot Messages Purged", botMessages.size, false)
-                embed.addField("User Pins Purged", userPins.size, false)
-                embed.addField("User Messages Purged", userMessages.size, false)
-                embed.addField("Total Messages Purged", deletedMessages.size, false);
-                channel.send(embed = embed);
+        try {
+            const messages = await channel.messages.fetch({ limit })
+            const deletedMessages = await channel.bulkDelete(messages)
+            const botMessages = deletedMessages.filter(m => m.author.bot)
+            const userPins = deletedMessages.filter(m => m.pinned)
+            const userMessages = deletedMessages.filter(m => !m.author.bot)
+            const embed = new Discord.MessageEmbed()
 
-            })
-            .then(console.log(args[0]))
-            .catch(err => {
-                console.error(err);
-                channel.send('```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```');
-            })
+            .setAuthor('Twitchbot', 'https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
+                .setTitle("Purge Command Issued")
+                .setDescription('The following messages have been purged.')
+                .setColor('RANDOM')
+                .setFooter('Twitchbot | twitchbot.newhorizon.dev', 'https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
+                .setThumbnail('https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
+                .setTimestamp(new Date().toISOString())
+                .addField("Bot Messages Purged", botMessages.size, false)
+                .addField("User Pins Purged", userPins.size, false)
+                .addField("User Messages Purged", userMessages.size, false)
+                .addField("Total Messages Purged", deletedMessages.size, false);
+            channel.send(embed);
+        } catch (err) {
+            console.error(err)
+            channel.send('```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```');
+        }
     }
 };
