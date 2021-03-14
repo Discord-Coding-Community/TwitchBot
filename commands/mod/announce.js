@@ -29,20 +29,20 @@ module.exports = class newsCommand extends Command {
         let embed = new Discord.RichEmbed();
         let ch = msg.mentions.channels.first()
             .setAuthor({
-                name = `${client.user.name}`,
-                icon = `${icon = client.user.avatarUrl}`
+                name = `${client.name}`,
+                icon = `${icon = client.avatarUrl}`
             })
             .setFooter({
-                text = client.user.name + '| twitchbot.newhorizon.dev',
-                icon = client.user.avatarUrl
+                text = clientname + '| twitchbot.newhorizon.dev',
+                icon = client.avatarUrl
             })
-            .setThumbnail(client.user.avatarUrl)
+            .setThumbnail(client.avatarUrl)
             .setTitle('Announcement')
             .setDescription(`${text}`)
             .setTimestamp(new Date().toISOString())
             .setFooter({
-                text = client.user.name + '| twitchbot.newhorizon.dev',
-                icon_url = client.user.avatarUrl
+                text = client.name + '| twitchbot.newhorizon.dev',
+                icon_url = client.avatarUrl
             })
         ch.send(embed)
             .then(console.log)
