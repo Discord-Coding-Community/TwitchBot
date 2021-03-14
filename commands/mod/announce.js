@@ -1,7 +1,5 @@
-const discord = require('discord.js');
+const Discord = require('discord.js');
 const { Command } = require('discord.js-commando');
-require('dotenv').config();
-
 module.exports = class newsCommand extends Command {
     constructor(client) {
         super(client, {
@@ -28,14 +26,30 @@ module.exports = class newsCommand extends Command {
 
     run(msg, { text }) {
         msg.guild.channels.cache
-            .filter(channel => message.mentions.channels.first())
-            .forEach((textChannel) => {
-                textChannel.send(text)
-                    .then(console.log)
-                    .catch(err => {
-                        console.error(err);
-                        message.channel.send('```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```');
-                    });
+        let embed = new Discord.RichEmbed();
+        let ch = message.mentions.channels.first()
+            .setAuthor({
+                name = `${client.user.name}`,
+                icon = `${icon = client.user.avatarUrl}`
             })
+            .setFooter({
+                text = client.user.name + '| twitchbot.newhorizon.dev',
+                icon = client.user.avatarUrl
+            })
+            .setThumbnail(client.user.avatarUrl)
+            .setTitle('Announcement')
+            .setDescription(`${text}`)
+            .setTimestamp(new Date().toISOString())
+            .setFooter({
+                text = client.user.name + '| twitchbot.newhorizon.dev',
+                icon_url = client.user.avatarUrl
+            })
+        ch.send(embed)
+            .then(console.log)
+            .catch(err => {
+                console.error(err);
+                message.channel.send('```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```');
+            });
+
     }
 };
