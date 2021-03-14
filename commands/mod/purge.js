@@ -48,7 +48,7 @@ module.exports = class PurgeCommand extends Command {
                 var botMessages = deletedMessages.filter(m => m.author.bot);
                 var userPins = deletedMessages.filter(m => m.pinned);
                 var userMessages = deletedMessages.filter(m => !m.author.bot);
-                const embed = new Discord.MessageEmbed();
+                let embed = new Discord.MessageEmbed();
                 embed.setAuthor('Twitchbot', 'https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
                 embed.setTitle("Purge Command Issued")
                 embed.setDescription('The following messages have been purged.')
@@ -60,7 +60,7 @@ module.exports = class PurgeCommand extends Command {
                 embed.addField("User Pins Purged", userPins.size, false)
                 embed.addField("User Messages Purged", userMessages.size, false)
                 embed.addField("Total Messages Purged", deletedMessages.size, false);
-                channel.send({ embed = embed });
+                channel.send(embed = embed);
 
             })
             .then(console.log(args[0]))
