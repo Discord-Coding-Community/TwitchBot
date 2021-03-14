@@ -27,7 +27,7 @@ module.exports = class PurgeCommand extends Command {
         });
     }
 
-    run(msg, args) {
+    async run(msg, args) {
         let ch = msg.channel;
 
 
