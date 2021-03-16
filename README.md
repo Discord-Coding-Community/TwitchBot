@@ -17,25 +17,6 @@ This Guide assumes that **[p]** stands for the bot's prefix.<br>
 All commands can be seen with **[p]help**.
 
 
-[![Owner](https://top.gg/api/widget/owner/727930437997166653.svg?noavatar=true)](https://top.gg/bot/727930437997166653)
-[![UpVotes](https://top.gg/api/widget/upvotes/727930437997166653.svg?noavatar=true)](https://top.gg/bot/727930437997166653)
-[![Status](https://top.gg/api/widget/status/727930437997166653.svg?noavatar=true)](https://top.gg/bot/727930437997166653)
-
-![](https://www.tubefilter.com/wp-content/uploads/2015/12/Twitch-Co-Stream-Game-Awards-PlayStation-Experience-2015.jpg)
-# TwitchBot
-Discord Twitch Integration bot built using **Discord.js-Commando** and **Twitch API**
-
-
-**TwitchBot** Integrates Twitch Chat channels and Stream Notifications into Discord servers.<br>
-With **TwitchBot**'s Chat integration, Server Owner's can link their Twitch channels to Discord, allowing seamless chat and Twitch stream moderation from within Discord.<br>
-And with **TwitchBot** Stream Alert integration, users can add their own Twitch channels to the list of Twitch Notification Alerts within the guild.
-
-
-Here's a list of TwitchBot's commands.<br>
-This Guide assumes that **[p]** stands for the bot's prefix.<br>
-All commands can be seen with **[p]help**.
-
-
 ### Commands
 
 - Music
