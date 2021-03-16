@@ -105,3 +105,4 @@ All commands can be seen with **[p]help**.
 
 ### Support
 - [MountainT Development](https://dsc.gg/mtdev)
+- [Discord Coding Community](https://dsc.gg/discord-coding-community)
