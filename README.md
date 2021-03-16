@@ -4,6 +4,7 @@
 <hr>
 
 ![](https://www.tubefilter.com/wp-content/uploads/2015/12/Twitch-Co-Stream-Game-Awards-PlayStation-Experience-2015.jpg)
+
 # TwitchBot
 Discord Twitch Integration bot built using **Discord.js-Commando** and **Twitch API**
 
@@ -24,79 +25,79 @@ All commands can be seen with **[p]help**.
 
 | Command               | Description                                                                                                               | Usage                                                             |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| !play                 | Play any song or playlist from youtube, you can do it by searching for a song by name or song url or playlist url         | !play darude sandstorm                                            |
-| !create-playlist      | Create a saved playlist                                                                                                   | !create-playlist EDM                                              |
-| !delete-playlist      | Delete a playlist from your saved playlists                                                                               | !delete-playlist EDM                                              |
-| !display-playlist     | Display a saved playlist                                                                                                  | !display-playlist EDM                                             |
-| !my-playlists         | List your saved playlists                                                                                                 | !my-playlists                                                     |
-| !remove-from-playlist | Remove a song from a saved playlist using its index                                                                       | !remove-from-playlist EDM 5                                       |
-| !save-to-playlist     | Save a song or a playlist to a saved playlist                                                                             | !save-to-playlist EDM https://www.youtube.com/watch?v=dQw4w9WgXcQ |
-| !pause                | Pause the current playing song                                                                                            | !pause                                                            |
-| !resume               | Resume the current paused song                                                                                            | !resume                                                           |
-| !leave                | Leaves voice channel if in one                                                                                            | !leave                                                            |
-| !remove               | Remove a specific song from queue by its number in queue                                                                  | !remove 4                                                         |
-| !queue                | Display the song queue                                                                                                    | !queue                                                            |
-| !shuffle              | Shuffle the song queue                                                                                                    | !shuffle                                                          |
-| !skip                 | Skip the current playing song                                                                                             | !skip                                                             |
-| !skipall              | Skip all songs in queue                                                                                                   | !skipall                                                          |
-| !skipto               | Skip to a specific song in the queue, provide the song number as an argument                                              | !skipto 5                                                         |
-| !volume               | Adjust song volume                                                                                                        | !volume 80                                                        |
-| !music-trivia         | Engage in a music trivia with your friends. You can add more songs to the trivia pool in resources/music/musictrivia.json | !music-trivia                                                     |
-| !loop                 | Loop the currently playing song                                                                                           | !loop 5                                                           |
-| !loopqueue            | Loop the queue                                                                                                            | !loopqueue 2                                                      |
-| !lyrics               | Get lyrics of any song or the lyrics of the currently playing song                                                        | !lyrics song-name                                                 |
-| !now-playing          | Display the current playing song with a playback bar                                                                      | !now-playing                                                      |
-| !move                 | Move song to a desired position in queue                                                                                  | !move 8 1                                                         |
+| [p]play                 | Play any song or playlist from youtube, you can do it by searching for a song by name or song url or playlist url         | [p]play darude sandstorm                                            |
+| [p]create-playlist      | Create a saved playlist                                                                                                   | [p]create-playlist EDM                                              |
+| [p]delete-playlist      | Delete a playlist from your saved playlists                                                                               | [p]delete-playlist EDM                                              |
+| [p]display-playlist     | Display a saved playlist                                                                                                  | [p]display-playlist EDM                                             |
+| [p]my-playlists         | List your saved playlists                                                                                                 | [p]my-playlists                                                     |
+| [p]remove-from-playlist | Remove a song from a saved playlist using its index                                                                       | [p]remove-from-playlist EDM 5                                       |
+| [p]save-to-playlist     | Save a song or a playlist to a saved playlist                                                                             | [p]save-to-playlist EDM https://www.youtube.com/watch?v=dQw4w9WgXcQ |
+| [p]pause                | Pause the current playing song                                                                                            | [p]pause                                                            |
+| [p]resume               | Resume the current paused song                                                                                            | [p]resume                                                           |
+| [p]leave                | Leaves voice channel if in one                                                                                            | [p]leave                                                            |
+| [p]remove               | Remove a specific song from queue by its number in queue                                                                  | [p]remove 4                                                         |
+| [p]queue                | Display the song queue                                                                                                    | [p]queue                                                            |
+| [p]shuffle              | Shuffle the song queue                                                                                                    | [p]shuffle                                                          |
+| [p]skip                 | Skip the current playing song                                                                                             | [p]skip                                                             |
+| [p]skipall              | Skip all songs in queue                                                                                                   | [p]skipall                                                          |
+| [p]skipto               | Skip to a specific song in the queue, provide the song number as an argument                                              | [p]skipto 5                                                         |
+| [p]volume               | Adjust song volume                                                                                                        | [p]volume 80                                                        |
+| [p]music-trivia         | Engage in a music trivia with your friends. You can add more songs to the trivia pool in resources/music/musictrivia.json | [p]music-trivia                                                     |
+| [p]loop                 | Loop the currently playing song                                                                                           | [p]loop 5                                                           |
+| [p]loopqueue            | Loop the queue                                                                                                            | [p]loopqueue 2                                                      |
+| [p]lyrics               | Get lyrics of any song or the lyrics of the currently playing song                                                        | [p]lyrics song-name                                                 |
+| [p]now-playing          | Display the current playing song with a playback bar                                                                      | [p]now-playing                                                      |
+| [p]move                 | Move song to a desired position in queue                                                                                  | [p]move 8 1                                                         |
 
 - Other
 
 | Command           | Description                                                                                                                                                        | Usage                                                                        |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| !cat              | Get a cute cat picture                                                                                                                                             | !cat                                                                         |
-| !dog              | Get a cute dog picture                                                                                                                                             | !dog                                                                         |
-| !fortune          | Get a fortune cookie tip                                                                                                                                           | !fortune                                                                     |
-| !insult           | Generate an evil insult                                                                                                                                            | !insult                                                                      |
-| !chucknorris      | Get a satirical fact about Chuck Norris                                                                                                                            | !chucknorris                                                                 |
-| !motivation       | Get a random motivational quote                                                                                                                                    | !motivation                                                                  |
-| !world-news       | Latest headlines from reuters, you can change the news source to whatever news source you want, just change the source in line 13 in world-news.js or ynet-news.js | !world-news                                                                  |
-| !random           | Generate a random number between two provided numbers                                                                                                              | !random 0 100                                                                |
-| !reddit           | Replies with 5 top non nsfw subreddit posts                                                                                                                        | !reddit askreddit                                                            |
-| !say              | Make the bot say anything                                                                                                                                          | !say Lorem Ipsum                                                             |
-| !sr               | Replies with the Top 10 speedrun results in every category.                                                                                                        | !sr super metroid                                                            |
-| !translate        | Translate to any language using Google translate.(only supported languages)                                                                                        | !translate english ありがとう                                                |
-| !about            | Info about me and the repo                                                                                                                                         | !about                                                                       |
-| !8ball            | Get the answer to anything!                                                                                                                                        | !8ball Is this bot awesome?                                                  |
-| !rps              | Rock Paper Scissors                                                                                                                                                | !rps                                                                         |
-| !bored            | Generate a random activity!                                                                                                                                        | !bored                                                                       |
-| !advice           | Get some advice!                                                                                                                                                   | !advice                                                                      |
-| !kanye            | Get a random Kanye quote                                                                                                                                           | !kanye                                                                       |
-| !urban dictionary | Get definitions from urban dictionary                                                                                                                              | !urban javascript                                                            |
-| !poll             | Creates a poll with up to 10 choices.                                                                                                                              | !poll "What's your favorite food?" "Hot Dogs,Pizza,Burgers,Fruits,Veggie" 10 |
-| !vote             | Starts a yes/no/don't care vote.                                                                                                                                   | !vote "Do you like to vote?." "I mean who doesn't right?!" 5                 |
-| !twitchstatus     | A quick check to see if a streamer is currently online. or to give a shout-out a fellow streamer                                                                   | !twitchstatus MasterBot or !tso MasterBot                                    |
-| !tv-show-search   | Search for Tv shows with a keyword                                                                                                                                 | !tv-show-search Duck                                                         |
-| !nickname         | Sets the selected member's nickname with the provided nickname                                                                                                     | !nickname @Master-Bot Master                                                 |
+| [p]cat              | Get a cute cat picture                                                                                                                                             | [p]cat                                                                         |
+| [p]dog              | Get a cute dog picture                                                                                                                                             | [p]dog                                                                         |
+| [p]fortune          | Get a fortune cookie tip                                                                                                                                           | [p]fortune                                                                     |
+| [p]insult           | Generate an evil insult                                                                                                                                            | [p]insult                                                                      |
+| [p]chucknorris      | Get a satirical fact about Chuck Norris                                                                                                                            | [p]chucknorris                                                                 |
+| [p]motivation       | Get a random motivational quote                                                                                                                                    | [p]motivation                                                                  |
+| [p]world-news       | Latest headlines from reuters, you can change the news source to whatever news source you want, just change the source in line 13 in world-news.js or ynet-news.js | [p]world-news                                                                  |
+| [p]random           | Generate a random number between two provided numbers                                                                                                              | [p]random 0 100                                                                |
+| [p]reddit           | Replies with 5 top non nsfw subreddit posts                                                                                                                        | [p]reddit askreddit                                                            |
+| [p]say              | Make the bot say anything                                                                                                                                          | [p]say Lorem Ipsum                                                             |
+| [p]sr               | Replies with the Top 10 speedrun results in every category.                                                                                                        | [p]sr super metroid                                                            |
+| [p]translate        | Translate to any language using Google translate.(only supported languages)                                                                                        | [p]translate english ありがとう                                                |
+| [p]about            | Info about me and the repo                                                                                                                                         | [p]about                                                                       |
+| [p]8ball            | Get the answer to anything!                                                                                                                                        | [p]8ball Is this bot awesome?                                                  |
+| [p]rps              | Rock Paper Scissors                                                                                                                                                | [p]rps                                                                         |
+| [p]bored            | Generate a random activity!                                                                                                                                        | [p]bored                                                                       |
+| [p]advice           | Get some advice!                                                                                                                                                   | [p]advice                                                                      |
+| [p]kanye            | Get a random Kanye quote                                                                                                                                           | [p]kanye                                                                       |
+| [p]urban dictionary | Get definitions from urban dictionary                                                                                                                              | [p]urban javascript                                                            |
+| [p]poll             | Creates a poll with up to 10 choices.                                                                                                                              | [p]poll "What's your favorite food?" "Hot Dogs,Pizza,Burgers,Fruits,Veggie" 10 |
+| [p]vote             | Starts a yes/no/don't care vote.                                                                                                                                   | [p]vote "Do you like to vote?." "I mean who doesn't right?!" 5                 |
+| [p]twitchstatus     | A quick check to see if a streamer is currently online. or to give a shout-out a fellow streamer                                                                   | [p]twitchstatus MasterBot or !tso MasterBot                                    |
+| [p]tv-show-search   | Search for Tv shows with a keyword                                                                                                                                 | [p]tv-show-search Duck                                                         |
+| [p]nickname         | Sets the selected member's nickname with the provided nickname                                                                                                     | [p]nickname @Master-Bot Master                                                 |
 
 - Gifs
 
 | Command   | Description                         | Usage                   |
 | --------- | ----------------------------------- | ----------------------- |
-| !animegif | Get an anime related gif by a query | !animegif one punch man |
-| !gif      | Get any gif by a query              | !gif labrador           |
-| !gintama  | Replies with a random gintama gif   | !gintama                |
-| !jojo     | Replies with a random jojo gif      | !jojo                   |
+| [p]animegif | Get an anime related gif by a query | [p]animegif one punch man |
+| [p]gif      | Get any gif by a query              | [p]gif labrador           |
+| [p]gintama  | Replies with a random gintama gif   | [p]gintama                |
+| [p]jojo     | Replies with a random jojo gif      | [p]jojo                   |
 
 - Guild
 
 | Command                    | Description                                                                    | Usage                                |
 | -------------------------- | ------------------------------------------------------------------------------ | ------------------------------------ |
-| !ban                       | Bans a tagged member                                                           | !ban @johndoe                        |
-| !invite                    | Replies with a link to invite the bot.                                         | !invite                              |
-| !kick                      | Kicks a tagged member                                                          | !kick @johndoe                       |
-| !prune                     | Delete up to 99 recent messages                                                | !prune 50                            |
-| !welcome-message           | Allows you to toggle the welcome message for new members that join the server. | !welcome-message enable              |
-| !twitch-announcer          | Allows you to Enable, Disable or Check the Twitch Announcer.                   | !ta enable                           |
-| !twitch-announcer-settings | Settings for the Twitch Announcer.                                             | !tasettings Bacon_Fixation general 1 |
+| [p]ban                       | Bans a tagged member                                                           | [p]ban @johndoe                        |
+| [p]invite                    | Replies with a link to invite the bot.                                         | [p]invite                              |
+| [p]kick                      | Kicks a tagged member                                                          | [p]kick @johndoe                       |
+| [p]prune                     | Delete up to 99 recent messages                                                | [p]prune 50                            |
+| [p]welcome-message           | Allows you to toggle the welcome message for new members that join the server. | [p]welcome-message enable              |
+| [p]twitch-announcer          | Allows you to Enable, Disable or Check the Twitch Announcer.                   | [p]ta enable                           |
+| [p]twitch-announcer-settings | Settings for the Twitch Announcer.                                             | [p]tasettings Bacon_Fixation general 1 |
 
 
 ### Support
