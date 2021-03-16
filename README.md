@@ -72,6 +72,7 @@ Here's a list of TwitchBot's commands.<br>
 | twitchstatus     | A quick check to see if a streamer is currently online. or to give a shout-out a fellow streamer                                                                   | twitchstatus MasterBot or !tso MasterBot                                    |
 | tv-show-search   | Search for Tv shows with a keyword                                                                                                                                 | tv-show-search Duck                                                         |
 | nickname         | Sets the selected member's nickname with the provided nickname                                                                                                     | nickname @Master-Bot Master                                                 |
+| help             | Displays a link to the commands page                                                                                                                               | help                                                         |
 
 - Gifs
 
