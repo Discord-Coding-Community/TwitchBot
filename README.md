@@ -84,6 +84,8 @@ Here's a list of TwitchBot's commands.<br>
 | jojo             | Replies with a random jojo gif                        | jojo                                                                                                        |
 | baka             | Replies with a random anime baka gif                  | baka                                                                                                        |
 | slap             | Replies with a random anime slap gif                  | slap                                                                                                        |
+| hug              | Replies with a random anime hug  gif                  | hug                                                                                                         |
+| pat              | Replies with a random anime pat  gif                  | pat                                                                                                         |
 
 - Guild
 
