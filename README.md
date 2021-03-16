@@ -76,12 +76,14 @@ Here's a list of TwitchBot's commands.<br>
 
 - Gifs
 
-| Command   | Description                         | Usage                   |
-| --------- | ----------------------------------- | ----------------------- |
-| animegif | Get an anime related gif by a query | animegif one punch man |
-| gif      | Get any gif by a query              | gif labrador           |
-| gintama  | Replies with a random gintama gif   | gintama                |
-| jojo     | Replies with a random jojo gif      | jojo                   |
+| Command   | Description                                  | Usage                   |
+| --------- | -------------------------------------------- | ----------------------- |
+| animegif | Get an anime related gif by a query           | animegif one punch man |
+| gif      | Get any gif by a query                        | gif labrador           |
+| gintama  | Replies with a random gintama gif             | gintama                |
+| jojo     | Replies with a random jojo gif                | jojo                   |
+| baka     | Replies with a random anime baka gif          | baka                   |
+| slap     | Replies with a random anime slap gif          | slap                   |
 
 - Guild
 
