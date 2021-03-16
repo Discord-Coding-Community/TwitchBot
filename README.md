@@ -1,6 +1,6 @@
-[![Owner](https://top.gg/api/widget/owner/727930437997166653.svg?noavatar=true)](https://top.gg/bot/727930437997166653)
-[![UpVotes](https://top.gg/api/widget/upvotes/727930437997166653.svg?noavatar=true)](https://top.gg/bot/727930437997166653)
-[![Status](https://top.gg/api/widget/status/727930437997166653.svg?noavatar=true)](https://top.gg/bot/727930437997166653)
+[![Owner](https://top.gg/api/widget/owner/727930437997166653.svg)](https://top.gg/bot/727930437997166653)
+[![UpVotes](https://top.gg/api/widget/upvotes/727930437997166653.svg)](https://top.gg/bot/727930437997166653)
+[![Status](https://top.gg/api/widget/status/727930437997166653.svg)](https://top.gg/bot/727930437997166653)
 
 ![](https://www.tubefilter.com/wp-content/uploads/2015/12/Twitch-Co-Stream-Game-Awards-PlayStation-Experience-2015.jpg)
 # TwitchBot
