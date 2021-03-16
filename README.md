@@ -9,9 +9,7 @@
 Discord Twitch Integration bot built using **Discord.js-Commando** and **Twitch API**
 
 
-**TwitchBot** Integrates Twitch Chat channels and Stream Notifications into Discord servers.<br>
-With **TwitchBot**'s Chat integration, Server Owner's can link their Twitch channels to Discord, allowing seamless chat and Twitch stream moderation from within Discord.<br>
-And with **TwitchBot** Stream Alert integration, users can add their own Twitch channels to the list of Twitch Notification Alerts within the guild.
+**TwitchBot** Integrates Twitch Chat channels and Stream Notifications into Discord servers while also providing plenty of extra goodies to keep you entertained.<br>
 
 
 Here's a list of TwitchBot's commands.<br>
