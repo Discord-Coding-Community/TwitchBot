@@ -1,5 +1,5 @@
-[![UpVotes](https://top.gg/api/widget/upvotes/727930437997166653.svg)](https://top.gg/bot/727930437997166653)
-[![Status](https://top.gg/api/widget/status/727930437997166653.svg)](https://top.gg/bot/727930437997166653)
+[![Discord Bots](https://top.gg/api/widget/upvotes/727930437997166653.svg)](https://top.gg/bot/727930437997166653)
+[![Discord Bots](https://top.gg/api/widget/status/727930437997166653.svg)](https://top.gg/bot/727930437997166653)
 [![Discord Bots](https://top.gg/api/widget/servers/727930437997166653.svg)](https://top.gg/bot/727930437997166653)
 <hr>
 
