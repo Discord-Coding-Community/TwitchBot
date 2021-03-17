@@ -9,7 +9,7 @@
 Discord Twitch Integration bot built using **Discord.js-Commando** and **Twitch API**
 
 
-**TwitchBot** Integrates Twitch Chat channels and Stream Notifications into Discord servers while also providing plenty of extra goodies to keep you entertained.<br><br>
+**TwitchBot** Integrates Twitch Stream Notifications into Discord servers while also providing plenty of extra goodies to keep you entertained.<br><br>
 To see our available commands, type `t!help`
 
 ### Support
