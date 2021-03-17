@@ -1,0 +1,6 @@
+{
+    "playLiveStreams": true,
+    "playVideosLongerThan1Hour": false,
+    "maxQueueLength": 50,
+    "AutomaticallyShuffleYouTubePlaylists": true
+}
