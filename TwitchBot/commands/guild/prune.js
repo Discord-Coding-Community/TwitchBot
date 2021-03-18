@@ -20,20 +20,13 @@ module.exports = class PruneCommand extends Command {
     }
 
     run(message, { deleteCount }) {
-        let embed = new DynamicsCompressorNode.MessageEmbed()
-            .setTitle('TwitchBot')
-            .setDescription('[SUCCESS] Deleted ' + deleteCount + ' messages.')
-            .setTimestamp(new Date().toISOString())
-            .setFooter('TwitchBot', 'https://cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
         var amount = deleteCount + 1
         message.channel
             .bulkDelete(amount)
-            .then(message.reply(embed)
-                .catch(e => {
-                    console.error(e);
-                    return message.reply('```css\n[ERROR] Discord API Error:' + e.code + '[' + e.message + ']\n```\n\nPlease contact TwitchBot\'s developers at `https://dsc.gg/mtdev` to report this error.');
-                })
-            )
-    };
-
+            .then(messages => message.reply(`Deleted ${messages.size} messages`))
+            .catch(e => {
+                console.error(e);
+                return message.reply('```css\n[ERROR] Discord API Error' + e.code + '[' + e.message + ']\n```');
+            });
+    }
 };

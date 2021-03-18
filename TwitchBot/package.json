@@ -1,13 +1,13 @@
 {
-    "name": "bot-server",
+    "name": "twitchbot",
     "main": "server.js",
-    "author": "PhantomNimbi",
+    "author": "MountainTiger",
     "version": "1.0.0",
-    "license": "BSD-3-Clause License",
-    "description": "A simple script to run multiple discord bots on a single PloxHost server.",
+    "license": "MIT",
+    "description": "Discord Twitch Integration bot with plenty of extra features.",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Discord-Coding-Community/bot-server"
+        "url": "https://github.com/Discord-Coding-Community/twitchbot"
     },
     "scripts": {
         "start": "node ."
@@ -15,39 +15,27 @@
     "dependencies": {
         "@discordjs/opus": "^0.3.3",
         "@vitalets/google-translate-api": "^5.0.0",
+        "express": "4.17.1",
         "canvas": "^2.6.1",
         "cheerio": "^1.0.0-rc.5",
         "discord-paginationembed": "^2.1.0",
-        "discord-player": "^3.2.0",
-        "quick.db": "^7.1.3",
-        "discord.js": "^12.5.1",
-        "ffmpeg-static": "^4.2.7",
-        "common-tags": "^1.8.0",
-        "util": "0.12.3",
+        "discord.js": "github:discordjs/discord.js#stable",
+        "discord.js-commando": "github:discordjs/Commando",
         "emoji-regex": "^9.2.1",
-        "moment": "2.29.1",
-        "chalk": "4.1.0",
-        "eslint": "^7.18.0",
-        "node-fetch": "^2.6.0",
-        "twitch-commando": "^1.0.12",
-        "discord.js-commando": "0.11.1",
-        "sqlite": "4.0.15",
-        "sqlite3": "5.0.1",
-        "enmap": "5.8.4",
+        "ffmpeg-static": "^4.2.7",
         "iso-639-1": "^2.1.8",
         "probe-image-size": "^6.0.0",
+        "quick.db": "^7.1.3",
         "simple-youtube-api": "^5.2.1",
         "ytdl-core": "^4.5.0",
-        "python.node": "1.0.4",
-        "electron-rebuild": "2.3.5",
-        "bindings": "1.5.0",
-        "python-shell": "2.0.3",
-        "dotenv": "^8.2.0"
+        "acorn": "8.1.0",
+        "topgg-autoposter": "1.1.9",
+        "@top-gg/sdk": "^3.0.9"
     },
     "devDependencies": {
         "babel-eslint": "^10.1.0",
         "eslint": "^5.16.0",
-        "nodemon": "^2.0.7",
+        "nodemon": "^1.19.4",
         "prettier": "^1.19.1"
     },
     "engines": {
