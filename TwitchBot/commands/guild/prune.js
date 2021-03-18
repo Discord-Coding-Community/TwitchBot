@@ -23,7 +23,7 @@ module.exports = class PruneCommand extends Command {
         var amount = deleteCount + 1
         message.channel
             .bulkDelete(amount)
-            .then(messages => message.reply(`Deleted ${messages.size} messages`))
+            .then(messages => message.reply(`Deleted ${messages.size - 1} messages`))
             .catch(e => {
                 console.error(e);
                 return message.reply('```css\n[ERROR] Discord API Error' + e.code + '[' + e.message + ']\n```');
