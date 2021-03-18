@@ -17,7 +17,7 @@ module.exports = class WhoMadeMeCommand extends Command {
             .setTitle('About TwitchBot')
             .setDescription('This bot uses a project by `hyperzone#1185`.\n[galnir / Master-Bot](https://github.com/galnir/Master-Bot)')
             .addField('Owners', 'Nimbi#4961, MountainTiger#2567', true)
-            .addField('Status'.
+            .addField('Status',
                 '[UptimeRobot](https://stats.uptimerobot.com/Zrzj8fMr5g)', true)
             .addField('GitHub', '[Discord-Coding-Community / TwitchBot](https://github.com/discord-coding-community/twitchbot)', false)
             .setThumbnail('https://cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
