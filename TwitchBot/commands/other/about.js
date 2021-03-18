@@ -15,7 +15,6 @@ module.exports = class WhoMadeMeCommand extends Command {
     run(message) {
         let embed = new Discord.MessageEmbed()
             .setTitle('About TwitchBot')
-            .setDescription('This bot uses a project by `hyperzone#1185`.\n[galnir / Master-Bot](https://github.com/galnir/Master-Bot)')
             .addField('Owners', 'Nimbi#4961, MountainTiger#2567', true)
             .addField('Status',
                 '[UptimeRobot](https://stats.uptimerobot.com/Zrzj8fMr5g)', true)
