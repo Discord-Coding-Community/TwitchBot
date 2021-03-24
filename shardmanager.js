@@ -1,21 +1,19 @@
 const { ShardingManager } = require('discord.js');
-const { token } = require('./TwitchBot/config/config.json');
+const config = require('./TwitchBot/config/config.json');
 
 
 const manager = new ShardingManager('./index.js', {
-    totalShards: 'auto',
-    token: token
+    totalShards: config.shards,
+    token: config.token
 
 });
 
-manager.spawn();
+manager.spawn(3);
 
-manager.on('shardCreate', (shard) => console.log(`Shard ${shard.id} launched`));
+manager.on('shardCreate', (shard) => console.log(`Launching Shard ${shard.id}.`));
 
 const getServer = async (guildID) => {
-    // try to get guild from all the shards
-    const req = await client.shard.broadcastEval(`this.guilds.get("${guildID}")`);
+    const req = await manager.shard.broadcastEval(`this.guilds.get("${guildID}")`);
 
-    // return non-null response or false if not found
     return (req.find((res) => !!res) || false);
 }

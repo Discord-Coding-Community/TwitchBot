@@ -57,7 +57,7 @@ ap.on('posted', () => {
 TwitchBot.once('ready', () => {
     console.log(TwitchBot.user.tag + ' ready.');
 
-    TwitchBot.user.setActivity(`with TwitchAPI in ${TwitchBot.guilds.cache.size} servers`)
+    TwitchBot.user.setActivity(`${config.prefix}help`)
      const table = sql.prepare("SELECT count(*) FROM sqlite_master WHERE type='table' AND name = 'scores';").get();
   if (!table['count(*)']) {
     // If the table isn't there, create it and setup the database correctly.
@@ -201,6 +201,10 @@ TwitchBot.on("error", function(error){
 
 TwitchBot.on("warn", function(info){
     console.log(`warn: ${info}`);
+});
+
+TwitchBot.on("debug", function(info){
+    console.log(`debug -> ${info}`);
 });
 
 
