@@ -100,6 +100,6 @@ module.exports = class VoteCommand extends Command {
           }, time * 60 * 1000);
         }
       })
-      .catch(console.error);
-  }
+      .then(console.log(console.error));
+  };
 };

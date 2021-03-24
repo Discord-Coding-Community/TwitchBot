@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, discord } = require('discord.js');
 
 module.exports = class PollCommand extends Command {
   constructor(client) {
@@ -132,7 +132,7 @@ module.exports = class PollCommand extends Command {
           }, time * 60 * 1000);
         }
       })
-      .catch(console.error);
+      .then(console.log(discord.error));
 
     return;
   }

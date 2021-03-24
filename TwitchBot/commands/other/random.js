@@ -27,10 +27,10 @@ module.exports = class RandomNumberCommand extends Command {
   run(message, { min, max }) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    var rngEmbed = new MessageEmbed().setTitle(
+    var embed = new MessageEmbed().setTitle(
       Math.floor(Math.random() * (max - min + 1)) + min
     );
-    message.channel.send(rngEmbed);
+    message.channel.send(embed);
     return;
   }
 };

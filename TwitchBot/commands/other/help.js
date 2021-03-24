@@ -20,10 +20,6 @@ module.exports = class HelpCommand extends Command {
             .setTimestamp(new Date().toISOString())
             .setFooter('TwitchBot', 'https://cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
         message.channel.send(embed)
-            .then(console.log())
-            .catch(err => {
-                console.error(err);
-                message.channel.send('```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```');
-            })
+            .then(console.log());
     }
 };

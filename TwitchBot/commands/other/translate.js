@@ -50,11 +50,6 @@ module.exports = class TranslateCommand extends Command {
           .setFooter('Powered by Google Translate!');
         message.channel.send(embed);
       })
-      .catch(error => {
-        message.reply(
-          ':x: Something went wrong when trying to translate the text'
-        );
-        console.error(error);
-      });
-  }
+      .then(console.log(console.error));
+  };
 };

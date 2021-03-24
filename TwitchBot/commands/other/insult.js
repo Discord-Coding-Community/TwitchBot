@@ -34,9 +34,5 @@ module.exports = class InsultCommand extends Command {
         message.channel.send(embed);
         return;
       })
-      .catch(err => {
-        message.reply(':x: Failed to deliver insult!');
-        return console.error(err);
-      });
-  }
+  };
 };

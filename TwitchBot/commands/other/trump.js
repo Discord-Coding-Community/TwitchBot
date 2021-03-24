@@ -32,9 +32,6 @@ module.exports = class TrumpCommand extends Command {
         message.channel.send(embed);
         return;
       })
-      .catch(err => {
-        message.reply('Failed to deliver quote :sob:');
-        return console.error(err);
-      });
-  }
+        .then(console.log(console.error));
+  };
 };

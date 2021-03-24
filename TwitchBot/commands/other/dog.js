@@ -24,9 +24,6 @@ module.exports = class DogCommand extends Command {
         fetch(`https://api.tenor.com/v1/random?key=${tenorAPI}&q=dog&limit=1`)
             .then(res => res.json())
             .then(json => message.channel.send(json.results[0].url))
-            .catch(err => {
-                message.reply(':x: Request to find a doggo failed!');
-                return console.error(err);
-            });
+            .then(console.log(discord.error));
     }
 };

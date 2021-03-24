@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 const { Command } = require('discord.js-commando');
 
 module.exports = class PruneCommand extends Command {

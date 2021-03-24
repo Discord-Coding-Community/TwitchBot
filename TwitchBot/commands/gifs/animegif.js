@@ -24,8 +24,8 @@ module.exports = class AnimegifCommand extends Command {
         fetch(`https://api.tenor.com/v1/random?key=${tenorAPI}&q=anime&limit=1`)
             .then(res => res.json())
             .then(json => message.channel.send(json.results[0].url))
-            .catch(function onError() {
-                message.reply(':x: Failed to find a gif!');
+            .catch(function onError(err) {
+                message.reply('```css\n[ERROR] Discord API Error: ' + err.code + '(' + err.message + ')\n```');
                 return;
             });
     }

@@ -34,10 +34,6 @@ module.exports = class ChuckNorrisCommand extends Command {
           .setFooter('Powered by chucknorris.io', '');
         message.channel.send(embed);
         return;
-      })
-      .catch(err => {
-        message.reply(':x: An error occured, Chuck is investigating this!');
-        return console.error(err);
       });
   }
 };
