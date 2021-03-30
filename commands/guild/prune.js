@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { Command } = require('discord.js-commando');
-
+const config = require('../../config.json');
 module.exports = class PruneCommand extends Command {
     constructor(client) {
         super(client, {
@@ -9,7 +9,7 @@ module.exports = class PruneCommand extends Command {
             group: 'guild',
             memberName: 'prune',
             description: 'Delete some messages from a Text Channel.',
-            examples: ['purge 5'],
+            examples: [`${config.prefix}prune [1-100]`],
             guildOnly: true,
             throttling: {
                 usages: 1,
@@ -51,7 +51,6 @@ module.exports = class PruneCommand extends Command {
             const userPins = deletedMessages.filter(m => m.pinned)
             const userMessages = deletedMessages.filter(m => !m.author.bot)
             var embed = new Discord.MessageEmbed()
-                .setAuthor('Twitchbot', 'https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
                 .setTitle("Prune Command Issued")
                 .setDescription('The following messages have been deleted.')
                 .setColor('RANDOM')

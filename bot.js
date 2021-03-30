@@ -50,18 +50,17 @@ const client = new CommandoClient({
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ['music', ':notes: Music Command Group:'],
-        ['gifs', ':film_frames: Gif Command Group:'],
-        ['other', ':loud_sound: Other Command Group:'],
-        ['guild', ':gear: Guild Related Commands:'],
-        ['speedrun', ':athletic_shoe: Speedrun Related Commands:']
+        ['music', 'Music Commands'],
+        ['gifs', 'Gif Commands'],
+        ['other', 'Other Commands'],
+        ['guild', 'Guild Commands'],
+        ['speedrun', 'Speedrun Commands']
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
         eval: false,
         prefix: false,
         commandState: false,
-        help: false,
         unknownCommand: false
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));

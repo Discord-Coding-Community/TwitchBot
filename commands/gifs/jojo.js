@@ -1,7 +1,6 @@
 const fetch = require('node-fetch');
-const { tenorAPI } = require('../../../config.json');
+const { tenorAPI, prefix } = require('../../config.json');
 const { Command } = require('discord.js-commando');
-
 module.exports = class JojoCommand extends Command {
     constructor(client) {
         super(client, {
@@ -10,6 +9,7 @@ module.exports = class JojoCommand extends Command {
             group: 'gifs',
             memberName: 'jojo',
             description: 'Replies with a random jojo gif!',
+            examples: [`${prefix}jojo`],
             throttling: {
                 usages: 2,
                 duration: 8

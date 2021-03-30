@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const { tenorAPI } = require('../../../config.json');
+const { tenorAPI, prefix } = require('../../config.json');
 const { Command } = require('discord.js-commando');
 
 module.exports = class GintamaCommand extends Command {
@@ -9,6 +9,7 @@ module.exports = class GintamaCommand extends Command {
             group: 'gifs',
             memberName: 'gintama',
             description: 'Replies with a gintama gif!',
+            examples: [`${prefix}gintama`],
             throttling: {
                 usages: 2,
                 duration: 8

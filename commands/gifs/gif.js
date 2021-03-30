@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const { tenorAPI } = require('../../../config.json');
+const { tenorAPI, prefix } = require('../../config.json');
 const { Command } = require('discord.js-commando');
 
 // Skips loading if not found in config.json
@@ -13,6 +13,7 @@ module.exports = class GifCommand extends Command {
             aliases: ['search-gif', 'search-gifs'],
             memberName: 'gif',
             description: 'Provide a query and replies with a gif!',
+            examples: [`${prefix}gif [tag]`],
             throttling: {
                 usages: 1,
                 duration: 4
