@@ -337,7 +337,7 @@ client.on("message", message => {
             .setTitle("Leaderboard")
             .setAuthor(client.user.username, client.user.avatarURL)
             .setDescription("Our top 10 points leaders!")
-            .setColor(0x00AE86);
+            .setColor('RANDOM');
         for (const data of top10) {
             embed.addField(client.users.cache.get(data.user).tag, `${data.points} points (level ${data.level})`);
         }
