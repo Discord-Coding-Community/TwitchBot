@@ -80,6 +80,11 @@ module.exports = class BotStatusCommand extends Command {
             .setFooter('Created', this.client.user.avatarURL())
             .setTimestamp(this.client.user.createdAt);
 
-        message.channel.send(embed);
-    }
+        message.channel.send(embed)
+    } catch (err) {
+        console.error(err)
+        channel.send(
+            '```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```'
+        )
+    };
 };

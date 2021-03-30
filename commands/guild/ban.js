@@ -12,8 +12,8 @@ module.exports = class BanCommand extends Command {
             description: 'Bans a tagged member.',
             examples: [`${config.prefix }ban [@user] [reason] [number]`],
             guildOnly: true,
-            userPermissions: ['MANAGE_MESSAGES', 'KICK_MEMBERS', 'BAN_MEMBERS'],
-            clientPermissions: ['MANAGE_MESSAGES', 'KICK_MEMBERS', 'BAN_MEMBERS'],
+            userPermissions: ['BAN_MEMBERS'],
+            clientPermissions: ['BAN_MEMBERS'],
             args: [{
                     key: 'userToBan',
                     prompt: 'Please mention the user you want to ban with @ or provide his ID.',
@@ -54,8 +54,8 @@ module.exports = class BanCommand extends Command {
                 message.channel.send(banEmbed);
             })
             .catch(err => {
-                message.reply(
-                    ':x: Something went wrong when trying to ban this user, I probably do not have the permission to ban him!'
+                message.channel.send(
+                    '```css\n[ERROR] Discord API Error: ' + err.code + '[' + err.message + ']\n```'
                 );
                 return console.error(err);
             });

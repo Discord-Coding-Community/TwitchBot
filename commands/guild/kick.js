@@ -10,10 +10,10 @@ module.exports = class KickCommand extends Command {
             memberName: 'kick',
             group: 'guild',
             description: 'Kicks a tagged member.',
-            examples: [`${config.prefix }kick [@user]`],
+            examples: [`${config.prefix}kick [@user]`],
             guildOnly: true,
-            userPermissions: ['MANAGE_MESSAGES', 'KICK_MEMBERS', 'BAN_MEMBERS'],
-            clientPermissions: ['MANAGE_MESSAGES', 'KICK_MEMBERS', 'BAN_MEMBERS'],
+            userPermissions: ['KICK_MEMBERS'],
+            clientPermissions: ['KICK_MEMBERS'],
             args: [{
                     key: 'userToKick',
                     prompt: 'Please mention the user you want to kick with @ or provide his ID.',
@@ -46,8 +46,8 @@ module.exports = class KickCommand extends Command {
                 message.channel.send(kickEmbed);
             })
             .catch(err => {
-                message.reply(
-                    ':x: Something went wrong when trying to kick this user, I probably do not have the permission to kick him!'
+                message.channel.send(
+                    '```css\n[ERROR] Discord API Error: ' + err.code + '[' + err.message + ']\n```'
                 );
                 return console.error(err);
             });

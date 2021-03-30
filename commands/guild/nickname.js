@@ -95,9 +95,11 @@ if (message.deletable) {
 
                 message.channel.send(nickChanged);
                 return;
-            } catch {
-                message.reply(':x: Something went wrong when changing nickname');
-                return;
+            } catch (err) {
+                console.error(err)
+                channel.send(
+                    '```css\n[ERROR] Discord API Error: ' + err.code + ': [' + err.message + ']\n```'
+                )
             }
         }
     }
