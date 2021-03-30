@@ -16,4 +16,4 @@ const getServer = async(guildID) => {
     const req = await manager.shard.broadcastEval(this.guilds.get + (guildID));
 
     return (req.find((res) => !!res) || false);
-}
+};
