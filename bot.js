@@ -84,16 +84,16 @@ ap.on('posted', () => {
     console.log('Posted stats to Top.gg!')
 })
 
-client.on('ready', () => {
-    console.log(`${client.user.tag} is Ready!`);
-    client.user.setActivity(`${config.prefix}help`, {
-        type: 'WATCHING',
-        url: 'https://github.com/Discord-Coding-Community/TwitchBot'
+client.once('ready', () => {
+    console.log(client.user.tag + ' is Ready in ' + client.guilds.cache.size + ' servers!');
+    client.user.setActivity(config.prefix + 'help | in ' +  + client.guilds.cache.size + ' servers' , {
+        type: 'STREAMING',
+        url: 'https://twitch.tv/discord'
     });
     const Guilds = client.guilds.cache.map(guild => guild.name);
     console.log(Guilds, 'Connected!');
     // Registering font For Cloud Services
-    Canvas.registerFont('././resources/welcome/OpenSans-Light.ttf', {
+    Canvas.registerFont('./resources/welcome/OpenSans-Light.ttf', {
         family: 'Open Sans Light'
     });
 });
