@@ -1,11 +1,11 @@
 const { CommandoClient } = require('discord.js-commando');
 const { Discord, Structures, MessageEmbed, MessageAttachment } = require('discord.js');
 const path = require('path');
-const config = require('./config.json');
 const db = require('quick.db');
 const Canvas = require('canvas');
 const AutoPoster = require('topgg-autoposter');
 const Topgg = require("@top-gg/sdk");
+const config = require('./config.json');
 
 
 Structures.extend('Guild', function(Guild) {
@@ -85,7 +85,7 @@ ap.on('posted', () => {
 
 client.once('ready', () => {
     console.log(client.user.tag + ' is ready in ' + client.guilds.cache.size + ' servers!');
-    client.user.setActivity(config.prefix + 'help | ' + client.guilds.cache.size + ' servers' , {
+    client.user.setActivity(config.prefix + 'help | ' + client.guilds.cache.size + ' servers', {
         type: 'STREAMING',
         url: 'https://twitch.tv/discord'
     });
