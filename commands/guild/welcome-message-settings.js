@@ -179,7 +179,7 @@ module.exports = class WelcomeSettingsCommand extends Command {
         });
 
         const embed = new MessageEmbed()
-            .setColor('#420626')
+            .setColor('RANDOM')
             .setTitle(`:white_check_mark: Welcome Settings Were saved`)
             .setDescription(
                 'You can run the `' +

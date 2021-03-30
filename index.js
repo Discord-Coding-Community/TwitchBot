@@ -2,7 +2,7 @@ const { ShardingManager } = require('discord.js');
 const config = require('./config.json');
 
 
-const manager = new ShardingManager('./bot.js', {
+const manager = new ShardingManager('./client.js', {
     totalShards: config.shards,
     token: config.token
 

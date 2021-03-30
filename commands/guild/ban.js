@@ -50,7 +50,7 @@ module.exports = class BanCommand extends Command {
                 const banEmbed = new MessageEmbed()
                     .addField('Banned:', userToBan)
                     .addField('Reason', reason)
-                    .setColor('#420626');
+                    .setColor('RANDOM')
                 message.channel.send(banEmbed);
             })
             .catch(err => {

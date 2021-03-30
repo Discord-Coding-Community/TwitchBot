@@ -16,7 +16,7 @@ librsvg2-dev && \
 curl -sL https://deb.nodesource.com/setup_14.x | bash -E && apt-get install -y nodejs && \
 apt-get clean && \
 npm install -g pm2 && \
-git clone https://github.com/Discord-Coding-Community/TwitchBot.git ./TwitchBot
+git clone https://github.com/Discord-Coding-Community/Twitchclient.git ./TwitchBot
 WORKDIR "/TwitchBot"
 COPY ./config.json* .
 COPY ./json.sqlite* .

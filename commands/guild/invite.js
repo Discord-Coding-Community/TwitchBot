@@ -12,7 +12,7 @@ module.exports = class InviteCommand extends Command {
             group: 'guild',
             memberName: 'invite',
             examples: [`${prefix}invite`],
-            description: 'Replies with a link to invite the bot.'
+            description: 'Replies with a link to invite the client.'
         });
     }
 
