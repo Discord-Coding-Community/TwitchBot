@@ -1,5 +1,5 @@
 const { CommandoClient } = require('discord.js-commando');
-const { Discord, Structures, MessageEmbed, MessageAttachment } = require('discord.js');
+const { Structures, MessageEmbed, MessageAttachment } = require('discord.js');
 const path = require('path');
 const config = require('./config.json');
 const db = require('quick.db');
@@ -65,18 +65,18 @@ client.registry
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.on('ready', () => {
+client.once('ready', () => {
 
     const activities_list = [
-        `${config.prefix}help`,
-        `in ${client.guilds.cache.size} servers`
+        `Twitch API`,
+        `${config.prefix}help in ${client.channels.cache.size} channels and ${client.guilds.cache.size} servers`
     ];
 
     console.log(client.user.tag + ' is ready in ' + client.guilds.cache.size + ' servers!');
     setInterval(() => {
         const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
         client.user.setActivity(activities_list[index], { type: 'STREAMING', url: 'https://twitch.tv/discord' });
-    }, 5000);
+    }, 10000);
 
 
     const Guilds = client.guilds.cache.map(guild => guild.name);
