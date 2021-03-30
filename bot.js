@@ -65,12 +65,19 @@ client.registry
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
-client.once('ready', () => {
+client.on('ready', () => {
+
+    const activities_list = [
+        `${config.prefix}help`,
+        `in ${client.guilds.cache.size} servers`
+    ];
+
     console.log(client.user.tag + ' is ready in ' + client.guilds.cache.size + ' servers!');
-    client.user.setActivity(config.prefix + 'help | ' + client.guilds.cache.size + ' servers', {
-        type: 'STREAMING',
-        url: 'https://twitch.tv/discord'
-    });
+    setInterval(() => {
+        const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
+        client.user.setActivity(activities_list[index], { type: 'STREAMING', url: 'https://twitch.tv/discord' });
+    }, 5000);
+
 
     const Guilds = client.guilds.cache.map(guild => guild.name);
 
