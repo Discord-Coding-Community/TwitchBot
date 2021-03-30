@@ -4,6 +4,9 @@ const path = require('path');
 const config = require('./config.json');
 const db = require('quick.db');
 const Canvas = require('canvas');
+const AutoPoster = require('topgg-autoposter');
+const Topgg = require("@top-gg/sdk");
+
 
 Structures.extend('Guild', function(Guild) {
     class MusicGuild extends Guild {
@@ -75,6 +78,12 @@ for (const file of eventFiles) {
         client.on(event.name, (...args) => event.execute(...args, client));
     }
 }
+
+const ap = AutoPoster(config.ap_api, TwitchBot)
+
+ap.on('posted', () => {
+    console.log('Posted stats to Top.gg!')
+})
 
 
 client.login(config.token);
