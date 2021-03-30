@@ -10,7 +10,7 @@ const {
     prefix
 } = require('../../config.json');
 
-// Skips loading if not found in config.json
+
 if (!twitchClientID || !twitchClientSecret) return;
 
 module.exports = class TwitchAnnouncerCommand extends Command {
@@ -39,7 +39,7 @@ module.exports = class TwitchAnnouncerCommand extends Command {
     }
 
     async run(message, { textRaw }) {
-        // Grab DataBase 1 get
+
         var Twitch_DB = new db.table('Twitch_DB');
         const DBInfo = Twitch_DB.get(`${message.guild.id}.twitchAnnouncer`);
 
@@ -48,7 +48,7 @@ module.exports = class TwitchAnnouncerCommand extends Command {
         var currentGame;
         var embedID;
 
-        //Error Missing DB
+
         if (DBInfo == undefined) {
             message.reply(
                 ':no_entry: No settings were found, please run `' +
@@ -58,9 +58,9 @@ module.exports = class TwitchAnnouncerCommand extends Command {
             return;
         }
 
-        //Get Twitch Ready for Response Embeds
+
         const scope = 'user:read:email';
-        let access_token; // Token is only valid for 24 Hours (needed to repeat this in Ticker Sections)
+        let access_token;
         let streamInfo;
         let gameInfo;
         try {
@@ -87,11 +87,11 @@ module.exports = class TwitchAnnouncerCommand extends Command {
             return;
         }
 
-        //Enable Embed
+
         const enabledEmbed = new MessageEmbed()
             .setAuthor(
                 message.member.guild.name + ' Announcer Settings',
-                `https://static.twitchcdn.net/assets/favicon-32-d6025c14e900565d6177.png`,
+                this.client.user.displayAvatarURL(),
                 'https://twitch.tv/' + user.data[0].display_name
             )
             .setTitle(`:white_check_mark: Twitch Announcer Enabled!`)
@@ -115,11 +115,11 @@ module.exports = class TwitchAnnouncerCommand extends Command {
                 .setTimestamp(DBInfo.date);
         }
 
-        //Disable Embed
+
         const disabledEmbed = new MessageEmbed()
             .setAuthor(
                 message.member.guild.name + ' Announcer Settings',
-                `https://static.twitchcdn.net/assets/favicon-32-d6025c14e900565d6177.png`,
+                this.client.user.displayAvatarURL(),
                 'https://twitch.tv/' + user.data[0].display_name
             )
             .setTitle(`:x: Twitch Announcer Disabled!`)
@@ -143,7 +143,7 @@ module.exports = class TwitchAnnouncerCommand extends Command {
                 .setTimestamp(DBInfo.date);
         }
 
-        //Check embed trigger
+
         if (textFiltered == 'check') {
             if (currentMsgStatus == 'disable') message.channel.send(disabledEmbed);
             else {
@@ -152,18 +152,18 @@ module.exports = class TwitchAnnouncerCommand extends Command {
             }
             return;
         }
-        //Disable Set
+
         if (textFiltered == 'disable') {
             currentMsgStatus = 'disable';
             message.channel.send(disabledEmbed);
         }
 
-        //Enable Set
+
         if (textFiltered == 'enable') {
             currentMsgStatus = 'enable';
             message.channel.send(enabledEmbed);
 
-            //Ticker Section (Loop)
+
             var Ticker = setInterval(async function() {
                 if (currentMsgStatus == 'disable') {
                     clearInterval(Ticker);
@@ -210,11 +210,11 @@ module.exports = class TwitchAnnouncerCommand extends Command {
                     return;
                 }
 
-                //Offline Status Set
+
                 if (!streamInfo.data[0] && currentMsgStatus == 'sent') {
                     currentMsgStatus = 'offline';
                 }
-                //Online Status set
+
                 if (
                     currentMsgStatus != 'sent' &&
                     streamInfo.data[0] &&
@@ -223,7 +223,7 @@ module.exports = class TwitchAnnouncerCommand extends Command {
                     currentMsgStatus = 'online';
                 }
 
-                //Online Trigger
+
                 if (currentMsgStatus == 'online') {
                     currentGame = streamInfo.data[0].game_name;
 
@@ -239,13 +239,13 @@ module.exports = class TwitchAnnouncerCommand extends Command {
                         );
                         var canvas = Canvas.createCanvas(result.width, result.height);
                         var ctx = canvas.getContext('2d');
-                        // Since the image takes time to load, you should await it
+
                         var background = await Canvas.loadImage(
                             gameInfo.data[0].box_art_url.replace(/-{width}x{height}/g, '')
                         );
-                        // This uses the canvas dimensions to stretch the image onto the entire canvas
+
                         ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-                        // Use helpful Attachment class structure to process the file for you
+
                         var attachment = new MessageAttachment(
                             canvas.toBuffer(),
                             'box_art.png'
@@ -256,7 +256,7 @@ module.exports = class TwitchAnnouncerCommand extends Command {
                         return;
                     }
 
-                    //Online Embed
+
                     const onlineEmbed = new MessageEmbed()
                         .setAuthor(
                             `Twitch Announcement: ${user.data[0].display_name} Online!`,
@@ -271,12 +271,12 @@ module.exports = class TwitchAnnouncerCommand extends Command {
                         .setColor('RANDOM')
                         .setFooter(
                             'Stream Started',
-                            'https://static.twitchcdn.net/assets/favicon-32-d6025c14e900565d6177.png' // Official icon link from Twitch.tv
+                            this.client.user.displayAvatarURL()
                         )
                         .setImage(
                             streamInfo.data[0].thumbnail_url
                             .replace(/{width}x{height}/g, '1280x720')
-                            .concat('?r=' + Math.floor(Math.random() * 10000 + 1)) // to ensure the image updates when refreshed
+                            .concat('?r=' + Math.floor(Math.random() * 10000 + 1))
                         )
                         .setTimestamp(streamInfo.data[0].started_at)
                         .attachFiles(attachment)
@@ -292,7 +292,7 @@ module.exports = class TwitchAnnouncerCommand extends Command {
                         );
                     }
 
-                    //Online Send
+
                     try {
                         if (DBInfo.botSay.toLowerCase() != 'none') {
                             await announcedChannel.send(DBInfo.botSay),
@@ -311,7 +311,7 @@ module.exports = class TwitchAnnouncerCommand extends Command {
                     currentMsgStatus = 'sent';
                 }
 
-                //Offline Trigger
+
                 if (currentMsgStatus == 'offline') {
                     currentMsgStatus = 'end';
                     const offlineEmbed = new MessageEmbed()
@@ -325,11 +325,11 @@ module.exports = class TwitchAnnouncerCommand extends Command {
                         .setTimestamp()
                         .setFooter(
                             'Stream Ended',
-                            'https://static.twitchcdn.net/assets/favicon-32-d6025c14e900565d6177.png'
+                            this.client.user.displayAvatarURL()
                         )
                         .setThumbnail('attachment://box_art.png');
 
-                    // Incase the there is no Profile Discription
+
                     if (!user.data[0].description == '')
                         offlineEmbed
                         .addField('Profile Description:', user.data[0].description)
@@ -345,7 +345,7 @@ module.exports = class TwitchAnnouncerCommand extends Command {
                         );
                     }
 
-                    //Offline Edit
+
                     try {
                         await announcedChannel.messages
                             .fetch({
@@ -363,7 +363,7 @@ module.exports = class TwitchAnnouncerCommand extends Command {
                         return;
                     }
                 }
-            }, DBInfo.timer * 60000); //setInterval() is in MS and needs to be converted to minutes
+            }, DBInfo.timer * 60000);
         }
     }
 };

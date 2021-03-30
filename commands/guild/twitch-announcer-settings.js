@@ -142,7 +142,7 @@ module.exports = class TwitchAnnouncerSettingsCommand extends Command {
         const embed = new MessageEmbed()
             .setAuthor(
                 message.member.guild.name + ' Announcer Settings',
-                `https://static.twitchcdn.net/assets/favicon-32-d6025c14e900565d6177.png`,
+                this.client.user.displayAvatarURL(),
                 'https://twitch.tv/' + user.data[0].display_name
             )
             .setURL('https://twitch.tv/' + user.data[0].display_name)
