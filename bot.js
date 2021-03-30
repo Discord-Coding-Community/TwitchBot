@@ -78,15 +78,14 @@ client.registry
 //     }
 // }
 
-const ap = AutoPoster(config.ap_api, TwitchBot)
-
+const ap = AutoPoster(config.ap_api, client)
 ap.on('posted', () => {
     console.log('Posted stats to Top.gg!')
 })
 
 client.once('ready', () => {
-    console.log(client.user.tag + ' is Ready in ' + client.guilds.cache.size + ' servers!');
-    client.user.setActivity(config.prefix + 'help | in ' +  + client.guilds.cache.size + ' servers' , {
+    console.log(client.user.tag + ' is ready in ' + client.guilds.cache.size + ' servers!');
+    client.user.setActivity(config.prefix + 'help | ' + client.guilds.cache.size + ' servers' , {
         type: 'STREAMING',
         url: 'https://twitch.tv/discord'
     });
