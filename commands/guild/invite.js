@@ -1,8 +1,7 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
-const { invite, prefix } = require('../../config.json');
+const { invite, prefix, server_invite_1, server_invite_2 } = require('../../config.json');
 
-// Only if invite is in config.json and set to true
 if (!invite) return;
 
 module.exports = class InviteCommand extends Command {
@@ -17,34 +16,18 @@ module.exports = class InviteCommand extends Command {
     }
 
     async run(message) {
-        //provides the link with admin permissions
         const inviteURL = `https://discord.com/api/oauth2/authorize?client_id=${this.client.user.id}&permissions=8&scope=bot`;
 
-        const guildCacheMap = this.client.guilds.cache;
-        const guildCacheArray = Array.from(guildCacheMap, ([name, value]) => ({
-            name,
-            value
-        }));
-        let memberCount = 0;
-        for (let i = 0; i < guildCacheArray.length; i++) {
-            memberCount = memberCount + guildCacheArray[i].value.memberCount;
-        }
-
         const embed = new MessageEmbed()
-            .setTitle(this.client.user.username + ': Invite Link')
+            .setTitle(this.client.user.username)
+            .setDescription('A list of invites for ' + this.client.user.username)
             .setColor('RANDOM')
-            .setURL(inviteURL)
+            .addField('TwitchBot', `[Invite](${inviteURL})`, true)
+            .addField('MountainT Development', `[Invite](${server_invite_1})`, true)
+            .addField('Discord Coding Community', `[Invite](${server_invite_2})`, true)
             .setThumbnail(this.client.user.displayAvatarURL())
-            .setDescription(
-                `**Currently**
-        On ${this.client.guilds.cache.size} servers, with a total of ${memberCount} users.`
-            )
-            .setFooter(
-                'Operated by ' + this.client.owners[0].username + ' since',
-                this.client.owners[0].displayAvatarURL()
-            )
-            .setTimestamp(this.client.user.createdAt);
-
+            .setTimestamp(new Date().toISOString())
+            .setFooter(this.client.user.username, this.client.user.displayAvatarURL());
         message.channel.send(embed);
     }
 };

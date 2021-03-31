@@ -68,10 +68,20 @@ client.registry
 
 client.once('ready', () => {
 
+    const guildCacheMap = client.guilds.cache;
+    const guildCacheArray = Array.from(guildCacheMap, ([name, value]) => ({
+        name,
+        value
+    }));
+    let memberCount = 0;
+    for (let i = 0; i < guildCacheArray.length; i++) {
+        memberCount = memberCount + guildCacheArray[i].value.memberCount;
+    }
+
 
     const list_1 = [
         `${config.prefix}help`,
-        `${client.users.cache.size} users`,
+        `${memberCount} users`,
         `${client.channels.cache.size} channels`,
         `${client.guilds.cache.size} servers`
     ];

@@ -54,13 +54,13 @@ module.exports = class PruneCommand extends Command {
                 .setTitle("Prune Command Issued")
                 .setDescription('The following messages have been deleted.')
                 .setColor('RANDOM')
-                .setFooter('Twitchbot', 'https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
-                .setThumbnail('https://images-ext-2.discordapp.net/external/6vZM6YeZGzfxd4PF_aw3UnNHZafkdNlRoLp46YJ7hkU/%3Fsize%3D256/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.png')
-                .setTimestamp(new Date().toISOString())
+                .setThumbnail(this.client.user.displayAvatarURL())
                 .addField("Bot Messages Deleted", botMessages.size, false)
                 .addField("User Pins Deleted", userPins.size, false)
                 .addField("User Messages Deleted", userMessages.size, false)
-                .addField("Total Messages Deleted", deletedMessages.size, false);
+                .addField("Total Messages Deleted", deletedMessages.size, false)
+                .setTimestamp(new Date().toISOString())
+                .setFooter(this.client.user.username, this.client.user.displayAvatarURL());
             channel.send(embed)
         } catch (err) {
             console.error(err)

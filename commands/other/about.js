@@ -19,10 +19,21 @@ module.exports = class AboutCommand extends Command {
     }
 
     run(message) {
+
+        const guildCacheMap = this.client.guilds.cache;
+        const guildCacheArray = Array.from(guildCacheMap, ([name, value]) => ({
+            name,
+            value
+        }));
+        let memberCount = 0;
+        for (let i = 0; i < guildCacheArray.length; i++) {
+            memberCount = memberCount + guildCacheArray[i].value.memberCount;
+        }
+
         let embed = new MessageEmbed()
             .setTitle('TwitchBot')
             .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.')
-            .addField('Users', this.client.users.cache.size, true)
+            .addField('Users', memberCount, true)
             .addField('Channels', this.client.channels.cache.size, true)
             .addField('Guilds', this.client.guilds.cache.size, true)
             .addField('Prefix', config.prefix, true)
