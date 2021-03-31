@@ -5,8 +5,8 @@ const config = require('./config.json');
 const db = require('quick.db');
 const Canvas = require('canvas');
 const AutoPoster = require('topgg-autoposter');
-const SQLite = require("better-sqlite3");
-const sql = new SQLite('./database/scores.sqlite');
+// const SQLite = require("better-sqlite3");
+// const sql = new SQLite('./data/database.db');
 
 
 Structures.extend('Guild', function(Guild) {
@@ -102,19 +102,6 @@ client.once('ready', () => {
     Canvas.registerFont('./resources/welcome/OpenSans-Light.ttf', {
         family: 'Open Sans Light'
     });
-
-    const table = sql.prepare("SELECT count(*) FROM sqlite_master WHERE type='table' AND name = 'scores';").get();
-
-    if (!table['count(*)']) {
-        sql.prepare("CREATE TABLE scores (id TEXT PRIMARY KEY, user TEXT, guild TEXT, points INTEGER, level INTEGER);").run();
-
-        sql.prepare("CREATE UNIQUE INDEX idx_scores_id ON scores (id);").run();
-        sql.pragma("synchronous = 1");
-        sql.pragma("journal_mode = wal");
-    }
-
-    client.getScore = sql.prepare("SELECT * FROM scores WHERE user = ? AND guild = ?");
-    client.setScore = sql.prepare("INSERT OR REPLACE INTO scores (id, user, guild, points, level) VALUES (@id, @user, @guild, @points, @level);");
 
     const ap = AutoPoster(config.ap_api, client)
 
@@ -215,7 +202,7 @@ client.on('guildMemberAdd', async member => {
                 canvas.height / 1.8
             );
         } else {
-            //Lower Text Options DB
+
             ctx.font = applyText(canvas, `${member.displayName}!`);
             ctx.fillStyle = '#FFFFFF';
             ctx.fillText(
@@ -308,60 +295,5 @@ client.on('voiceStateUpdate', async(___, newState) => {
         newState.setSelfDeaf(true);
     }
 });
-
-client.on("message", message => {
-    if (message.author.bot) return;
-    let score;
-    if (message.guild) {
-        score = client.getScore.get(message.author.id, message.guild.id);
-        if (!score) {
-            score = { id: `${message.guild.id}-${message.author.id}`, user: message.author.id, guild: message.guild.id, points: 0, level: 1 }
-        }
-        score.points++;
-        const curLevel = Math.floor(0.1 * Math.sqrt(score.points));
-        if (score.level < curLevel) {
-            score.level++;
-            message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
-        }
-        client.setScore.run(score);
-    }
-    if (message.content.indexOf(config.prefix) !== 0) return;
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-    if (command === "points") {
-        return message.reply(`You currently have ${score.points} points and are level ${score.level}!`);
-    }
-    if (command === "give") {
-
-        if (!message.author.id === message.guild.owner) return message.reply("You can't do that!");
-        const user = message.mentions.users.first() || client.users.cache.get(args[0]);
-        if (!user) return message.reply("You must mention someone or give their ID!");
-        const pointsToAdd = parseInt(args[1], 10);
-        if (!pointsToAdd) return message.reply("You didn't tell me how many points to give...")
-        let userscore = client.getScore.get(user.id, message.guild.id);
-        if (!userscore) {
-            userscore = { id: `${message.guild.id}-${user.id}`, user: user.id, guild: message.guild.id, points: 0, level: 1 }
-        }
-        userscore.points += pointsToAdd;
-        let userLevel = Math.floor(0.1 * Math.sqrt(score.points));
-        userscore.level = userLevel;
-        client.setScore.run(userscore);
-        return message.channel.send(`${user.tag} has received ${pointsToAdd} points and now stands at ${userscore.points} points.`);
-    }
-    if (command === "leaderboard") {
-        const top10 = sql.prepare("SELECT * FROM scores WHERE guild = ? ORDER BY points DESC LIMIT 10;").all(message.guild.id);
-        const embed = new MessageEmbed()
-            .setTitle("Leaderboard")
-            .setAuthor(client.user.username, client.user.avatarURL)
-            .setDescription("Our top 10 points leaders!")
-            .setColor('RANDOM');
-        for (const data of top10) {
-            embed.addField(client.users.cache.get(data.user).tag, `${data.points} points (level ${data.level})`);
-        }
-        return message.channel.send({ embed });
-    }
-});
-
-
 
 client.login(config.token);
