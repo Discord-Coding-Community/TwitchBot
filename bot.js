@@ -106,6 +106,7 @@ client.once('ready', () => {
     const ap = AutoPoster(config.ap_api, client)
 
     ap.on('posted', () => {
+
         console.log('Posted stats to Top.gg!')
     })
 
