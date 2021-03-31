@@ -80,18 +80,16 @@ client.once('ready', () => {
 
 
     const list_1 = [
-        `${config.prefix}help`,
-        `${memberCount} users`,
-        `${client.channels.cache.size} channels`,
-        `${client.guilds.cache.size} servers`
+        `${config.prefix}help | {memberCount} users`,
+        `${config.prefix}help | ${client.channels.cache.size} channels`,
+        `${config.prefix}help | ${client.guilds.cache.size} servers`
     ];
 
 
     const list_2 = [
         'STREAMING',
         'WATCHING',
-        'LISTENING',
-        'PLAYING'
+        'LISTENING'
     ];
 
 
