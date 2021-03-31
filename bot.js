@@ -1,5 +1,6 @@
 const { CommandoClient } = require('discord.js-commando');
 const { Structures, MessageEmbed, MessageAttachment } = require('discord.js');
+const fs = require('fs');
 const path = require('path');
 const config = require('./config.json');
 const db = require('quick.db');
@@ -65,17 +66,54 @@ client.registry
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
+
+
+fs.readdir('./events/', (err, files) => {
+    if (err) return console.error(err);
+    files.forEach(file => {
+        const eventFunction = require(`./events/${file}`);
+        if (eventFunction.disabled) return;
+
+        const event = eventFunction.event || file.split('.')[0];
+        const emitter = (typeof eventFunction.emitter === 'string' ? client[eventFunction.emitter] : eventFunction.emitter) || client;
+        const once = eventFunction.once;
+        try {
+            emitter[once ? 'once' : 'on'](event, (...args) => eventFunction.run(...args));
+        } catch (error) {
+            console.error(error.stack);
+        }
+    });
+});
+
+
+
 client.once('ready', () => {
 
-    const activities_list = [
-        `Twitch API`,
-        `${config.prefix}help in ${client.channels.cache.size} channels and ${client.guilds.cache.size} servers`
+
+    const list_1 = [
+        `${config.prefix}help`,
+        `${client.users.cache.size} users`,
+        `${client.channels.cache.size} channels`,
+        `${client.guilds.cache.size} servers`
     ];
+
+
+    const list_2 = [
+        'STREAMING',
+        'WATCHING',
+        'LISTENING',
+        'PLAYING'
+    ];
+
 
     console.log(client.user.tag + ' is ready in ' + client.guilds.cache.size + ' servers!');
     setInterval(() => {
-        const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
-        client.user.setActivity(activities_list[index], { type: 'STREAMING', url: 'https://twitch.tv/discord' });
+        const index_1 = Math.floor(Math.random() * (list_1.length - 1) + 1);
+        const index_2 = Math.floor(Math.random() * (list_2.length - 1) + 1);
+        client.user.setActivity(list_1[index_1], {
+            type: list_2[index_2],
+            url: config.twitch_url
+        });
     }, 10000);
 
 
