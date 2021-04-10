@@ -2,7 +2,6 @@ const fetch = require('node-fetch');
 const config = require('../../config.json');
 const { Command } = require('discord.js-commando');
 
-// Skips loading if not found in config.json
 if (!config.tenorAPI) return;
 
 module.exports = class GintamaCommand extends Command {
