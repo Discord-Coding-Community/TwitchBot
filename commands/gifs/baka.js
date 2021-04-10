@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 const config = require('../../config.json');
 const fs = require('fs');
 const { Command } = require('discord.js-commando');
+const { MessageEmbed } = require('discord.js');
 
 if (!config.tenorAPI) return;
 
@@ -27,7 +28,7 @@ module.exports = class BakaCommand extends Command {
 
     run(message) {
           if (message.mentions.users.first()) {
-              
+              const embed = new MessageEmbed();              
               const baka_list = fs.readFileSync('././resources/gifs/baka_answers.json', 'utf8');
               const baka_Array = JSON.parse(baka_list).answers;
               const baka_answers =
@@ -36,11 +37,19 @@ module.exports = class BakaCommand extends Command {
                     'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-baka&limit=1'
                 )
                   .then(res => res.json())
-                  .then(json => message.channel.send('**' + message.mentions.users.first().username + '** made ' + '**' + message.author.username + '**' + ' ' + baka_answers.text + '... baka!\n' + json.results[0].url))
+              .then(json => {
+                  embed.setDescription('**' + message.mentions.users.first().username + '** made ' + '**' + message.author.username + '**' + ' ' + baka_answers.text + '... baka!\n')
+            embed.setColor("RANDOM")
+            embed.setImage(json.results[0].media[0].gif.url);
+            message.channel.send(embed)
+        })
           } else {
               message.channel.send("You have to mention a user")
-                  .catch(console.error);
-              return;
-          }
-    }
+            .catch(e => {
+                message.channel.send('Failed to fetch a gif')
+            .console.error(e);
+            return;
+              })
+        }
+    };
 };

@@ -1,8 +1,9 @@
 const fetch = require('node-fetch');
 const config = require('../../config.json');
+const fs = require('fs');
 const { Command } = require('discord.js-commando');
+const { MessageEmbed } = require('discord.js');
 
-// Skips loading if not found in config.json
 if (!config.tenorAPI) return;
 
 module.exports = class hugCommand extends Command {
@@ -24,16 +25,24 @@ module.exports = class hugCommand extends Command {
 
     run(message) {
         if (message.mentions.users.first()) {
+            const embed = new MessageEmbed();
             fetch(
                     'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-hug&limit=1'
                 )
                 .then(res => res.json())
-                .then(json => message.channel.send('**' + message.author.username + '**' + ' hugged ' + '**' + message.mentions.users.first().username + '**' + '\n' + json.results[0].url))
+            .then(json => {
+            embed.setDescription('**' + message.author.username + '**' + ' hugged ' + '**' + message.mentions.users.first().username + '**')    
+            embed.setColor("RANDOM")
+            embed.setImage(json.results[0].media[0].gif.url);
+            message.channel.send(embed)
+        })
         } else {
-            message.channel.send("You have to mention a user to hug").catch(function onError(err) {
-                message.reply('```css\n[ERROR] Discord API Error: ' + err.code + '(' + err.message + ')\n```');
-                return;
-            })
+            message.channel.send("You have to mention a user")
+                .catch(e => {
+                message.channel.send('Failed to fetch a gif')
+            .console.error(e);
+            return;
+              })
         }
-    }
+    };
 };

@@ -1,6 +1,8 @@
 const fetch = require('node-fetch');
 const config = require('../../config.json');
+const fs = require('fs');
 const { Command } = require('discord.js-commando');
+const { MessageEmbed } = require('discord.js');
 
 if (!config.tenorAPI) return;
 
@@ -23,14 +25,20 @@ module.exports = class GintamaCommand extends Command {
 
 
     run(message) {
+        const embed = new MessageEmbed();
         fetch(
                 'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=gintama&limit=1'
             )
             .then(res => res.json())
-            .then(json => message.channel.send(json.results[0].url))
+            .then(json => {
+            embed.setColor("RANDOM")
+            embed.setImage(json.results[0].media[0].gif.url);
+            message.channel.send(embed)
+        })
             .catch(e => {
-                message.reply('Failed to fetch a gintama gif :slight_frown:');
-                return console.error(e);
+                message.channel.send('Failed to fetch a gif')
+            .console.error(e);
+            return;
             })
     }
 };

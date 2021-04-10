@@ -1,9 +1,9 @@
 const fetch = require('node-fetch');
 const config = require('../../config.json');
+const fs = require('fs');
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 
-// Skips loading if not found in config.json
 if (!config.tenorAPI) return;
 
 module.exports = class AnimegifCommand extends Command {
@@ -11,10 +11,15 @@ module.exports = class AnimegifCommand extends Command {
         super(client, {
             name: 'animegif',
             group: 'gifs',
-            aliases: ['anime-gif', 'anime-gifs'],
+            aliases: [
+                'anime-gif',
+                'anime-gifs',
+                'agif'
+            ],
             memberName: 'animegif',
             description: 'Provide a name of an anime show or character and I will return a gif!',
             examples: [
+                config.prefix + 'agif',
                 config.prefix + 'animegif',
                 config.prefix + 'anime-gif',
                 config.prefix + 'anime-gifs'
@@ -27,12 +32,21 @@ module.exports = class AnimegifCommand extends Command {
     }
 
     run(message) {
+        const embed = new MessageEmbed();    
         fetch(
             'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime&limit=1'
         )
         .then(res => res.json())
-            .then(json => message.channel.send(json.results[0].url))
-            .catch(console.error);
-        return;
-            };
+        .then(json => {
+            
+            embed.setColor("RANDOM")
+            embed.setImage(json.results[0].media[0].gif.url);
+            message.channel.send(embed)
+        })
+            .catch(e => {
+                message.channel.send('Failed to fetch a gif')
+            .console.error(e);
+            return;
+        })
+    };
 };

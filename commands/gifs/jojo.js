@@ -1,8 +1,9 @@
 const fetch = require('node-fetch');
 const config = require('../../config.json');
+const fs = require('fs');
 const { Command } = require('discord.js-commando');
+const { MessageEmbed } = require('discord.js');
 
-// Skips loading if not found in config.json
 if (!config.tenorAPI) return;
 
 module.exports = class JojoCommand extends Command {
@@ -26,13 +27,18 @@ module.exports = class JojoCommand extends Command {
     }
 
     run(message) {
+        const embed = new MessageEmbed();
         fetch(
                 'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=jojos-bizarre-adventure&limit=1'
             )
             .then(res => res.json())
-            .then(json => message.channel.send(json.results[0].url))
+            .then(json => {
+            embed.setColor("RANDOM")
+            embed.setImage(json.results[0].media[0].gif.url);
+            message.channel.send(embed)
+        })
             .catch(e => {
-                message.reply('Failed to fetch a gif :slight_frown:');
+                message.channel.send('Failed to fetch a gif')
                 return console.error(e);
             })
     }

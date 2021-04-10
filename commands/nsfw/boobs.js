@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { Command } = require('discord.js-commando');
+const { MessageEmbed } = require('discord.js');
 const config = require('../../config.json');
 
 module.exports = class BoobsCommand extends Command {
@@ -34,7 +35,11 @@ module.exports = class BoobsCommand extends Command {
         .readFileSync('././resources/nsfw/boobslinks.txt', 'utf8')
         .split('\n');
       const link = linkArray[Math.floor(Math.random() * linkArray.length)];
-      message.channel.send(link);
+                var embed = new MessageEmbed()
+                .setDescription('Click this link if the image doesn\'t load: [Link](' + link + ')')
+                .setColor('RANDOM')
+                .setImage(link);
+      message.channel.send(embed); 
       return;
             } catch (e) {
       message.reply('```css\n [ERROR] Dioscord API Error:' + e.code + '(' + e.message + ')\n```');
