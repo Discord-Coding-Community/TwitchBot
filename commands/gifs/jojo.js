@@ -1,6 +1,10 @@
 const fetch = require('node-fetch');
-const { tenorAPI, prefix } = require('../../config.json');
+const config = require('../../config.json');
 const { Command } = require('discord.js-commando');
+
+// Skips loading if not found in config.json
+if (!config.tenorAPI) return;
+
 module.exports = class JojoCommand extends Command {
     constructor(client) {
         super(client, {
@@ -9,7 +13,11 @@ module.exports = class JojoCommand extends Command {
             group: 'gifs',
             memberName: 'jojo',
             description: 'Replies with a random jojo gif!',
-            examples: [`${prefix}jojo`],
+            examples: [
+                config.prefix + 'jojo',
+                config.prefix + 'jojo-gif',
+                config.prefix + 'jojo-gifs'
+            ],
             throttling: {
                 usages: 2,
                 duration: 8
@@ -19,7 +27,7 @@ module.exports = class JojoCommand extends Command {
 
     run(message) {
         fetch(
-                `https://api.tenor.com/v1/random?key=${tenorAPI}&q=jojos-bizarre-adventure&limit=1`
+                'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=jojos-bizarre-adventure&limit=1'
             )
             .then(res => res.json())
             .then(json => message.channel.send(json.results[0].url))

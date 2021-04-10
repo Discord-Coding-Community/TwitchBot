@@ -1,6 +1,9 @@
 const fetch = require('node-fetch');
-const { tenorAPI, prefix } = require('../../config.json');
+const config = require('../../config.json');
 const { Command } = require('discord.js-commando');
+
+// Skips loading if not found in config.json
+if (!config.tenorAPI) return;
 
 module.exports = class hugCommand extends Command {
     constructor(client) {
@@ -9,7 +12,9 @@ module.exports = class hugCommand extends Command {
             group: 'gifs',
             memberName: 'hug',
             description: 'Hug a specified user.',
-            examples: [`${prefix}hug [@user]`],
+            examples: [
+                config.prefix + 'hug @user#1234'
+                      ],
             throttling: {
                 usages: 2,
                 duration: 8
@@ -20,7 +25,7 @@ module.exports = class hugCommand extends Command {
     run(message) {
         if (message.mentions.users.first()) {
             fetch(
-                    `https://api.tenor.com/v1/random?key=${tenorAPI}&q=anime-hug&limit=1`
+                    'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-hug&limit=1'
                 )
                 .then(res => res.json())
                 .then(json => message.channel.send('**' + message.author.username + '**' + ' hugged ' + '**' + message.mentions.users.first().username + '**' + '\n' + json.results[0].url))

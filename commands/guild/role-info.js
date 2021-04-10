@@ -9,6 +9,7 @@ module.exports = class RoleInfoCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'role-info',
+            aliases: ['rinfo', 'ri'],
             group: 'guild',
             memberName: 'role-info',
             description: 'Detailed information on a role & who has it',

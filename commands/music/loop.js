@@ -4,7 +4,7 @@ module.exports = class LoopCommand extends Command {
   constructor(client) {
     super(client, {
       name: 'loop',
-      aliases: [`repeat`],
+      aliases: ['repeat', 'l', 'r'],
       group: 'music',
       memberName: 'loop',
       guildOnly: true,

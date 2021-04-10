@@ -6,11 +6,11 @@ module.exports = class BanCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'ban',
-            aliases: ['ban-member', 'ban-hammer'],
+            aliases: ['ban-member', 'ban-hammer', 'b'],
             memberName: 'ban',
             group: 'guild',
             description: 'Bans a tagged member.',
-            examples: [`${config.prefix }ban [@user] [reason] [number]`],
+            examples: [config.prefix + 'ban @user#1234 Bullying 7'],
             guildOnly: true,
             userPermissions: ['BAN_MEMBERS'],
             clientPermissions: ['BAN_MEMBERS'],

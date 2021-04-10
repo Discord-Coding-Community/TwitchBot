@@ -6,17 +6,19 @@ module.exports = class NewsCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'announce',
-            aliases: ['ann'],
+            aliases: ['ann', 'broadcast', 'bcast', 'news', 'bc'],
             group: 'guild',
             memberName: 'announce',
             userPermissions: ['MANAGE_MESSAGES', 'MANAGE_CHANNELS'],
             description: 'Send an announcement to the specified channel',
             examples: [`${config.prefix}announce [channel.mention] [message]`],
-            args: [{
-                key: 'text',
-                prompt: 'What would you like the bot to announce?',
-                type: 'string',
-            }, ],
+            args: [
+                {
+                    key: 'text',
+                    prompt: 'What would you like the bot to announce?',
+                    type: 'string',
+                },
+            ],
         });
     }
 
@@ -30,7 +32,7 @@ module.exports = class NewsCommand extends Command {
 
         let channel = message.mentions.channels.first();
         if (!channel) return;
-
+        
         let announcement = args.slice(1).join(" ");
 
         let embed = new MessageEmbed()

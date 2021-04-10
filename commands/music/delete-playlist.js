@@ -5,6 +5,7 @@ module.exports = class DeletePlaylistCommand extends Command {
   constructor(client) {
     super(client, {
       name: 'delete-playlist',
+      aliases: ['remplaylit', 'dplaylist', 'delplaylist'],
       group: 'music',
       memberName: 'delete-playlist',
       guildOnly: true,

@@ -5,6 +5,7 @@ module.exports = class ShuffleQueueCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'shuffle',
+            aliases: ['s'],
             memberName: 'shuffle',
             group: 'music',
             description: 'Shuffle the song queue!',

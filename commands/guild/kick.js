@@ -6,11 +6,11 @@ module.exports = class KickCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'kick',
-            aliases: ['kick-member', 'throw'],
+            aliases: ['kick-member', 'throw', 'k'],
             memberName: 'kick',
             group: 'guild',
             description: 'Kicks a tagged member.',
-            examples: [`${config.prefix}kick [@user]`],
+            examples: [`${config.prefix }kick [@user]`],
             guildOnly: true,
             userPermissions: ['KICK_MEMBERS'],
             clientPermissions: ['KICK_MEMBERS'],

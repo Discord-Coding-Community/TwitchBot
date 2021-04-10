@@ -1,6 +1,9 @@
 const fetch = require('node-fetch');
-const { tenorAPI, prefix } = require('../../config.json');
+const config = require('../../config.json');
 const { Command } = require('discord.js-commando');
+
+// Skips loading if not found in config.json
+if (!config.tenorAPI) return;
 
 module.exports = class patCommand extends Command {
     constructor(client) {
@@ -10,7 +13,10 @@ module.exports = class patCommand extends Command {
             group: 'gifs',
             memberName: 'pat',
             description: 'Pats a specified user.',
-            examples: [`${prefix}pat [@user]`],
+            examples: [
+                config.prefix + 'pat @user#1234',
+                config.prefix + 'anipat @user#1234'
+            ],
             throttling: {
                 usages: 2,
                 duration: 8
@@ -21,7 +27,7 @@ module.exports = class patCommand extends Command {
     run(message) {
         if (message.mentions.users.first()) {
             fetch(
-                    `https://api.tenor.com/v1/random?key=${tenorAPI}&q=anime-pat&limit=1`
+                    'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-pat&limit=1'
                 )
                 .then(res => res.json())
                 .then(json => message.channel.send('**' + message.author.username + '**' + ' pats ' + '**' + message.mentions.users.first().username + '**' + '\n' + json.results[0].url))

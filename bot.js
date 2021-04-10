@@ -1,5 +1,5 @@
 const { CommandoClient } = require('discord.js-commando');
-const { Structures, MessageEmbed, MessageAttachment } = require('discord.js');
+const { Structures, MessageEmbed, MessageAttachment, process } = require('discord.js');
 const path = require('path');
 const config = require('./config.json');
 const db = require('quick.db');
@@ -52,6 +52,7 @@ client.registry
     .registerGroups([
         ['music', 'Music Commands'],
         ['gifs', 'Gif Commands'],
+        ['nsfw', 'NSFW Commands'],
         ['other', 'Other Commands'],
         ['guild', 'Guild Commands'],
         ['speedrun', 'Speedrun Commands']
@@ -59,8 +60,8 @@ client.registry
     .registerDefaultGroups()
     .registerDefaultCommands({
         eval: false,
-        prefix: false,
         ping: false,
+    	prefix: false,
         unknownCommand: false
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
@@ -111,13 +112,13 @@ client.once('ready', () => {
         family: 'Open Sans Light'
     });
 
-    const ap = AutoPoster(config.ap_api, client)
+    const ap = AutoPoster(config.apAPI, client)
 
     ap.on('posted', () => {
 
         console.log('Posted stats to Top.gg!')
     })
-
+    
 });
 
 client.on('guildMemberAdd', async member => {
@@ -303,6 +304,14 @@ client.on('voiceStateUpdate', async(___, newState) => {
     ) {
         newState.setSelfDeaf(true);
     }
+});
+
+client.on('shardError', error => {
+	console.error('[ERROR] A websocket connection encountered an error:', error);
+});
+
+client.on('unhandledRejection', error => {
+	console.error('[ERROR] Unhandled promise rejection:', error);
 });
 
 client.login(config.token);

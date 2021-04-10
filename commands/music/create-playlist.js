@@ -5,6 +5,7 @@ module.exports = class CreatePlaylistCommand extends Command {
   constructor(client) {
     super(client, {
       name: 'create-playlist',
+      aliases: ['addplaylist', 'cplaylist', 'cp'],
       group: 'music',
       memberName: 'create-playlist',
       guildOnly: true,

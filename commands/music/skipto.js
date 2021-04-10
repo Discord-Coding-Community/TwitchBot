@@ -4,6 +4,7 @@ module.exports = class SkipToCommand extends Command {
   constructor(client) {
     super(client, {
       name: 'skipto',
+      aliases: ['st'],
       memberName: 'skipto',
       group: 'music',
       description:

@@ -83,7 +83,7 @@ module.exports = class TwitchStatusCommand extends Command {
                 .setTimestamp(user.data[0].created_at)
                 .setFooter(
                     'Joined Twitch',
-                    this.client.user.displayAvatarURL()
+                    'https://static.twitchcdn.net/assets/favicon-32-d6025c14e900565d6177.png'
                 )
                 .setThumbnail(user.data[0].profile_image_url);
 
@@ -145,7 +145,7 @@ module.exports = class TwitchStatusCommand extends Command {
             .setColor('RANDOM')
             .setFooter(
                 'Stream Started',
-                this.client.user.displayAvatarURL()
+                'https://static.twitchcdn.net/assets/favicon-32-d6025c14e900565d6177.png'
             )
             .setImage(
                 streamInfo.data[0].thumbnail_url

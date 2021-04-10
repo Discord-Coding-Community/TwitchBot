@@ -1,6 +1,9 @@
 const fetch = require('node-fetch');
-const { tenorAPI, prefix } = require('../../config.json');
+const config = require('../../config.json');
 const { Command } = require('discord.js-commando');
+
+// Skips loading if not found in config.json
+if (!config.tenorAPI) return;
 
 
 module.exports = class BakaCommand extends Command {
@@ -11,7 +14,10 @@ module.exports = class BakaCommand extends Command {
             group: 'gifs',
             memberName: 'baka',
             description: 'Call a specified user baka!',
-            examples: [`${prefix}baka [@user]`],
+            examples: [
+                config.prefix + 'baka @user#1234',
+                config.prefix + 'anibaka @user#1234'
+                      ],
             throttling: {
                 usages: 2,
                 duration: 8
@@ -22,7 +28,7 @@ module.exports = class BakaCommand extends Command {
     run(message) {
         if (message.mentions.users.first()) {
             fetch(
-                    `https://api.tenor.com/v1/random?key=${tenorAPI}&q=anime-baka&limit=1`
+                    'https://api.tenor.com/v1/random?key=' + config.tenorAPI + 'q=anime-baka&limit=1'
                 )
                 .then(res => res.json())
                 .then(json => message.channel.send('**' + message.author.username + '**' + ' called ' + '**' + message.mentions.users.first().username + '**' + 'baka! What did ' + message.mentions.users.first().username + ' do to recieve such a harsh reaction?\n' + json.results[0].url))

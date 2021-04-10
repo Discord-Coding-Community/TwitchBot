@@ -43,11 +43,5 @@ module.exports = class AboutCommand extends Command {
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
-        message.channel.send(embed)
-    } catch (err) {
-        console.error(err)
-        channel.send(
-            '```css\n[ERROR] Discord API Error: ' + err.code + ': [' + err.message + ']\n```'
-        )
-    }
+        message.channel.send(embed)}; 
 };

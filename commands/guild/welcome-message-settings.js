@@ -83,7 +83,7 @@ module.exports = class WelcomeSettingsCommand extends Command {
                             }
                         }
                     },
-                    default: 'https://raw.githubusercontent.com/Discord-Coding-Community/TwitchBot/main/resources/welcome/wallpaper.jpg'
+                    default: './resources/welcome/wallpaper.jpg'
                 },
                 {
                     key: 'imageWidth',
@@ -200,7 +200,7 @@ module.exports = class WelcomeSettingsCommand extends Command {
             .setTimestamp();
 
         //Shows Local wallpaper when in Default
-        if (wallpaperURL == 'https://raw.githubusercontent.com/Discord-Coding-Community/TwitchBot/main/resources/welcome/wallpaper.jpg') {
+        if (wallpaperURL == './resources/welcome/wallpaper.jpg') {
             const attachment = new MessageAttachment(
                 '././resources/welcome/wallpaper.jpg'
             );

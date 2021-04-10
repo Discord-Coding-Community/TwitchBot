@@ -1,33 +1,36 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
-const { invite, prefix, server_invite_1, server_invite_2 } = require('../../config.json');
+const Link = require("dsc.js");
+const config = require('../../config.json');
 
-if (!invite) return;
+if (!config.invite) return;
 
 module.exports = class InviteCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'invite',
+            aliases: ['inv', 'i'],
             group: 'guild',
             memberName: 'invite',
-            examples: [`${prefix}invite`],
+            examples: [config.prefix + 'invite'],
             description: 'Replies with a link to invite the client.'
         });
     }
 
     async run(message) {
-        const inviteURL = `https://discord.com/api/oauth2/authorize?client_id=${this.client.user.id}&permissions=8&scope=bot`;
-
-        const embed = new MessageEmbed()
+        const inviteURL = 'https://discord.com/api/oauth2/authorize?client_id=$' + this.client.user.id + '&permissions=8&scope=bot';
+        const dsc = new Link.Client(config.dscAPI)
+        dsc.fetchLink("discord").then((link) => {
+            const embed = new MessageEmbed()
             .setTitle(this.client.user.username)
             .setDescription('A list of invites for ' + this.client.user.username)
             .setColor('RANDOM')
-            .addField('TwitchBot', `[Invite](${inviteURL})`, true)
-            .addField('MountainT Development', `[Invite](${server_invite_1})`, true)
-            .addField('Discord Coding Community', `[Invite](${server_invite_2})`, true)
+            .addField('TwitchBot', ':white_small_square: [Top.gg](' + inviteURL + ')' + '\n:white_small_square: [dsc.gg](' + config.dscInviteURL + ')', true)
+            .addField('Support Servers', ':white_small_square: [' + config.Support_Server_Name_1 + '](' + config.Support_Server_Invite_1 + ')\n:white_small_square: [' + config.Support_Server_Name_2 + '](' + config.Support_Server_Invite_2 + ')' , true)
             .setThumbnail(this.client.user.displayAvatarURL())
             .setTimestamp(new Date().toISOString())
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL());
-        message.channel.send(embed);
+        message.channel.send(embed)
+        })
     }
 };
