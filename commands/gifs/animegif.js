@@ -32,9 +32,7 @@ module.exports = class AnimegifCommand extends Command {
         )
         .then(res => res.json())
             .then(json => message.channel.send(json.results[0].url))
-            .catch(function onError(err) {
-                message.reply('```css\n[ERROR] Discord API Error: ' + err.code + '(' + err.message + ')\n```');
-                return;
-            });
-    }
+            .catch(console.error);
+        return;
+            };
 };

@@ -27,10 +27,9 @@ module.exports = class SlapCommand extends Command {
                 .then(res => res.json())
                 .then(json => message.channel.send('**' + message.author.username + '**' + ' slapped ' + '**' + message.mentions.users.first().username + '**' + '\n' + json.results[0].url))
         } else {
-            message.channel.send("You have to mention a user to slap").catch(function onError(err) {
-                message.reply('```css\n[ERROR] Discord API Error: ' + err.code + '(' + err.message + ')\n```');
+            message.channel.send("You have to mention a user")
+                .catch(console.error);
                 return;
-            })
         }
     }
 };

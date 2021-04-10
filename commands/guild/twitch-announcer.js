@@ -100,7 +100,7 @@ module.exports = class TwitchAnnouncerCommand extends Command {
     const enabledEmbed = new MessageEmbed()
       .setAuthor(
         message.member.guild.name + ' Announcer Settings',
-        this.client.user.displayAvatarUrl(),
+        'https://images-ext-2.discordapp.net/external/YGcRORVMKO1Zi0izJkJEJSoFu4CBlZ9qrj9ptseHGCo/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.webp',
         'https://twitch.tv/' + user.data[0].display_name
       )
       .setTitle(`:white_check_mark: Twitch Announcer Enabled!`)
@@ -127,7 +127,7 @@ module.exports = class TwitchAnnouncerCommand extends Command {
     const disabledEmbed = new MessageEmbed()
       .setAuthor(
         message.member.guild.name + ' Announcer Settings',
-        this.client.user.displayAvatarUrl(),
+        'https://images-ext-2.discordapp.net/external/YGcRORVMKO1Zi0izJkJEJSoFu4CBlZ9qrj9ptseHGCo/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.webp',
         'https://twitch.tv/' + user.data[0].display_name
       )
       .setTitle(`:x: Twitch Announcer Disabled!`)
@@ -268,7 +268,7 @@ module.exports = class TwitchAnnouncerCommand extends Command {
             .setColor('#6441A4')
             .setFooter(
               'Stream Started',
-              this.client.user.displayAvatarUrl() 
+              'https://images-ext-2.discordapp.net/external/YGcRORVMKO1Zi0izJkJEJSoFu4CBlZ9qrj9ptseHGCo/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.webp' 
             )
             .setImage(
               streamInfo.data[0].thumbnail_url
@@ -320,7 +320,7 @@ module.exports = class TwitchAnnouncerCommand extends Command {
             .setTimestamp()
             .setFooter(
               'Stream Ended',
-              this.client.user.displayAvatarUrl()
+              'https://images-ext-2.discordapp.net/external/YGcRORVMKO1Zi0izJkJEJSoFu4CBlZ9qrj9ptseHGCo/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.webp'
             )
             .setThumbnail('attachment://box_art.png');
 

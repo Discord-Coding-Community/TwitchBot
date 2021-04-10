@@ -1,12 +1,10 @@
 const { CommandoClient } = require('discord.js-commando');
-const { Structures, MessageEmbed, MessageAttachment, process } = require('discord.js');
+const { Structures, MessageEmbed, MessageAttachment } = require('discord.js');
 const path = require('path');
 const config = require('./config.json');
 const db = require('quick.db');
 const Canvas = require('canvas');
 const AutoPoster = require('topgg-autoposter');
-// const SQLite = require("better-sqlite3");
-// const sql = new SQLite('./data/database.db');
 
 
 Structures.extend('Guild', function(Guild) {
@@ -62,6 +60,8 @@ client.registry
         eval: false,
         ping: false,
     	prefix: false,
+    	enable: false,
+    	disable: false,
         unknownCommand: false
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
@@ -81,9 +81,9 @@ client.once('ready', () => {
 
 
     const list_1 = [
-        `${config.prefix}help | {memberCount} users`,
-        `${config.prefix}help | ${client.channels.cache.size} channels`,
-        `${config.prefix}help | ${client.guilds.cache.size} servers`
+        config.prefix + `help | {memberCount} users`,
+        config.prefix + `help | ${client.channels.cache.size} channels`,
+        config.prefix + `help | ${client.guilds.cache.size} servers`
     ];
 
 
@@ -307,11 +307,27 @@ client.on('voiceStateUpdate', async(___, newState) => {
 });
 
 client.on('shardError', error => {
-	console.error('[ERROR] A websocket connection encountered an error:', error);
+    try {
+    } catch (error) {
+    if (error instanceof shardError) Error.captureStackTrace(error);
+	console.error('[ERROR] A web socket has encountered an error:', error);
+    }
 });
 
 client.on('unhandledRejection', error => {
-	console.error('[ERROR] Unhandled promise rejection:', error);
+    try {
+    } catch (error) {
+        if (error instanceof unhandledRejection) Error.captureStackTrace(error);
+	console.error('[ERROR] unhandledRejection:' + client.message.guild.name + '][#' + client.message.channel.name + ']', error);
+    }
+});
+
+client.on('DiscordAPIError', error => {
+    try {
+    } catch (error) {
+        if (error instanceof DiscordAPIError) Error.captureStackTrace(error);
+        console.error('[ERROR] DiscordAPIError:' + client.message.guild.name + '][#' + client.message.channel.name + ']', error);
+    }
 });
 
 client.login(config.token);
