@@ -1,6 +1,8 @@
 const fetch = require('node-fetch');
 const config = require('../../config.json');
+const fs = require('fs');
 const { Command } = require('discord.js-commando');
+const { MessageEmbed } = require('discord.js');
 
 if (!config.tenorAPI) return;
 

@@ -18,9 +18,7 @@ module.exports = class BoobsCommand extends Command {
             userPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
             clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
             examples: [
-                config.prefix + 'hentai',
-                config.prefig + 'hentai-gif',
-                config.prefix + 'hgif'
+                '`' + config.prefix + 'hentai`'
             ],
             throttling: {
                 usages: 2,

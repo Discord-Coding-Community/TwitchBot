@@ -1,5 +1,5 @@
 {
-    "name": "TwitchBot",
+    "name": "Corion",
     "version": "1.0.0",
     "description": "a discord music bot with guild , gifs and misc commands",
     "main": "index.js",

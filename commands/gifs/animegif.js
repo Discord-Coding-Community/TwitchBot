@@ -1,6 +1,5 @@
 const fetch = require('node-fetch');
 const config = require('../../config.json');
-const fs = require('fs');
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 
@@ -14,31 +13,34 @@ module.exports = class AnimegifCommand extends Command {
             aliases: [
                 'anime-gif',
                 'anime-gifs',
-                'agif'
             ],
             memberName: 'animegif',
-            description: 'Provide a name of an anime show or character and I will return a gif!',
+            description: 'Return a random anime gif!',
             examples: [
-                config.prefix + 'agif',
-                config.prefix + 'animegif',
-                config.prefix + 'anime-gif',
-                config.prefix + 'anime-gifs'
+                '`' + config.prefix + 'animegif`'
                       ],
             throttling: {
                 usages: 1,
                 duration: 4
-            }
+            },
+            args: [{
+                key: 'text',
+                prompt: 'What gif would you like to post?',
+                type: 'string',
+                validate: function validateText(text) {
+                    return text.length < 50;
+                }
+            }]
         });
     }
 
-    run(message) {
+    run(message, {text}) {
         const embed = new MessageEmbed();    
         fetch(
-            'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime&limit=1'
+            'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-' + text + '&limit=1'
         )
         .then(res => res.json())
         .then(json => {
-            
             embed.setColor("RANDOM")
             embed.setImage(json.results[0].media[0].gif.url);
             message.channel.send(embed)
