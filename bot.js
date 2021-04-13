@@ -39,10 +39,11 @@ Structures.extend('Guild', function(Guild) {
     return MusicGuild;
 });
 
+const Client = new Discord.Client({ shardCount: 'auto' });
+
 const client = new CommandoClient({
     commandPrefix: config.prefix,
-    owner: config.discord_owner_id,
-    shardCount: 'auto'
+    owner: config.discord_owner_id
 });
 
 client.registry
