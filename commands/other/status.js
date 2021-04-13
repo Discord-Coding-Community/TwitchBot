@@ -20,7 +20,7 @@ module.exports = class AboutCommand extends Command {
         });
     }
 
-    run(message) {
+    async run(message) {
         let values = await client.shard.broadcastEval(`
     [
         this.shard.id,
