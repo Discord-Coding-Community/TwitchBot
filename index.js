@@ -25,7 +25,7 @@ manager.on('ready', (shard) => {
     }
 
     const reqBody = {
-        "guildCount": shard.fetchClientValues('guilds.cache.size')
+        "guildCount": shard.fetchClientValues('guilds.size')
     }
 
     fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
@@ -45,7 +45,26 @@ manager.on('ready', (shard) => {
 });
 
 manager.on('message', (shard, message) => {
+    if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
-    console.log(`Shard[${shard.id}] : ${message._eval} : ${message._result}`);
+    const args = message.content.slice(prefix.length).trim().split(/ +/);
+    const command = args.shift().toLowerCase();
 
+    if (command === 'status') {
+
+        let values = await shard.broadcastEval(`[this.shard.id, this.guilds.size]`);
+        let shardStatus = '**__Shard Status__**\n';
+        values.forEach((value) => {
+            shardStatus += ' • **Shard**: ' + value[0] + ' | • **Guilds**: ' + value[1] + ' • | **Users**: ' + value[2] + '\n';
+
+        });
+        let embed = new MessageEmbed()
+            .setTitle(user.username)
+            .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.\n\n' + shardStatus + '\n' + serverStatus)
+            .setColor('RANDOM')
+            .setTimestamp(new Date().toISOString())
+            .setFooter(user.username, user.displayAvatarURL())
+        message.channel.send(embed);
+        return console.log(`Shard[${shard.id}] : ${message._eval} : ${message._result}`);
+    }
 });
