@@ -59,9 +59,9 @@ client.registry
     .registerDefaultCommands({
         eval: false,
         ping: false,
-    	prefix: false,
-    	enable: false,
-    	disable: false,
+        prefix: false,
+        enable: false,
+        disable: false,
         unknownCommand: false
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
@@ -118,7 +118,27 @@ client.once('ready', () => {
 
         console.log('Posted stats to Top.gg!')
     })
-    
+
+    const URL = 'https://api.discordextremelist.xyz/v2/bot/' + config.applicationID + '/stats';
+
+    const fetch = require("node-fetch", URL);
+
+    const reqHeaders = {
+        "Content-Type": "application/json",
+        "Authorization": config.delAPI
+    }
+
+    const reqBody = {
+        "guildCount": client.guilds.cache.size
+    }
+
+    fetch(url, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
+        .then((res) => {
+            return res.json()
+        })
+        .then((json) => {
+            console.log(json);
+        })
 });
 
 client.on('guildMemberAdd', async member => {
@@ -307,27 +327,27 @@ client.on('voiceStateUpdate', async(___, newState) => {
 });
 
 client.on('shardError', error => {
-    try {
-    } catch (error) {
-    if (error instanceof shardError) Error.captureStackTrace(error);
-	console.error('[ERROR] A web socket has encountered an error:', error);
+    try {} catch (e) {
+        let (e) = error;
+        if ((e) instanceof shardError) Error.captureStackTrace(e);
+        console.error('[ERROR] A web socket has encountered an error:', (e));
     }
 });
 
 client.on('unhandledRejection', error => {
-    try {
-    } catch (error) {
-        if (error instanceof unhandledRejection) Error.captureStackTrace(error);
-	console.error('[ERROR] unhandledRejection:' + client.message.guild.name + '][#' + client.message.channel.name + ']', error);
+    try {} catch (e) {
+        let (e) = error;
+        if ((e) instanceof unhandledRejection) Error.captureStackTrace(e);
+        console.error('[ERROR] unhandledRejection:' + client.message.guild.name + '(' + client.message.guild.id + ')][#' + client.message.channel.name + ']', (e));
     }
 });
 
 client.on('DiscordAPIError', error => {
-    try {
-    } catch (error) {
-        if (error instanceof DiscordAPIError) Error.captureStackTrace(error);
-        console.error('[ERROR] DiscordAPIError:' + client.message.guild.name + '][#' + client.message.channel.name + ']', error);
+    try {} catch (e) {
+        let (e) = error;
+        if ((e) instanceof DiscordAPIError) Error.captureStackTrace(e);
+        console.error('[ERROR] DiscordAPIError:' + client.message.guild.name + '(' + client.message.guild.id + ')][#' + client.message.channel.name + ']', (e));
     }
 });
 
-client.login(config.token);
+client.login(config.clientTOKEN);
