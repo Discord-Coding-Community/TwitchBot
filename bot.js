@@ -1,5 +1,5 @@
 const { CommandoClient } = require('discord.js-commando');
-const { Structures, MessageEmbed, MessageAttachment, Discord } = require('discord.js');
+const { Structures, MessageEmbed, MessageAttachment } = require('discord.js');
 const path = require('path');
 const AutoPoster = require('topgg-autoposter');
 const db = require('quick.db');
@@ -38,8 +38,6 @@ Structures.extend('Guild', function(Guild) {
     }
     return MusicGuild;
 });
-
-const manager = new Discord.client({ shardCount: 'auto' });
 
 const client = new CommandoClient({
     commandPrefix: config.prefix,
