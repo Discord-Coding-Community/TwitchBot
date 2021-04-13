@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { Command } = require('discord.js-commando');
-const client - require('discord.js');
+const client = require('discord.js');
 const config = require('../../config.json');
 
 module.exports = class AboutCommand extends Command {
