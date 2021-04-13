@@ -29,8 +29,6 @@ module.exports = class AboutCommand extends Command {
                 .setTitle(this.client.user.username)
                 .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.\n\n' + finalString)
                 .setColor('RANDOM')
-                .addField('Online Members', message.guild.members.cache.filter(member => member.presence.status !== "offline").size, false)
-                .addField('Online Members', message.guild.members.cache.filter(member => member.presence.status == "offline").size, false)
                 .setTimestamp(new Date().toISOString())
                 .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
             message.channel.send(embed);
