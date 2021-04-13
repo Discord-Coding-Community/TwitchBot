@@ -32,7 +32,7 @@ module.exports = class AboutCommand extends Command {
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
-        message.channel.send({ embed: `${JSON.stringify(embed)}` });
+        message.channel.send(embed);
         return;
     } catch (e) {
         console.error(e)
