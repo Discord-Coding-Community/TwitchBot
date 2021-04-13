@@ -11,11 +11,11 @@ const manager = new ShardingManager('./bot.js', {
 
 });
 
-manager.spawn();
+manager.spawn(3);
 
 manager.on('shardCreate', (shard) => console.log('Launching Shard: ' + shard.id));
 
-manager.on('ready', () => {
+manager.on('connect', (shard) => {
 
     const URL = 'https://api.discordextremelist.xyz/v2/bot/' + config.applicationID + '/stats';
 
@@ -25,7 +25,7 @@ manager.on('ready', () => {
     }
 
     const reqBody = {
-        "guildCount": manager.shard.fetchClientValues('guilds.size')
+        "guildCount": shard.fetchClientValues('guilds.size')
     }
 
     fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
