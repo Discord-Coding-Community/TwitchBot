@@ -21,8 +21,8 @@ module.exports = class StatusCommand extends Command {
         });
     }
 
-    run(message, client) {
-        let s = client.shard;
+    run(message) {
+        let s = this.client.shard;
         let embed = new MessageEmbed()
             .setDescription('**__Shard Status__**')
             .addField('Total Users', `${s.fetchClientValues('userss.cache.size')}`, true)
