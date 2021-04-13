@@ -1,5 +1,6 @@
 const { ShardingManager } = require('discord.js');
 const fetch = require("node-fetch");
+const AutoPoster = require('topgg-autoposter');
 const config = require('./config.json');
 
 
@@ -34,6 +35,13 @@ manager.on('ready', () => {
         .then((json) => {
             console.log(json);
         })
+
+    const ap = AutoPoster(config.apAPI, manager)
+
+    ap.on('posted', () => {
+
+        console.log('Posted stats to Top.gg!')
+    })
 });
 
 const getServer = async(guildID) => {
