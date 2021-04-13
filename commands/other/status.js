@@ -25,7 +25,7 @@ module.exports = class StatusCommand extends Command {
         let s = this.client.shard;
         let embed = new MessageEmbed()
             .setDescription('**__Shard Status__**')
-            .addField('Total Users', `${s.fetchClientValues('userss.cache.size')}`, true)
+            .addField('Total Users', `${s.fetchClientValues('users.cache.size')}`, true)
             .addField('Total Channels', `${s.fetchClientValues('channels.cache.size')}`, true)
             .addField('Total Guilds', `${s.fetchClientValues('guilds.cache.size')}`, true)
             .setThumbnail(this.client.user.displayAvatarURL())
