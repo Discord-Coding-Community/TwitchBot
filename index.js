@@ -26,7 +26,7 @@ manager.on('shardCreate', (shard) => {
     }
 
     const reqBody = {
-        "guildCount": shard.fetchClientValues('guilds.size')
+        "guildCount": manager.shard.fetchClientValues('guilds.size')
     }
 
     fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
