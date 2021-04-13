@@ -22,13 +22,8 @@ module.exports = class AboutCommand extends Command {
         });
     }
 
-    async run(message) {
-        let values = await this.client.shard.broadcastEval(`
-    [
-        this.shard.id,
-        this.guilds.size
-    ]
-`);
+    async run(message, client) {
+        let values = await client.shard.broadcastEval(`[this.shard.id, this.guilds.size]`);
         let finalString = "**SHARD STATUS**\n\n";
         values.forEach((value) => {
             finalString += " • **Shard**: " + value[0] + " | • **Guilds**: " + value[1] + " • | **Users**: " + value[2] + "\n";
