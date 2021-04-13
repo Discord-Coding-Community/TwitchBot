@@ -34,7 +34,7 @@ manager.on('ready', () => {
         .then((json) => {
             console.log(json);
         })
-})
+});
 
 const getServer = async(guildID) => {
     const req = await manager.shard.broadcastEval(this.guilds.get + (guildID));
