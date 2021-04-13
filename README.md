@@ -1,6 +1,5 @@
-[![Discord Bots](https://top.gg/api/widget/status/727930437997166653.svg)](https://top.gg/bot/727930437997166653)
-[![Discord Bots](https://top.gg/api/widget/servers/727930437997166653.svg)](https://top.gg/bot/727930437997166653)
-<hr>
+[![Bot Status](https://top.gg/api/widget/status/727930437997166653.svg?noavatar=true)](https://top.gg/bot/727930437997166653)
+[![Server Count](https://top.gg/api/widget/servers/727930437997166653.svg?noavatar=true)](https://top.gg/bot/727930437997166653)
 
 ![](https://www.tubefilter.com/wp-content/uploads/2015/12/Twitch-Co-Stream-Game-Awards-PlayStation-Experience-2015.jpg)
 
