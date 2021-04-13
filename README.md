@@ -6,10 +6,5 @@
 # TwitchBot
 Multi-purpose Discord bot ready to skill up and boost your server.
 
-
-**TwitchBot** Integrates Twitch Stream Notifications into Discord servers while also providing plenty of extra goodies to keep you entertained.<br><br>
-To see our available commands, type `t!help`
-
-### Support
-- [MountainT Development](https://dsc.gg/mtdev)
-- [Discord Coding Community](https://dsc.gg/discord-coding-community)
+### Links
+- [Website](https://discord-coding-community.github.io/TwitchBot/)
