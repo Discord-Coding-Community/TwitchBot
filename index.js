@@ -53,18 +53,11 @@ manager.on('message', async(shard, message) => {
     if (command === 'status') {
 
         let values = await shard.broadcastEval(`[this.shard.id, this.guilds.size]`);
-        let shardStatus = '**__Shard Status__**\n';
+        let response = '**__Shard Status__**\n';
         values.forEach((value) => {
-            shardStatus += ' • **Shard**: ' + value[0] + ' | • **Guilds**: ' + value[1] + ' • | **Users**: ' + value[2] + '\n';
-
+            response += ' • **Shard**: ' + value[0] + ' | • **Total Guilds**: ' + value[1] + ' • | **Total Users**: ' + value[2] + '\n';
         });
-        let embed = new MessageEmbed()
-            .setTitle(user.username)
-            .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.\n\n' + shardStatus + '\n' + serverStatus)
-            .setColor('RANDOM')
-            .setTimestamp(new Date().toISOString())
-            .setFooter(user.username, user.displayAvatarURL())
-        message.channel.send(embed);
+        message.reply(response);
         return console.log(`Shard[${shard.id}] : ${message._eval} : ${message._result}`);
     }
 });
