@@ -47,7 +47,7 @@ manager.on('ready', (shard) => {
 manager.on('message', async(shard, message) => {
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
-    const args = message.content.slice(prefix.length).trim().split(/ +/);
+    const args = message.content.slice(config.prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
     if (command === 'status') {
@@ -58,6 +58,9 @@ manager.on('message', async(shard, message) => {
             response += ' • **Shard**: ' + value[0] + ' | • **Total Guilds**: ' + value[1] + ' • | **Total Users**: ' + value[2] + '\n';
         });
         message.reply(response);
-        return console.log(`Shard[${shard.id}] : ${message._eval} : ${message._result}`);
+        return;
+    } else if (command === 'eval') {
+
+        message.reply(' • **Shard**: ' + '[' + shard.id + '] : ' + message._eval + ' : ' + message._result)
     }
 });
