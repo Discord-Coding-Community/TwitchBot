@@ -27,14 +27,12 @@ module.exports = class AboutCommand extends Command {
     async run(message) {
         let shardStatus = '**__Shard Status__**\n';
         shardStatus += ' • ** Shard **: ' + this.client.shard.broadcastEval(`this.shard.id`) + ' | • ** Guilds **: ' + this.client.shard.broadcastEval(`this.guilds.size`) + ' • | ** Users **: ' + this.client.shard.broadcastEval(`this.users.size`);
-        let serverStatus = '**__Server Status__**\n';
-        serverStatus += ' • **Online Users**: ' + message.guild.members.cache.filter(member => member.presence.status !== 'offline').size + ' | • **Offline Users**: ' + message.guild.members.cache.filter(member => member.presence.status == 'offline').size + '\n';
         let embed = new MessageEmbed()
             .setDescription(shardStatus + '\n' + serverStatus)
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
-        message.channel.send(embed);
+        message.channel.send({ embed: `${JSON.stringify(embed)}` });
         return;
     } catch (e) {
         console.error(e)
