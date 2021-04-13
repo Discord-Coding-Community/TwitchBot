@@ -2,6 +2,7 @@ const { CommandoClient } = require('discord.js-commando');
 const { Structures, MessageEmbed, MessageAttachment } = require('discord.js');
 const path = require('path');
 const config = require('./config.json');
+const fetch = require("node-fetch");
 const db = require('quick.db');
 const Canvas = require('canvas');
 const AutoPoster = require('topgg-autoposter');
@@ -120,8 +121,6 @@ client.once('ready', () => {
     })
 
     const URL = 'https://api.discordextremelist.xyz/v2/bot/' + config.applicationID + '/stats';
-
-    const fetch = require("node-fetch", URL);
 
     const reqHeaders = {
         "Content-Type": "application/json",
