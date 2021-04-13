@@ -16,32 +16,31 @@ manager.spawn(5);
 
 manager.on('shardCreate', (shard) => console.log('Launching Shard ' + shard.id));
 
-manager.on('connect', (shard) => {
-    const URL = 'https://api.discordextremelist.xyz/v2/bot/' + config.applicationID + '/stats';
 
-    const reqHeaders = {
-        "Content-Type": "application/json",
-        "Authorization": config.delAPI
-    }
+const URL = 'https://api.discordextremelist.xyz/v2/bot/' + config.applicationID + '/stats';
 
-    const reqBody = {
-        "guildCount": shard.fetchClientValues('guilds.size')
-    }
+const reqHeaders = {
+    "Content-Type": "application/json",
+    "Authorization": config.delAPI
+}
 
-    fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
-        .then((res) => {
-            return res.json()
-        })
-        .then((json) => {
-            console.log(json);
-        })
+const reqBody = {
+    "guildCount": manager.shard.fetchClientValues('guilds.size')
+}
 
-    const ap = AutoPoster(config.apAPI, manager)
-
-    ap.on('posted', () => {
-
-        console.log('Posted stats to Top.gg!')
+fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
+    .then((res) => {
+        return res.json()
     })
+    .then((json) => {
+        console.log(json);
+    })
+
+const ap = AutoPoster(config.apAPI, manager)
+
+ap.on('posted', () => {
+
+    console.log('Posted stats to Top.gg!')
 });
 
 manager.on('message', async(shard, message, error) => {
