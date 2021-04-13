@@ -21,7 +21,7 @@ module.exports = class AboutCommand extends Command {
     }
 
     async run(message) {
-        let values = await client.shard.broadcastEval(`
+        let values = await this.client.shard.broadcastEval(`
     [
         this.shard.id,
         this.guilds.size
