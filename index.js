@@ -25,7 +25,7 @@ manager.on('connect', (shard) => {
     }
 
     const reqBody = {
-        "guildCount": shard.fetchClientValues('guilds.size')
+        "guildCount": shard.fetchClientValues('guilds.cache.size')
     }
 
     fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
