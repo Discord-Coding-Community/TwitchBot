@@ -1,4 +1,4 @@
-const { MessageEmbed, client } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const { Command } = require('discord.js-commando');
 const config = require('../../config.json');
 
@@ -25,13 +25,14 @@ module.exports = class AboutCommand extends Command {
     }
 
     async run(message) {
+        let c = this.client;
         let shardStatus = '**__Shard Status__**\n\n';
-        shardStatus += ' • ** Shard **: ' + client.shard.broadcastEval(`this.shard.id`) + ' • ** Guilds **: ' + client.shard.broadcastEval(`this.guilds.size`) + ' • ** Users **: ' + client.shard.broadcastEval(`this.users.size`);
+        shardStatus += ' • ** Shard **: ' + c.shard.broadcastEval(`this.shard.id`) + ' • ** Guilds **: ' + c.shard.broadcastEval(`this.guilds.size`) + ' • ** Users **: ' + c.shard.broadcastEval(`this.users.size`);
         let embed = new MessageEmbed()
             .setDescription(shardStatus)
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
-            .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
+            .setFooter(c.user.username, c.user.displayAvatarURL())
         message.channel.send(embed);
         return;
     } catch (e) {
