@@ -28,7 +28,7 @@ module.exports = class AboutCommand extends Command {
             shardStatus += ' • **Shard**: ' + value[0] + ' | • **Guild Count**: ' + value[1] + ' • | **User Count**: ' + value[2] + '\n';
 
         });
-        serverStatus += ' • **Online Users**: ' + message.guild.members.cache.filter(member => member.presence.status !== 'offline').size + ' | • **Offline Users**: ' + message.guild.members.cache.filter(member => member.presence.status == 'offline').size + '\n';
+        serverStatus += ' • **Online Users**: ' + message.guild.members.cache.filter(member => member.presence.status == 'offline').size + ' | • **Offline Users**: ' + message.guild.members.cache.filter(member => member.presence.status !== 'offline').size + '\n';
         let embed = new MessageEmbed()
             .setTitle(this.client.user.username)
             .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.\n\n' + shardStatus + '\n' + serverStatus)
