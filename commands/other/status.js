@@ -25,7 +25,7 @@ module.exports = class AboutCommand extends Command {
         let shardStatus = '**__Shard Status__**\n';
         let serverStatus = '**__Server Status__**\n';
         values.forEach((value) => {
-            shardStatus += ' • **Shard**: ' + value[0] + ' | • **Guilds**: ' + value[1] + ' • | **Users**: ' + value[2] + '\n';
+            shardStatus += ' • **Shard**: ' + value[0] + ' | • **Guild Count**: ' + value[1] + ' • | **User Count**: ' + value[2] + '\n';
 
         });
         serverStatus += ' • **Online Users**: ' + message.guild.members.cache.filter(member => member.presence.status !== 'offline').size + ' | • **Offline Users**: ' + message.guild.members.cache.filter(member => member.presence.status == 'offline').size + '\n';
