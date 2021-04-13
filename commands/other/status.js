@@ -25,7 +25,7 @@ module.exports = class AboutCommand extends Command {
     }
 
     async run(message) {
-        let shardStatus = '**__Shard Status__**\n';
+        let shardStatus = '**__Shard Status__**\n\n';
         shardStatus += ' • ** Shard **: ' + this.client.shard.broadcastEval(`this.shard.id`) + ' | • ** Guilds **: ' + this.client.shard.broadcastEval(`this.guilds.size`) + ' • | ** Users **: ' + this.client.shard.broadcastEval(`this.users.size`);
         let embed = new MessageEmbed()
             .setDescription(shardStatus)
