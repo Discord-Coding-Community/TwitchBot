@@ -35,7 +35,7 @@ module.exports = class AboutCommand extends Command {
         });
         let embed = new MessageEmbed()
             .setTitle(this.client.user.username)
-            .setDescription(finalString)
+            .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.\n\n' + finalString)
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
