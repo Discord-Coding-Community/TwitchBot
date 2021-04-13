@@ -41,8 +41,6 @@ Structures.extend('Guild', function(Guild) {
     return MusicGuild;
 });
 
-const Client = new Client()
-
 const client = new CommandoClient({
     commandPrefix: config.prefix,
     owner: config.discord_owner_id
@@ -126,7 +124,7 @@ client.once('ready', () => {
     }
 
     const reqBody = {
-        "guildCount": Client.shard.fetchClientValues('guilds.cache.size')
+        "guildCount": client.shard.fetchClientValues('guilds.cache.size')
     }
 
     fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
