@@ -90,7 +90,7 @@ client.once('ready', () => {
     ];
 
 
-    console.log(client.user.tag + ' is ready in ' + client.guilds.cache.size + ' servers!');
+    console.log('Connecting to ' + client.guilds.cache.size + ' servers...');
     setInterval(() => {
         const index_1 = Math.floor(Math.random() * (list_1.length - 1) + 1);
         const index_2 = Math.floor(Math.random() * (list_2.length - 1) + 1);
@@ -101,7 +101,7 @@ client.once('ready', () => {
     }, 10000);
 
 
-    console.log('Connected to ' + client.guilds.cache.size + ' guilds!');
+    console.log(client.user.tag + ' connected to ' + client.guilds.cache.size + ' guilds!');
     Canvas.registerFont('./resources/welcome/OpenSans-Light.ttf', {
         family: 'Open Sans Light'
     });
