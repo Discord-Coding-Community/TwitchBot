@@ -45,10 +45,8 @@ manager.on('connect', async(shard) => {
                 let MessageEmbed = require('discord.js');
                 let embed = new MessageEmbed()
                 .setTitle('**_Shard Status_**')
-                .setDescription('**Total Guilds**: ${srvCount.reduce((p, n) => p + n, 0)}\n**Total Users**: ${usrCount}')
+                .setDescription('▫️ **Total Guilds**: ${srvCount.reduce((p, n) => p + n, 0)}｜▫️ **Total Users**: ${usrCount}')
                 .setColor('RANDOM')
-                .setTimestamp(new Date().toISOString())
-                .setFooter('TwitchBot', 'https://images-ext-2.discordapp.net/external/YGcRORVMKO1Zi0izJkJEJSoFu4CBlZ9qrj9ptseHGCo/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.webp')
                 channel.send({ embed: ${JSON.stringify(embed)} });
             }
         })();
