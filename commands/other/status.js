@@ -36,6 +36,6 @@ module.exports = class AboutCommand extends Command {
         let embed = new MessageEmbed()
             .setTitle(this.client.user.username)
             .setDescription(finalString)
-        message.channel.send(embed).catch(console.error(error));
+        message.channel.send(embed).catch(console.log(error));
     }
 };
