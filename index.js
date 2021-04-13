@@ -10,7 +10,7 @@ const manager = new ShardingManager('./bot.js', {
 
 });
 
-manager.spawn(5);
+manager.spawn(0);
 
 manager.on('shardCreate', (shard) => console.log('Launching Shard ' + shard.id));
 
