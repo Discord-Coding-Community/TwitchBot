@@ -69,79 +69,78 @@ client.registry
 
 
 client.once('ready', () => {
-        const guildCacheMap = client.guilds.cache;
-        const guildCacheArray = Array.from(guildCacheMap, ([name, value]) => ({
-            name,
-            value
-        }));
-        let memberCount = 0;
-        for (let i = 0; i < guildCacheArray.length; i++) {
-            memberCount = memberCount + guildCacheArray[i].value.memberCount;
-        }
 
 
-        const list_1 = [
-            config.prefix + `help | ${memberCount} users`,
-            config.prefix + `help | ${results.reduce((acc, guildCount) => acc + guildCount, 0)} channels`,
-            config.prefix + `help | ${client.guilds.cache.size} servers`,
-            config.prefix + `help | ${config.shardCount} shards`
-        ];
+    const guildCacheMap = client.guilds.cache;
+    const guildCacheArray = Array.from(guildCacheMap, ([name, value]) => ({
+        name,
+        value
+    }));
+    let memberCount = 0;
+    for (let i = 0; i < guildCacheArray.length; i++) {
+        memberCount = memberCount + guildCacheArray[i].value.memberCount;
+    }
 
 
-        const list_2 = [
-            'STREAMING',
-            'WATCHING',
-            'LISTENING'
-        ];
+    const list_1 = [
+        config.prefix + `help | ${memberCount} users`,
+        config.prefix + `help | ${client.channels.cache.size} channels`,
+        config.prefix + `help | ${client.guilds.cache.size} servers`,
+        config.prefix + `help | ${config.shardCount} shards`
+    ];
 
 
-        console.log(client.user.tag + ' is ready in ' + `${results.reduce((acc, guildCount) => acc + guildCount, 0)}` + 'total guilds');
-    })
-    .catch(console.error);
+    const list_2 = [
+        'STREAMING',
+        'WATCHING',
+        'LISTENING'
+    ];
 
-setInterval(() => {
-    const index_1 = Math.floor(Math.random() * (list_1.length - 1) + 1);
-    const index_2 = Math.floor(Math.random() * (list_2.length - 1) + 1);
-    client.user.setActivity(list_1[index_1], {
-        type: list_2[index_2],
-        url: config.twitch_url
+
+    console.log(client.user.tag + ' is ready in ' + client.guilds.cache.size + ' servers!');
+    setInterval(() => {
+        const index_1 = Math.floor(Math.random() * (list_1.length - 1) + 1);
+        const index_2 = Math.floor(Math.random() * (list_2.length - 1) + 1);
+        client.user.setActivity(list_1[index_1], {
+            type: list_2[index_2],
+            url: config.twitch_url
+        });
+    }, 10000);
+
+
+    const Guilds = client.guilds.cache.map(guild => guild.name);
+
+    console.log(Guilds, 'Connected!');
+    Canvas.registerFont('./resources/welcome/OpenSans-Light.ttf', {
+        family: 'Open Sans Light'
     });
-}, 10000);
 
+    const ap = AutoPoster(config.apAPI, client)
 
-const Guilds = client.guilds.cache.map(guild => guild.name);
+    ap.on('posted', () => {
 
-console.log(Guilds, 'Connected!');
-Canvas.registerFont('./resources/welcome/OpenSans-Light.ttf', {
-    family: 'Open Sans Light'
-});
-
-const ap = AutoPoster(config.apAPI, client)
-
-ap.on('posted', () => {
-
-    console.log('Posted stats to Top.gg!')
-})
-
-const URL = 'https://api.discordextremelist.xyz/v2/bot/' + config.applicationID + '/stats';
-
-const reqHeaders = {
-    "Content-Type": "application/json",
-    "Authorization": config.delAPI
-}
-
-const reqBody = {
-    "guildCount": client.guilds.cache.size,
-    "shardCount": config.shardCount,
-}
-
-fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
-    .then((res) => {
-        return res.json()
+        console.log('Posted stats to Top.gg!')
     })
-    .then((json) => {
-        console.log(json);
-    })
+
+    const URL = 'https://api.discordextremelist.xyz/v2/bot/' + config.applicationID + '/stats';
+
+    const reqHeaders = {
+        "Content-Type": "application/json",
+        "Authorization": config.delAPI
+    }
+
+    const reqBody = {
+        "guildCount": client.guilds.cache.size,
+        "shardCount": config.shardCount,
+    }
+
+    fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
+        .then((res) => {
+            return res.json()
+        })
+        .then((json) => {
+            console.log(json);
+        })
 });
 
 client.on('guildMemberAdd', async member => {
