@@ -2,37 +2,41 @@ const { MessageEmbed } = require('discord.js');
 const { Command } = require('discord.js-commando');
 const config = require('../../config.json');
 
-module.exports = class StatusCommand extends Command {
+module.exports = class AboutCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'status',
             aliases: [
-                'shard-status',
-                'shard-info',
-                'si',
-                'ss'
+                'stats'
             ],
             memberName: 'status',
             group: 'other',
-            description: "Displays the shard status.",
+            description: "Displays the bot's status.",
             examples: [
                 config.prefix + 'status'
-            ]
+            ],
+            userPermissions: ['SEND_MESSAGES'],
+            clientPermission: ['SEND_MESSAGES']
         });
     }
 
-    run(message) {
-        let s = this.client.shard;
+    async run(message) {
+        let values = await this.client.shard.broadcastEval(`[this.shard.id, this.guilds.size]`);
+        let shardStatus = '**__Shard Status__**\n';
+        let serverStatus = '**__Server Status__**\n';
+        values.forEach((value) => {
+            shardStatus += ' • **Shard**: ' + value[0] + ' | • **Guilds**: ' + value[1] + ' • | **Users**: ' + value[2] + '\n';
+
+        });
+        serverStatus += ' • **Online Users**: ' + message.guild.members.cache.filter(member => member.presence.status !== 'offline').size + ' | • **Offline Users**: ' + message.guild.members.cache.filter(member => member.presence.status == 'offline').size + '\n';
         let embed = new MessageEmbed()
-            .setDescription('**__Shard Status__**')
-            .addField('Total Users', `${s.fetchClientValues('users.cache.size')}`, true)
-            .addField('Total Channels', `${s.fetchClientValues('channels.cache.size')}`, true)
-            .addField('Total Guilds', `${s.fetchClientValues('guilds.cache.size')}`, true)
-            .setThumbnail(this.client.user.displayAvatarURL())
+            .setTitle(this.client.user.username)
+            .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.\n\n' + shardStatus + '\n' + serverStatus)
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
-        message.channel.send(embed)
+        message.channel.send(embed);
+        return;
     } catch (e) {
         console.error(e)
         channel.send(
