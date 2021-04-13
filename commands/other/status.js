@@ -28,7 +28,7 @@ module.exports = class AboutCommand extends Command {
         let shardStatus = '**__Shard Status__**\n';
         shardStatus += ' • ** Shard **: ' + this.client.shard.broadcastEval(`this.shard.id`) + ' | • ** Guilds **: ' + this.client.shard.broadcastEval(`this.guilds.size`) + ' • | ** Users **: ' + this.client.shard.broadcastEval(`this.users.size`);
         let embed = new MessageEmbed()
-            .setDescription(shardStatus + '\n' + serverStatus)
+            .setDescription(shardStatus)
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
