@@ -24,11 +24,8 @@ module.exports = class AboutCommand extends Command {
         let arg1 = await this.client.shard.broadcastEval(`this.shard.id`)
         let arg2 = await this.client.shard.broadcastEval(`this.guilds.size`)
         let arg3 = await this.client.shard.broadcastEval(`this.users.size`)
-        let shardStatus = '**__Shard Status__**\n';
+        let shardStatus = '**__Shard Status__**\n • ** Shard **: ' + arg1 + ' | • ** Guilds **: ' + arg2 + ' • | ** Users **: ' + arg3;;
         let serverStatus = '**__Server Status__**\n';
-        values.forEach((value) => {
-            shardStatus += ' • **Shard**: ' + arg1 + ' | • **Guilds**: ' + arg2 + ' • | **Users**: ' + arg3;
-        })
         serverStatus += ' • **Online Users**: ' + message.guild.members.cache.filter(member => member.presence.status !== 'offline').size + ' | • **Offline Users**: ' + message.guild.members.cache.filter(member => member.presence.status == 'offline').size + '\n';
         let embed = new MessageEmbed()
             .setDescription(shardStatus + '\n' + serverStatus)
