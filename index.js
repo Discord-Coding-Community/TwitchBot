@@ -15,7 +15,7 @@ manager.spawn();
 
 manager.on('shardCreate', (shard) => console.log('Launching Shard: ' + shard.id));
 
-manager.on('connect', (shard) => {
+manager.on('connect', async(shard) => {
 
     const res = await client.shard.broadcastEval('this.guilds.cache.get(' + GUILD_ID + ')');
     console.log(res);
