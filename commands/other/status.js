@@ -24,14 +24,13 @@ module.exports = class AboutCommand extends Command {
         let values = await this.client.shard.broadcastEval(`[this.shard.id, this.guilds.size]`);
         let finalString = '**__' + this.client.user.username + ' Status__**\n\n';
         values.forEach((value) => {
-            finalString += " • **Shard**: " + value[0] + " | • **Guilds**: " + value[1] + " • | **Users**: " + value[2] + "\n";
+            shardStatus += '**__Shard Status__**\n • **Shard**: ' + value[0] + ' | • **Guilds**: ' + value[1] + ' • | **Users**: ' + value[2] + '\n\n';
+            serverStatus += '**__Server Status__**\n • **Online Users**: ' + message.guild.members.cache.filter(member => member.presence.status !== 'offline').size + ' | • **Offline Users**: ' + message.guild.members.cache.filter(member => member.presence.status == 'offline').size + '\n';
         });
         let embed = new MessageEmbed()
             .setTitle(this.client.user.username)
-            .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.\n\n' + finalString)
+            .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.\n\n' + shardStatus, serverStatus)
             .setColor('RANDOM')
-            .addField('Online Members', message.guild.members.cache.filter(member => member.presence.status !== "offline").size, false)
-            .addField('Online Members', message.guild.members.cache.filter(member => member.presence.status == "offline").size, false)
             .setTimestamp(new Date().toISOString())
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
         message.channel.send(embed);
