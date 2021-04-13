@@ -11,8 +11,6 @@ const manager = new ShardingManager('./bot.js', {
 
 });
 
-manager.spawn('auto');
-
 manager.on('shardCreate', (shard) => console.log('Launching Shard: ' + shard.id));
 
 manager.on('connect', async(shard) => {
@@ -52,3 +50,4 @@ manager.on('connect', async(shard) => {
         })();
     `);
 });
+manager.spawn('auto');
