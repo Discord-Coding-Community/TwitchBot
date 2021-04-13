@@ -23,22 +23,20 @@ module.exports = class AboutCommand extends Command {
     }
 
     async run(message) {
-        let values = await this.client.shard.broadcastEval(`[this.shard.id, this.guilds.size]`);
-
+        // For each shard, get the shard ID and the number of guilds it owns
+        let values = await client.shard.broadcastEval(`
+    [
+        this.shard.id,
+        this.guilds.size
+    ]
+`);
+        let finalString = "**SHARD STATUS**\n\n";
         values.forEach((value) => {
-            let embed = new MessageEmbed()
-                .setTitle('TwitchBot')
-                .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.')
-                .addField('Shard', value[0], true)
-                .addField('Guilds', value[1], true)
-                .addField('Prefix', config.prefix, true)
-                .addField('Owners', config.owner_tag_1 + ',\n' + config.owner_tag_2, true)
-                .addField('Github', '[' + config.github_team_name + '](https://github.com/' + config.github_team + '/' + config.github_repo + ')', true)
-                .setThumbnail(this.client.user.displayAvatarURL())
-                .setColor('RANDOM')
-                .setTimestamp(new Date().toISOString())
-                .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
-            message.channel.send(embed)
-        })
+            finalString += "• SHARD #" + value[0] + " | ServerCount: " + value[1] + "\n";
+        });
+        let embed = new MessageEmbed()
+            .setTitle(this.client.user.username)
+            .setDescription(finalString)
+        message.channel.send(embed).catch(console.error(error));
     }
 };
