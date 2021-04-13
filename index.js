@@ -44,7 +44,7 @@ manager.on('ready', (shard) => {
     })
 });
 
-manager.on('message', (shard, message) => {
+manager.on('message', async(shard, message) => {
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
