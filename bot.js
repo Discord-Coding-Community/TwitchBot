@@ -122,7 +122,7 @@ client.once('ready', () => {
     }
 
     const reqBody = {
-        "guildCount": this.client.shard.fetchClientValues('guilds.cache.size')
+        "guildCount": client.shard.fetchClientValues('guilds.cache.size')
     }
 
     fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
