@@ -26,10 +26,10 @@ module.exports = class AboutCommand extends Command {
 
     async run(message) {
         let c = this.client;
-        let shardStatus = '**__Shard Status__**\n\n';
-        shardStatus += ' • ** Shard **: ' + c.shard.broadcastEval(`this.shard.id`) + ' • ** Guilds **: ' + c.shard.broadcastEval(`this.guilds.size`) + ' • ** Users **: ' + c.shard.broadcastEval(`this.users.size`);
+        let stats = '**__Shard Status__**\n\n';
+        stats += ' • ** Shard **: ' + c.shard.broadcastEval(`this.shard.id`) + ' • ** Guilds **: ' + c.shard.broadcastEval(`this.guilds.size`) + ' • ** Users **: ' + c.shard.broadcastEval(`this.users.size`);
         let embed = new MessageEmbed()
-            .setDescription(shardStatus)
+            .setDescription(stats)
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
             .setFooter(c.user.username, c.user.displayAvatarURL())
