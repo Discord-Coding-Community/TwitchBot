@@ -15,7 +15,7 @@ manager.spawn(5);
 
 manager.on('shardCreate', (shard) => console.log('Launching Shard: ' + shard.id));
 
-manager.on('shardConnect', (shard) => {
+manager.on('connect', (shard) => {
     const URL = 'https://api.discordextremelist.xyz/v2/bot/' + config.applicationID + '/stats';
 
     const reqHeaders = {
