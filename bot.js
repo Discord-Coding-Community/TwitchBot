@@ -125,8 +125,7 @@ client.once('ready', () => {
     }
 
     const reqBody = {
-        "guildCount": client.guilds.cache.size,
-        "shardCount": config.shardCount,
+        "guildCount": client.guilds.cache.size
     }
 
     fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
