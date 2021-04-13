@@ -1,6 +1,5 @@
 const { CommandoClient } = require('discord.js-commando');
 const { Structures, MessageEmbed, MessageAttachment } = require('discord.js');
-const { manager } = require('./index.js')
 const path = require('path');
 const AutoPoster = require('topgg-autoposter');
 const db = require('quick.db');
@@ -113,26 +112,6 @@ client.once('ready', () => {
 
         console.log('Posted stats to Top.gg!');
     })
-
-    const URL = 'https://api.discordextremelist.xyz/v2/bot/' + config.applicationID + '/stats';
-
-    const reqHeaders = {
-        "Content-Type": "application/json",
-        "Authorization": config.delAPI
-    }
-
-    const reqBody = {
-        "guildCount": manager.shard.fetchClientValues('guilds.size')
-    }
-
-    fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
-        .then((res) => {
-            return res.json()
-        })
-        .then((json) => {
-            console.log(json)
-                .catch(console.error);
-        })
 });
 
 client.on('guildMemberAdd', async member => {
