@@ -21,10 +21,8 @@ module.exports = class AboutCommand extends Command {
     }
 
     async run(message) {
-        let arg1 = await this.client.shard.broadcastEval(`this.shard.id`)
-        let arg2 = await this.client.shard.broadcastEval(`this.guilds.size`)
-        let arg3 = await this.client.shard.broadcastEval(`this.users.size`)
-        let shardStatus = '**__Shard Status__**\n • ** Shard **: ' + arg1 + ' | • ** Guilds **: ' + arg2 + ' • | ** Users **: ' + arg3;;
+        let shardStatus = '**__Shard Status__**\n';
+        shardStatus += ' • ** Shard **: ' + this.client.shard.broadcastEval(`this.shard.id`) + ' | • ** Guilds **: ' + this.client.shard.broadcastEval(`this.guilds.size`) + ' • | ** Users **: ' + this.client.shard.broadcastEval(`this.users.size`);
         let serverStatus = '**__Server Status__**\n';
         serverStatus += ' • **Online Users**: ' + message.guild.members.cache.filter(member => member.presence.status !== 'offline').size + ' | • **Offline Users**: ' + message.guild.members.cache.filter(member => member.presence.status == 'offline').size + '\n';
         let embed = new MessageEmbed()
