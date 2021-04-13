@@ -23,8 +23,7 @@ module.exports = class AboutCommand extends Command {
     }
 
     async run(message) {
-        // For each shard, get the shard ID and the number of guilds it owns
-        let values = await client.shard.broadcastEval(`
+        let values = await this.client.shard.broadcastEval(`
     [
         this.shard.id,
         this.guilds.size
