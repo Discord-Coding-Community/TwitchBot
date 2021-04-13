@@ -104,7 +104,7 @@ client.once('ready', () => {
     }, 10000);
 
 
-    const Guilds = client.guilds.cache.map(guild => guild.name + '(' + guild.id + ')');
+    const Guilds = client.guilds.cache.size;
 
     console.log(Guilds, 'Connected!');
     Canvas.registerFont('./resources/welcome/OpenSans-Light.ttf', {
