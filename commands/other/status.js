@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { Command } = require('discord.js-commando');
+const client - require('discord.js');
 const config = require('../../config.json');
 
 module.exports = class AboutCommand extends Command {
@@ -16,12 +17,14 @@ module.exports = class AboutCommand extends Command {
             description: "Displays the bot's status.",
             examples: [
                 config.prefix + 'status'
-            ]
+            ],
+            userPermissions: ['SEND_MESSAGES'],
+            clientPermission: ['SEND_MESSAGES']
         });
     }
 
     async run(message) {
-        let values = await this.client.shard.broadcastEval(`
+        let values = await client.shard.broadcastEval(`
     [
         this.shard.id,
         this.guilds.size
