@@ -38,11 +38,18 @@ manager.on('connect', async(shard) => {
         .then((json) => {
             console.log(json)
         })
+
+    const getServer = async(guildID) => {
+
+        const server = await shard.broadcastEval('this.guilds.cache.get(' + guildID + ')');
+
+        return server.find(res => !!res) || null;
+    }
+
+    const getServerCount = async() => {
+        const serverCount = await shard.fetchClientValues('guilds.cache.size');
+
+        return serverCount.reduce((p, n) => p + n, 0);
+    }
+    console.log('[' + getServer + '](' + getServerCount + ')')
 });
-
-const getServer = async(guildID) => {
-
-    const req = await client.shard.broadcastEval('this.guilds.cache.get(' + guildID + ')');
-
-    return req.find(res => !!res) || null;
-}
