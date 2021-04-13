@@ -1,6 +1,7 @@
 const { CommandoClient } = require('discord.js-commando');
 const { Structures, MessageEmbed, MessageAttachment } = require('discord.js');
 const path = require('path');
+const fetch = require("node-fetch");
 const AutoPoster = require('topgg-autoposter');
 const db = require('quick.db');
 const Canvas = require('canvas');
