@@ -101,7 +101,7 @@ client.once('ready', () => {
     }, 10000);
 
 
-    console.log(client.user.tag + ' connected to ' + client.guilds.cache.size + ' guilds!');
+    console.log(client.user.tag + ' connected to ' + client.guilds.cache.size + ' servers!');
     Canvas.registerFont('./resources/welcome/OpenSans-Light.ttf', {
         family: 'Open Sans Light'
     });
