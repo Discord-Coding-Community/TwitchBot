@@ -17,9 +17,6 @@ manager.on('shardCreate', (shard) => console.log('Launching Shard: ' + shard.id)
 
 manager.on('connect', async(shard) => {
 
-    const res = await client.shard.broadcastEval('this.guilds.cache.get(' + GUILD_ID + ')');
-    console.log(res);
-
     const URL = 'https://api.discordextremelist.xyz/v2/bot/' + config.applicationID + '/stats';
 
     const reqHeaders = {
@@ -39,17 +36,21 @@ manager.on('connect', async(shard) => {
             console.log(json)
         })
 
-    const getServer = async(guildID) => {
-
-        const server = await shard.broadcastEval('this.guilds.cache.get(' + guildID + ')');
-
-        return server.find(res => !!res) || null;
-    }
-
-    const getServerCount = async() => {
-        const serverCount = await shard.fetchClientValues('guilds.cache.size');
-
-        return serverCount.reduce((p, n) => p + n, 0);
-    }
-    console.log('[' + getServer + '](' + getServerCount + ')')
+    shard.broadcastEval(`
+        (async () => {
+            const srvCount = await shard.fetchClientValues('guilds.cache.size');
+            const usrCount = await shard.broadcastEval('this.guilds.cache.map((guild) => guild.members.cache.size)');
+            let channel = await this.channels.cache.get('831627743120588891')
+            if (channel) {
+                let MessageEmbed = require('discord.js');
+                let embed = new MessageEmbed()
+                .setTitle('**_Shard Status_**')
+                .setDescription('**Total Guilds**: ${srvCount.reduce((p, n) => p + n, 0)}\n**Total Users**: ${usrCount}')
+                .setColor('RANDOM')
+                .setTimestamp(new Date().toISOString())
+                .setFooter('TwitchBot', 'https://images-ext-2.discordapp.net/external/YGcRORVMKO1Zi0izJkJEJSoFu4CBlZ9qrj9ptseHGCo/https/cdn.discordapp.com/avatars/779442792324661249/26206ede07f20447bf380df44b429db7.webp')
+                channel.send({ embed: ${JSON.stringify(embed)} });
+            }
+        })();
+    `);
 });
