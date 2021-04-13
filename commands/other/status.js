@@ -7,7 +7,11 @@ module.exports = class AboutCommand extends Command {
         super(client, {
             name: 'status',
             aliases: [
-                'stats'
+                'shard-status',
+                'shard-info',
+                'stats',
+                'si',
+                'shards'
             ],
             memberName: 'status',
             group: 'other',
