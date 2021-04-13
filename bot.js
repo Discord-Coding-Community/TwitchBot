@@ -1,6 +1,6 @@
 const { CommandoClient } = require('discord.js-commando');
 const { Structures, MessageEmbed, MessageAttachment } = require('discord.js');
-const { shard } = require('./index.js');
+const { manager } = require('./index.js')
 const path = require('path');
 const AutoPoster = require('topgg-autoposter');
 const db = require('quick.db');
@@ -122,7 +122,7 @@ client.once('ready', () => {
     }
 
     const reqBody = {
-        "guildCount": shard.fetchClientValues('guilds.size')
+        "guildCount": manager.shard.fetchClientValues('guilds.size')
     }
 
     fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
