@@ -83,15 +83,6 @@ client.once('ready', () => {
         config.prefix + `help | ${client.guilds.cache.size} servers`
     ];
 
-    const ap = AutoPoster(config.apAPI, client)
-
-    ap.on('posted', () => {
-
-        console.log('Posted stats to Top.gg!')
-            .catch(console.error);
-    })
-
-
     const list_2 = [
         'STREAMING',
         'WATCHING',
@@ -114,6 +105,13 @@ client.once('ready', () => {
     Canvas.registerFont('./resources/welcome/OpenSans-Light.ttf', {
         family: 'Open Sans Light'
     });
+
+    const ap = AutoPoster(config.apAPI, client)
+
+    ap.on('posted', () => {
+
+        console.log('Posted stats to Top.gg!');
+    })
 });
 
 client.on('guildMemberAdd', async member => {
