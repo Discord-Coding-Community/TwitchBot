@@ -33,7 +33,6 @@ manager.on('connect', (shard) => {
             return res.json()
         })
         .then((json) => {
-            console.log(json)
-                .catch(console.error);
+            console.log(json);
         })
 });
