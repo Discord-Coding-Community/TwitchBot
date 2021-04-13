@@ -25,14 +25,21 @@ module.exports = class AboutCommand extends Command {
         let finalString = this.client.user.username + 'Status\n\n';
         values.forEach((value) => {
             finalString += " • **Shard**: " + value[0] + " | • **Guilds**: " + value[1] + " • | **Users**: " + value[2] + "\n";
-            let embed = new MessageEmbed()
-                .setTitle(this.client.user.username)
-                .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.\n\n' + finalString)
-                .setColor('RANDOM')
-                .setTimestamp(new Date().toISOString())
-                .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
-            message.channel.send(embed);
-            return;
-        })
+        });
+        let embed = new MessageEmbed()
+            .setTitle(this.client.user.username)
+            .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.\n\n' + finalString)
+            .setColor('RANDOM')
+            .addField('Online Members', message.guild.members.cache.filter(member => member.presence.status !== "offline").size, false)
+            .addField('Online Members', message.guild.members.cache.filter(member => member.presence.status == "offline").size, false)
+            .setTimestamp(new Date().toISOString())
+            .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
+        message.channel.send(embed);
+        return;
+    } catch (e) {
+        console.error(e)
+        channel.send(
+            '```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```'
+        )
     }
 };
