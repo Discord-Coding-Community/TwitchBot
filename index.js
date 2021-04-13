@@ -42,8 +42,7 @@ manager.on('connect', async(shard) => {
 
 const getServer = async(guildID) => {
 
-    const req = await client.shard.broadcastEval(`this.guilds.cache.get("${guildID}")`);
-
+    const req = await client.shard.broadcastEval('this.guilds.cache.get(' + guildID + ')');
 
     return req.find(res => !!res) || null;
 }
