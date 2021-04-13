@@ -1,6 +1,5 @@
 const { MessageEmbed } = require('discord.js');
 const { Command } = require('discord.js-commando');
-const client = require('discord.js');
 const config = require('../../config.json');
 
 module.exports = class AboutCommand extends Command {
@@ -24,12 +23,12 @@ module.exports = class AboutCommand extends Command {
     }
 
     async run(message) {
-        let values = await client.shard.broadcastEval(`
-    [
-        this.shard.id,
-        this.guilds.size
-    ]
-`);
+        let values = await this.client.shard.broadcastEval(
+            [
+                this.shard.id,
+                this.guilds.size
+            ]
+        );
 
         values.forEach((value) => {
             let embed = new MessageEmbed()
