@@ -3,4 +3,5 @@ data/*
 database/*
 .vscode/*
 config.json
+json.sqlite
 package-lock.json
