@@ -21,16 +21,16 @@ module.exports = class AboutCommand extends Command {
     }
 
     async run(message) {
-        let values = await this.client.shard.broadcastEval(`[this.shard.id, this.guilds.size]`)
+        let arg1 = await this.client.shard.broadcastEval(`this.shard.id`)
+        let arg2 = await this.client.shard.broadcastEval(`this.guilds.size`)
+        let arg3 = await this.client.shard.broadcastEval(`this.users.size`)
         let shardStatus = '**__Shard Status__**\n';
         let serverStatus = '**__Server Status__**\n';
         values.forEach((value) => {
-            shardStatus += ' • **Shard**: ' + value[0] + ' | • **Guilds**: ' + value[1] + ' • | **Users**: ' + value[2] + '\n';
-
+            shardStatus += ' • **Shard**: ' + arg1 + ' | • **Guilds**: ' + arg2 + ' • | **Users**: ' + arg3;
         })
         serverStatus += ' • **Online Users**: ' + message.guild.members.cache.filter(member => member.presence.status !== 'offline').size + ' | • **Offline Users**: ' + message.guild.members.cache.filter(member => member.presence.status == 'offline').size + '\n';
         let embed = new MessageEmbed()
-            .setTitle(this.client.user.username)
             .setDescription(shardStatus + '\n' + serverStatus)
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
