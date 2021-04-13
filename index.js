@@ -44,7 +44,7 @@ manager.on('connect', (shard) => {
     })
 });
 
-manager.on('message', async(shard, message, error) => {
+manager.on('message', async(shard, message) => {
     if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
     const args = message.content.slice(config.prefix.length).trim().split(/ +/);
@@ -57,10 +57,10 @@ manager.on('message', async(shard, message, error) => {
             response += ' • **Shard**: ' + value[0] + ' | • **Total Guilds**: ' + value[1] + ' • | **Total Users**: ' + value[2] + '\n';
         });
         message.reply(response);
-        return console.log(error);
+        return;
     } else if (command === 'eval') {
 
         message.reply(' • **Shard**: ' + '[' + shard.id + '] : ' + message._eval + ' : ' + message._result);
-        return console.log(error);
+        return;
     }
 });
