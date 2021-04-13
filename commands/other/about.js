@@ -44,5 +44,10 @@ module.exports = class AboutCommand extends Command {
             .setTimestamp(new Date().toISOString())
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
         message.channel.send(embed)
-    };
+    } catch (e) {
+        console.error(e)
+        channel.send(
+            '```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```'
+        )
+    }
 };

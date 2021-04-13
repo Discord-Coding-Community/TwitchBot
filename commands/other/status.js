@@ -36,6 +36,12 @@ module.exports = class AboutCommand extends Command {
         let embed = new MessageEmbed()
             .setTitle(this.client.user.username)
             .setDescription(finalString)
-        message.channel.send(embed).catch(console.log(error));
+        message.channel.send(embed);
+        return;
+    } catch (e) {
+        console.error(e)
+        channel.send(
+            '```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```'
+        )
     }
 };
