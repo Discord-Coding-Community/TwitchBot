@@ -1,9 +1,10 @@
 const { CommandoClient } = require('discord.js-commando');
 const { Structures, MessageEmbed, MessageAttachment } = require('discord.js');
 const path = require('path');
-const config = require('./config.json');
+const AutoPoster = require('topgg-autoposter');
 const db = require('quick.db');
 const Canvas = require('canvas');
+const config = require('./config.json');
 
 Structures.extend('Guild', function(Guild) {
     class MusicGuild extends Guild {
@@ -81,6 +82,14 @@ client.once('ready', () => {
         config.prefix + `help | ${client.channels.cache.size} channels`,
         config.prefix + `help | ${client.guilds.cache.size} servers`
     ];
+
+    const ap = AutoPoster(config.apAPI, client)
+
+    ap.on('posted', () => {
+
+        console.log('Posted stats to Top.gg!')
+            .catch(console.error);
+    })
 
 
     const list_2 = [
