@@ -1,5 +1,4 @@
-const { MessageEmbed } = require('discord.js');
-const { ShardingManager } = require('disocrd.js');
+const { MessageEmbed, ShardingManager } = require('discord.js');
 const { Command } = require('discord.js-commando');
 const config = require('../../config.json');
 
