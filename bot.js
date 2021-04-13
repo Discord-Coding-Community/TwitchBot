@@ -82,9 +82,10 @@ client.once('ready', () => {
 
 
     const list_1 = [
-        config.prefix + `help | {memberCount} users`,
+        config.prefix + `help | ${memberCount} users`,
         config.prefix + `help | ${client.channels.cache.size} channels`,
-        config.prefix + `help | ${client.guilds.cache.size} servers`
+        config.prefix + `help | ${client.guilds.cache.size} servers`,
+        config.prefix + `help | ${config.shards} shards`
     ];
 
 
@@ -128,7 +129,8 @@ client.once('ready', () => {
     }
 
     const reqBody = {
-        "guildCount": client.guilds.cache.size
+        "guildCount": client.guilds.cache.size,
+        "shardCount": config.shards,
     }
 
     fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
