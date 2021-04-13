@@ -38,7 +38,7 @@ module.exports = class StatusCommand extends Command {
     } catch (e) {
         console.error(e)
         channel.send(
-            '```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```'
+            '```css\n[ERROR] ' + e.code + ': [' + e.message + ']\n```'
         )
     }
 };
