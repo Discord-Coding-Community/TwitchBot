@@ -23,7 +23,7 @@ module.exports = class AboutCommand extends Command {
     }
 
     async run(message) {
-        let values = await this.client.shard.broadcastEval(`${[this.shard.id, this.guilds.size]}`);
+        let values = await this.client.shard.broadcastEval(`[this.shard.id, this.guilds.size]`);
 
         values.forEach((value) => {
             let embed = new MessageEmbed()
