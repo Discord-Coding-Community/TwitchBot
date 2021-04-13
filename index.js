@@ -30,7 +30,7 @@ manager.on('ready', () => {
     }
 
     const reqBody = {
-        "guildCount": client.guilds.size
+        "guildCount": guilds.size
     }
 
     fetch(URL, { method: "POST", headers: reqHeaders, body: JSON.stringify(reqBody) })
