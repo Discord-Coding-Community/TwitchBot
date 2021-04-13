@@ -31,7 +31,7 @@ module.exports = class AboutCommand extends Command {
 `);
         let finalString = "**SHARD STATUS**\n\n";
         values.forEach((value) => {
-            finalString += "• SHARD #" + value[0] + " | ServerCount: " + value[1] + "\n";
+            finalString += "• **Shard**: " + value[0] + " | **Guilds**: " + value[1] + " | **Users**: " + value[2] + "\n";
         });
         let embed = new MessageEmbed()
             .setTitle(this.client.user.username)
