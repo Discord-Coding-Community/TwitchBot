@@ -39,7 +39,7 @@ Structures.extend('Guild', function(Guild) {
     return MusicGuild;
 });
 
-const Client = new Discord.client({ shardCount: 'auto' });
+const manager = new Discord.client({ shardCount: 'auto' });
 
 const client = new CommandoClient({
     commandPrefix: config.prefix,
