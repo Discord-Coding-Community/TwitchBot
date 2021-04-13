@@ -14,7 +14,7 @@ const manager = new ShardingManager('./bot.js', {
 
 manager.spawn(5);
 
-manager.on('shardCreate', (shard) => console.log('Launching Shard ' + shard.id));
+manager.on('shardCreate', (shard) => console.log('Launching Shard: ' + shard.id));
 
 manager.on('connect', (shard) => {
     const URL = 'https://api.discordextremelist.xyz/v2/bot/' + config.applicationID + '/stats';
@@ -44,25 +44,4 @@ manager.on('connect', (shard) => {
         console.log('Posted stats to Top.gg!')
             .catch(console.error);
     })
-});
-
-manager.on('message', async(shard, message) => {
-    if (!message.content.startsWith(config.prefix) || message.author.bot) return;
-
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/);
-    const command = args.shift().toLowerCase();
-
-    if (command === 'status') {
-        let values = await shard.broadcastEval(`[this.shard.id, this.guilds.size]`);
-        let response = '**__Shard Status__**\n';
-        values.forEach((value) => {
-            response += ' • **Shard**: ' + value[0] + ' | • **Total Guilds**: ' + value[1] + ' • | **Total Users**: ' + value[2] + '\n';
-        });
-        message.reply(response)
-            .catch(console.error);
-    } else if (command === 'eval') {
-
-        message.reply(' • **Shard**: ' + '[' + shard.id + '] : ' + message._eval + ' : ' + message._result)
-            .catch(console.error);
-    }
 });
