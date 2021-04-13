@@ -41,7 +41,8 @@ Structures.extend('Guild', function(Guild) {
 
 const client = new CommandoClient({
     commandPrefix: config.prefix,
-    owner: config.discord_owner_id
+    owner: config.discord_owner_id,
+    shardCount: 'auto'
 });
 
 client.registry

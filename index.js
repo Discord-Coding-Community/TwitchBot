@@ -17,6 +17,9 @@ manager.on('shardCreate', (shard) => console.log('Launching Shard: ' + shard.id)
 
 manager.on('connect', (shard) => {
 
+    const res = await client.shard.broadcastEval('this.guilds.cache.get(' + GUILD_ID + ')');
+    console.log(res);
+
     const URL = 'https://api.discordextremelist.xyz/v2/bot/' + config.applicationID + '/stats';
 
     const reqHeaders = {
@@ -36,3 +39,11 @@ manager.on('connect', (shard) => {
             console.log(json)
         })
 });
+
+const getServer = async(guildID) => {
+
+    const req = await client.shard.broadcastEval(`this.guilds.cache.get("${guildID}")`);
+
+
+    return req.find(res => !!res) || null;
+}
