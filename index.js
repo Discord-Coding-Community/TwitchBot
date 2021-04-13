@@ -3,6 +3,8 @@ const config = require('./config.json');
 
 
 const manager = new ShardingManager('./bot.js', {
+    execArgv: ['--trace-warnings'],
+    shardArgs: ['--ansi', '--color'],
     totalShards: config.shards,
     token: config.clientTOKEN
 
@@ -17,3 +19,7 @@ const getServer = async(guildID) => {
 
     return (req.find((res) => !!res) || false);
 };
+
+manager.on('message', (shard, message) => {
+    console.log(`Shard[${shard.id}] : ${message._eval} : ${message._result}`);
+});
