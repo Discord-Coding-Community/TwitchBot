@@ -33,7 +33,8 @@ manager.on('connect', (shard) => {
             return res.json()
         })
         .then((json) => {
-            console.log(json);
+            console.log(json)
+                .catch(console.error);
         })
 
     const ap = AutoPoster(config.apAPI, manager)
@@ -41,6 +42,7 @@ manager.on('connect', (shard) => {
     ap.on('posted', () => {
 
         console.log('Posted stats to Top.gg!')
+            .catch(console.error);
     })
 });
 
@@ -56,11 +58,11 @@ manager.on('message', async(shard, message) => {
         values.forEach((value) => {
             response += ' • **Shard**: ' + value[0] + ' | • **Total Guilds**: ' + value[1] + ' • | **Total Users**: ' + value[2] + '\n';
         });
-        message.reply(response);
-        return;
+        message.reply(response)
+            .catch(console.error);
     } else if (command === 'eval') {
 
-        message.reply(' • **Shard**: ' + '[' + shard.id + '] : ' + message._eval + ' : ' + message._result);
-        return;
+        message.reply(' • **Shard**: ' + '[' + shard.id + '] : ' + message._eval + ' : ' + message._result)
+            .catch(console.error);
     }
 });
