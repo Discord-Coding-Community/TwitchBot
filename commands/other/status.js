@@ -28,13 +28,12 @@ module.exports = class StatusCommand extends Command {
         let c = this.client;
         let values = await c.shard.broadcastEval(`
         this.shard.id,
-        this.guilds.size,
-        this.ws.shards > .ping 
+        this.guilds.size
         ]
         `);
         let stats = "**SHARD STATUS**\n\n";
         values.forEach((value) => {
-            stats += "• SHARD: " + value[0] + " | ServerCount: " + value[1] + " | Ping: " + value[2] + "\n";
+            stats += "• SHARD: " + value[0] + " | ServerCount: " + value[1] + "\n";
         });
         message.channel.send(stats);
         return;
