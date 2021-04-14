@@ -26,7 +26,7 @@ module.exports = class StatusCommand extends Command {
 
     async run(message) {
         let stats = '**__Shard Status__**\n\n';
-        stats += ' • ** Shard**: ' + this.shard.broadcastEval(this.shard.id) + ' | **Guilds**: ' + this.shard.broadcastEval(this.guilds.size) + ' | ** Users **: ' + this.shard.broadcastEval(this.user.size);
+        stats += ' • ** Shard**: ' + this.client.shard.broadcastEval(this.client.shard.id) + ' | **Guilds**: ' + this.client.shard.broadcastEval(this.client.shard.guilds.size) + ' | ** Users **: ' + this.client.shard.broadcastEval(this.client.shard.user.size);
         let embed = new MessageEmbed()
             .setDescription(stats)
             .setColor('RANDOM')
