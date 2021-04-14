@@ -26,7 +26,7 @@ module.exports = class StatusCommand extends Command {
 
     async run(message) {
         let c = this.client;
-        let values = await c.shard.broadcastEval(`
+        let values = await c.shard.broadcastEval(`[
         this.shard.id,
         this.guilds.size
         ]
