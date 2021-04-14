@@ -21,9 +21,10 @@ module.exports = class SayCommand extends Command {
 
     run(message, { text }) {
         const embed = new MessageEmbed()
-            .setColor('RANDOM')
+            .setTitle('Sent by ' + message.member.displayName + '.')
             .setDescription(text)
             .setThumbnail(message.author.displayAvatarURL())
+            .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
             .setFooter(
                 'Sent by ' + message.member.displayName + '.',
