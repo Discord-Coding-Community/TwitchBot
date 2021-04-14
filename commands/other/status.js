@@ -25,14 +25,13 @@ module.exports = class StatusCommand extends Command {
     }
 
     async run(message) {
-        let c = this.client;
         let stats = '**__Shard Status__**\n\n';
-        stats += ' • ** Shard **: ' + c.shard.broadcastEval(`[this.shard.id]`) + ' • ** Guilds **: ' + c.shard.broadcastEval(`[this.guilds.size]`) + ' • ** Users **: ' + c.shard.broadcastEval(`[this.users.size]`);
+        stats += ' • ** Shard **: ' + this.client.shard.broadcastEval(`[this.shard.id]`) + ' • ** Guilds **: ' + this.client.shard.broadcastEval(`[this.guilds.size]`) + ' • ** Users **: ' + this.client.shard.broadcastEval(`[this.users.size]`);
         let embed = new MessageEmbed()
             .setDescription(stats)
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
-            .setFooter(c.user.username, c.user.displayAvatarURL())
+            .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
         message.channel.send(embed);
         return;
     } catch (e) {
