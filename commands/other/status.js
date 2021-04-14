@@ -26,8 +26,8 @@ module.exports = class StatusCommand extends Command {
 
     async run(message) {
         let values = await this.client.shard.broadcastEval(`[
-        this.shard.id,
-        this.guilds.size
+        this.shard.cache.id,
+        this.guilds.cache.size
         ]
         `);
         let stats = "**SHARD STATUS**\n\n";
