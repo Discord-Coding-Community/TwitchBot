@@ -8,6 +8,7 @@ module.exports = class SayCommand extends Command {
             aliases: ['make-me-say', 'print'],
             memberName: 'say',
             group: 'other',
+            userPermissions: ['SEND_MESSAGES', 'MANAGE_MESSAGES'],
             clientPermissions: ['SEND_MESSAGES', 'MANAGE_MESSAGES'],
             description: 'Make the bot say anything!',
             args: [{
@@ -20,18 +21,17 @@ module.exports = class SayCommand extends Command {
 
     run(message, { text }) {
         const embed = new MessageEmbed()
-            .setTitle(`Just wanted to say...`)
-            .setColor('#888888')
+            .setColor('RANDOM')
             .setDescription(text)
-            .setTimestamp()
+            .setTimestamp(new Date().toISOString())
             .setFooter(
-                `${message.member.displayName}, made me say it!`,
+                'Sent by ' + message.member.displayName + '.',
                 message.author.displayAvatarURL()
             );
         message.channel
             .send(embed)
             .then(
-                () => message.delete().catch(e => console.error(e)) // nested promise
+                () => message.delete().catch(e => console.error(e))
             )
             .catch(e => console.error(e));
         return;
