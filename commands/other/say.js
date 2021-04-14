@@ -26,7 +26,7 @@ module.exports = class SayCommand extends Command {
             .setThumbnail(message.author.displayAvatarURL())
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
-            .setFooter(this.client.user.username, this.client.user.displayAvatarUrl());
+            .setFooter(this.client.user.username, this.client.user.displayAvatarURL());
         message.channel
             .send(embed)
             .then(
