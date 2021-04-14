@@ -25,15 +25,14 @@ module.exports = class StatusCommand extends Command {
     }
 
     async run(message) {
-        let c = this.client;
         let values = await c.shard.broadcastEval(`[
-        this.shard.id,
-        this.guilds.size
+        this.client.shard.id,
+        this.client.guilds.size
         ]
         `);
         let stats = "**SHARD STATUS**\n\n";
         values.forEach((value) => {
-            stats += "• SHARD: " + value[0] + " | ServerCount: " + value[1] + "\n";
+            stats += "• SHARD #" + value[0] + " | ServerCount: " + value[1] + "\n";
         });
         message.channel.send(stats);
         return;
