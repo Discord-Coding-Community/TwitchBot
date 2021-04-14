@@ -21,15 +21,12 @@ module.exports = class SayCommand extends Command {
 
     run(message, { text }) {
         const embed = new MessageEmbed()
-            .setTitle('Sent by ' + message.member.displayName + '.')
+            .setTitle('Sent by ' + message.member.displayName + ',')
             .setDescription(text)
             .setThumbnail(message.author.displayAvatarURL())
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
-            .setFooter(
-                'Sent by ' + message.member.displayName + '.',
-                message.author.displayAvatarURL()
-            );
+            .setFooter(this.client.user.username, this.client.user.displayAvatarUrl());
         message.channel
             .send(embed)
             .then(
