@@ -32,11 +32,11 @@ module.exports = class StatusCommand extends Command {
         this.ws.shards > .ping 
         ]
         `);
-        let finalString = "**SHARD STATUS**\n\n";
+        let stats = "**SHARD STATUS**\n\n";
         values.forEach((value) => {
-            finalString += "• SHARD: " + value[0] + " | ServerCount: " + value[1] + " | Ping: " + value[2] + "\n";
+            stats += "• SHARD: " + value[0] + " | ServerCount: " + value[1] + " | Ping: " + value[2] + "\n";
         });
-        message.channel.send(finalString);
+        message.channel.send(stats);
         return;
     } catch (e) {
         console.error(e)
