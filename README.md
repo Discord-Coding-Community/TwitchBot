@@ -10,7 +10,6 @@
     <h3 id="link-s-">Link(s)</h3>
     <ul>
       <li><a href="https://discord-coding-community.github.io/TwitchBot/">Website</a></li>
-      <li><a href="https://discordextremelist.xyz/en-US/bots/779442792324661249">Discord Extreme List</a></li>
       <li><a href="https://top.gg/bot/727930437997166653">Top.gg</a></li>
     </ul>    
   </main>
