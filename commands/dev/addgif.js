@@ -23,7 +23,7 @@ module.exports = class AddGifCommand extends Command {
                 },
                 {
                     key: 'txtFileName',
-                    prompt: 'What should I add it to?\n\n1. blowjoblinks\n2. boobslinks\n3. hentailinks? Please select a number.',
+                    prompt: 'What should I add it to?\n\n1. blowjoblinks\n2. boobslinks\n3. hentailinks?\n\nPlease select a number.\n',
                     type: 'string'
                 }
             ],
@@ -37,15 +37,13 @@ module.exports = class AddGifCommand extends Command {
     async run(message, { gifUrl, txtFileName }) {
         if (message.channel.nsfw) {
             try {
-
-
                 let txtFileNumber = txtFileName;
 
                 fs.writeFile('../../resources/nsfw/' + txtFileNumber + '.txt', gifUrl);
 
                 let embed = new MessageEmbed()
                     .setTitle(this.client.user.username)
-                    .setDescription('<a: legit_tick: 834269513498492968> New Gif added to ' + txtFileName)
+                    .setDescription('New Gif added to ' + txtFileName)
                     .setImage(`${gifUrl}`)
                     .setThumbnail(this.client.user.displayAvatarURL())
                     .setTimestamp(new Date().toISOString())
