@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando');
+const { prefix } = require('../../config.json');
 
 module.exports = class ShowWelcomeCommand extends Command {
     constructor(client) {
