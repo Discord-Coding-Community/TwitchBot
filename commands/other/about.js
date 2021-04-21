@@ -18,7 +18,7 @@ module.exports = class AboutCommand extends Command {
         });
     }
 
-    run(message, { shard }) {
+    run(message) {
 
         const guildCacheMap = this.client.guilds.cache;
         const guildCacheArray = Array.from(guildCacheMap, ([name, value]) => ({
@@ -37,7 +37,6 @@ module.exports = class AboutCommand extends Command {
             .addField('Total Channels', this.client.channels.cache.size, true)
             .addField('Total Guilds', this.client.guilds.cache.size, true)
             .addField('Total Shards', this.client.shards, true)
-            .addField('Current Shard', shard.id, true)
             .addField('Prefix', config.prefix, true)
             .addField('Owners', config.owner_tag_1 + ',\n' + config.owner_tag_2, true)
             .addField('Github', '[' + config.github_team_name + '](https://github.com/' + config.github_team + '/' + config.github_repo + ')', true)
