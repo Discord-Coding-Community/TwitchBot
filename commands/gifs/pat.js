@@ -43,7 +43,7 @@ module.exports = class patCommand extends Command {
         } else {
             message.channel.send("You have to mention a user")
                 .catch(err => {
-                    message.reply('```css\n [ERROR] Discord API Error:' + err.code + '(' + err.message + ')\n```');
+                    message.channel.send(':x: Something went wrong.... If the problem continues, please contact support.');
                     return console.error(err);
                 })
         }

@@ -46,9 +46,11 @@ module.exports = class BlowjobCommand extends Command {
                 message.channel.send(embed);
                 return;
             } catch (err) {
-                message.reply('```css\n [ERROR] Discord API Error:' + err.code + '(' + err.message + ')\n```');
+                message.channel.send(':x: Something went wrong.... If the problem continues, please contact support.');
                 return console.error(err);
             }
+        } else {
+            return message.channel.send(':x: This command can only be used in NSFW channels...')
         }
     }
 };
