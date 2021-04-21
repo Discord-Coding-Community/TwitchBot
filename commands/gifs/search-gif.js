@@ -20,7 +20,7 @@ module.exports = class GifCommand extends Command {
             throttling: {
                 usages: 2,
                 duration: 8
-            }
+            },
             args: [{
                 key: 'text',
                 prompt: 'What gif would you like to post?',
