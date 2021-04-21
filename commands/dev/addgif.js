@@ -57,7 +57,7 @@ module.exports = class AddGifCommand extends Command {
             } else if (choice.toLowerCase() == 'Hentai') {
                 fs.writeFile(`././resources/nsfw/hentailinks.txt`, 'utf8')
                     .split('\n');
-            }
+            };
 
             var embed = new MessageEmbed()
                 .setTitle('Gif Added')
