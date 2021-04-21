@@ -36,7 +36,6 @@ module.exports = class AboutCommand extends Command {
             .addField('Total Users', memberCount, true)
             .addField('Total Channels', this.client.channels.cache.size, true)
             .addField('Total Guilds', this.client.guilds.cache.size, true)
-            .addField('Total Shards', this.client.shards, true)
             .addField('Prefix', config.prefix, true)
             .addField('Owners', config.owner_tag_1 + ',\n' + config.owner_tag_2, true)
             .addField('Github', '[' + config.github_team_name + '](https://github.com/' + config.github_team + '/' + config.github_repo + ')', true)
