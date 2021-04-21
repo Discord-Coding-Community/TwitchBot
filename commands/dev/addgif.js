@@ -38,9 +38,7 @@ module.exports = class AddGifCommand extends Command {
         if (message.channel.nsfw) {
             try {
 
-                let NUM = arg2;
-
-                const GIF = fs.writeFile('../../resources/nsfw/' + NUM + '.txt', arg1, function(err) {
+                fs.writeFile('../../resources/nsfw/' + arg2 + '.txt', arg1, function(err) {
 
                     if (err) return console.log(err);
                 });
@@ -48,7 +46,7 @@ module.exports = class AddGifCommand extends Command {
                 let embed = new MessageEmbed()
                     .setTitle(this.client.user.username)
                     .setDescription('New Gif added to ' + arg2)
-                    .setImage(`${GIF}`)
+                    .setImage(`${arg1}`)
                     .setThumbnail(this.client.user.displayAvatarURL())
                     .setTimestamp(new Date().toISOString())
                     .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
