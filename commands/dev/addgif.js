@@ -36,7 +36,7 @@ module.exports = class AddGifCommand extends Command {
         });
     }
 
-    async run(message) {
+    async run(message, { choice }) {
         if (message.author.bot) return;
         if (message.channel.nsfw) {
 
