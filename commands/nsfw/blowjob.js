@@ -24,7 +24,6 @@ module.exports = class BlowjobCommand extends Command {
                 'SEND_MESSAGES',
                 'EMBED_LINKS'
             ],
-            function: search,
             examples: [
                 config.prefix + 'blowjob',
                 config.prefix + 'blowjob-gif',
