@@ -45,8 +45,7 @@ module.exports = class AddGifCommand extends Command {
     async run(message, { Link, File }) {
         if (message.channel.nsfw) {
             if (message.member.roles.cache.some(r => [
-                    '801125364252147745',
-                    '812947164937715712'
+                    config.DEV_ROLE
                 ].includes(r.id))) {
                 fs.writeFile('././resources/nsfw/' + File + '.txt', Link + '\n', { flag: 'a+' }, (err) => {
                     if (err) return console.error(err)
