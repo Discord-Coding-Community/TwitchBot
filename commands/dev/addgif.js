@@ -40,7 +40,7 @@ module.exports = class AddGifCommand extends Command {
 
                 let txtFileNumber = txtFileName;
 
-                fs.writeFile('../../resources/nsfw/' + txtFileNumber + '.txt', gifUrl);
+                fs.writeFile('../../resources/nsfw/' + txtFileNumber + '.txt', gifUrl + '\n', 'utf8');
 
                 let embed = new MessageEmbed()
                     .setTitle(this.client.user.username)
