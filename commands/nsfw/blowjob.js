@@ -38,7 +38,7 @@ module.exports = class BlowjobCommand extends Command {
         });
     }
 
-    run(message) {
+    run(message, { search }) {
         const embed = new MessageEmbed();
 
         let url = 'https://api.imgur.com/3/gallery/tag_info/hentai_blowjob/?q=' + search[0];
