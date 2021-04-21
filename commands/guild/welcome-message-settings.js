@@ -27,10 +27,10 @@ module.exports = class WelcomeSettingsCommand extends Command {
                 'MANAGE_ROLES'
             ],
             examples: [
-                '`' + config.prefix + 'set-welcome` - to restore Defaults',
-                '`' + config.prefix + 'set-welcome "welcome" "Welcome" "A user has entered the guild" "Please give him/her a warm welcome!" "https://wallpaper.jpg" "700" "250"`',
-                '`' + config.prefix + 'set-welcome "welcome" "Welcome" "A user has entered the guild" "800" "400"`',
-                '`' + config.prefix + 'set-welcome "s" "s" "s" "Welcome" "https://wallpaper.jpg" "700" "250"` - to only change the Main Text and Wallpaper settings'
+                '`' + prefix + 'set-welcome` - to restore Defaults',
+                '`' + prefix + 'set-welcome "welcome" "Welcome" "A user has entered the guild" "Please give him/her a warm welcome!" "https://wallpaper.jpg" "700" "250"` - full command structure',
+                '`' + prefix + 'set-welcome "welcome" "Welcome" "A user has entered the guild" "800" "400"`',
+                '`' + prefix + 'set-welcome "s" "s" "s" "Welcome" "https://wallpaper.jpg" "700" "250"` - to only change the Main Text and Wallpaper settings'
             ],
             description: 'Allows you to customize the welcome message for new members that join the server.',
             args: [{
