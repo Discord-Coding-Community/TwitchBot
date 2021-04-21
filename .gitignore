@@ -2,6 +2,9 @@ node_modules/*
 data/*
 database/*
 .vscode/*
+/resources/gifs/nsfw/*
+/resources/gifs/sfw/*
+/resources/nsfw/*
 config.json
 json.sqlite
 package-lock.json
