@@ -16,8 +16,8 @@ module.exports = class AddGifCommand extends Command {
             ],
             guildOnly: false,
             isOwner: true,
-            giflinks: [{
-                    key: 'gifLink',
+            args: [{
+                    key: 'gifUrl',
                     prompt: 'Which gif would you like to add?',
                     type: 'string'
                 },
@@ -34,10 +34,11 @@ module.exports = class AddGifCommand extends Command {
         });
     }
 
-    async run(message, { gifLink, txtFileName }) {
-        fs.writeFile('././resources/nsfw/' + txtFileName + '.txt', gifLink, function(err) {
-            if (err) console.log(err);
-            message.channel.send('Adding Gif...')
-        });
+    async run(message, { gifUrl, txtFileName }) {
+        let txtFileNumber = txtFileName;
+        fs.writeFile('../../resources/nsfw/' + txtFileNumber + '.txt', gifUrl, (err) => {
+            if (err) return console.error(err)
+            else return message.channel.send('Gif added.')
+        })
     }
 };
