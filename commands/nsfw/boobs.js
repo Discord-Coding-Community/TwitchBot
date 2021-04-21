@@ -9,17 +9,21 @@ module.exports = class BoobsCommand extends Command {
             name: 'boobs',
             aliases: [
                 'boob-gif',
-                'bbgif'
+                'bgif'
             ],
             group: 'nsfw',
             memberName: 'boobs',
-            description: 'Generate a random boobs gif',
-            userPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-            clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
+            description: 'Generate a random boobs gif and/or image',
+            userPermissions: [
+                'SEND_MESSAGES',
+                'EMBED_LINKS'
+            ],
+            clientPermissions: [
+                'SEND_MESSAGES',
+                'EMBED_LINKS'
+            ],
             examples: [
-                config.prefix + 'boobs',
-                config.prefix + 'boob-gif',
-                config.prefix + 'bbgif'
+                config.prefix + 'boobs'
             ],
             throttling: {
                 usages: 2,

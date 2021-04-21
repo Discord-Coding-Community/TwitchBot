@@ -14,9 +14,15 @@ module.exports = class BoobsCommand extends Command {
             ],
             group: 'nsfw',
             memberName: 'hentai',
-            description: 'Generate a random hentai gif',
-            userPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
-            clientPermissions: ['SEND_MESSAGES', 'EMBED_LINKS'],
+            description: 'Generate a random hentai gif and/or image',
+            userPermissions: [
+                'SEND_MESSAGES',
+                'EMBED_LINKS'
+            ],
+            clientPermissions: [
+                'SEND_MESSAGES',
+                'EMBED_LINKS'
+            ],
             examples: [
                 '`' + config.prefix + 'hentai`'
             ],

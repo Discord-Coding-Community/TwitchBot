@@ -9,12 +9,11 @@ module.exports = class BlowjobCommand extends Command {
             name: 'blowjob',
             aliases: [
                 'blowjob-gif',
-                'bjgif',
-                'bj'
+                'bjgif'
             ],
             group: 'nsfw',
             memberName: 'blowjob',
-            description: 'Generate a random blowjob gif',
+            description: 'Generate a random blowjob gif and/or image',
             userPermissions: [
                 'SEND_MESSAGES',
                 'EMBED_LINKS'
@@ -24,10 +23,7 @@ module.exports = class BlowjobCommand extends Command {
                 'EMBED_LINKS'
             ],
             examples: [
-                config.prefix + 'blowjob',
-                config.prefix + 'blowjob-gif',
-                config.prefix + 'bjgif',
-                config.prefix + 'bj'
+                config.prefix + 'blowjob'
             ],
             throttling: {
                 usages: 2,
