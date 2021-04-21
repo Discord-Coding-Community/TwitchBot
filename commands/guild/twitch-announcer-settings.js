@@ -41,7 +41,7 @@ module.exports = class TwitchAnnouncerSettingsCommand extends Command {
                 duration: 8
             },
             examples: [
-                '`' + config.prefix + 'set-twitch "_lost_pause" "stream-alerts" "25" "Lost Pause is Live on Twitch!"`'
+                '`' + prefix + 'set-twitch "_lost_pause" "stream-alerts" "25" "Lost Pause is Live on Twitch!"`'
             ],
             description: 'Settings for the Twitch Announcer.',
             args: [{
