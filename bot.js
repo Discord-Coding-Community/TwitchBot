@@ -93,7 +93,7 @@ client.once('ready', () => {
     ];
 
 
-    console.log('Connecting to ' + this.client.guilds.cache.size + ' servers...');
+    console.log('Connecting to ' + client.guilds.cache.size + ' servers...');
     setInterval(() => {
         const index_1 = Math.floor(Math.random() * (list_1.length - 1) + 1);
         const index_2 = Math.floor(Math.random() * (list_2.length - 1) + 1);
