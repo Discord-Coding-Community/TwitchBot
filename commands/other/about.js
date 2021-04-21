@@ -18,7 +18,7 @@ module.exports = class AboutCommand extends Command {
         });
     }
 
-    run(message) {
+    run(message, { shard }) {
 
         const guildCacheMap = this.client.guilds.cache;
         const guildCacheArray = Array.from(guildCacheMap, ([name, value]) => ({
@@ -33,9 +33,11 @@ module.exports = class AboutCommand extends Command {
         let embed = new MessageEmbed()
             .setTitle('TwitchBot')
             .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.')
-            .addField('Users', memberCount, true)
-            .addField('Channels', this.client.channels.cache.size, true)
-            .addField('Guilds', this.client.guilds.cache.size, true)
+            .addField('Total Users', memberCount, true)
+            .addField('Total Channels', this.client.channels.cache.size, true)
+            .addField('Total Guilds', this.client.guilds.cache.size, true)
+            .addField('Total Shards', client.shards, true)
+            .addField('Current Shard', shard.id, true)
             .addField('Prefix', config.prefix, true)
             .addField('Owners', config.owner_tag_1 + ',\n' + config.owner_tag_2, true)
             .addField('Github', '[' + config.github_team_name + '](https://github.com/' + config.github_team + '/' + config.github_repo + ')', true)
@@ -44,10 +46,10 @@ module.exports = class AboutCommand extends Command {
             .setTimestamp(new Date().toISOString())
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
         message.channel.send(embed)
-    } catch (e) {
-        console.error(e)
+    } catch (err) {
+        console.error(err)
         channel.send(
-            '```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```'
+            '```css\n[ERROR] Command Error:' + err.code + ': [' + err.message + ']\n```'
         )
     }
 };
