@@ -54,7 +54,7 @@ module.exports = class BlowjobCommand extends Command {
             }
         })
 
-        .then(embed.setImage(res => res.json())
-            .then(message.channel.send(embed)))
+        .then(embed.setImage(`${res => res.json()}`))
+            .then(message.channel.send(embed))
     }
 };
