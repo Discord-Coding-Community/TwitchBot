@@ -17,12 +17,12 @@ module.exports = class AddGifCommand extends Command {
             guildOnly: false,
             isOwner: true,
             args: [{
-                    key: 'gifUrl',
+                    key: 'arg1',
                     prompt: 'Which gif would you like to add?',
                     type: 'string'
                 },
                 {
-                    key: 'txtFileName',
+                    key: 'arg2',
                     prompt: 'What should I add it to?\n\n1. blowjoblinks\n2. boobslinks\n3. hentailinks\n\nPlease select a number.\n',
                     type: 'string'
                 }
@@ -34,18 +34,18 @@ module.exports = class AddGifCommand extends Command {
         });
     }
 
-    async run(message, { gifUrl, txtFileName }) {
+    async run(message, { arg1, arg2 }) {
         if (message.channel.nsfw) {
             try {
 
-                let txtFileNumber = txtFileName;
+                let NUM = arg2;
 
-                fs.writeFile('../../resources/nsfw/' + txtFileNumber + '.txt', gifUrl + '\n');
+                const GIF = fs.writeFile('../../resources/nsfw/' + NUM + '.txt', arg1, 'utf8');
 
                 let embed = new MessageEmbed()
                     .setTitle(this.client.user.username)
-                    .setDescription('New Gif added to ' + txtFileName)
-                    .setImage(`${gifUrl}`)
+                    .setDescription('New Gif added to ' + arg2)
+                    .setImage(`${GIF}`)
                     .setThumbnail(this.client.user.displayAvatarURL())
                     .setTimestamp(new Date().toISOString())
                     .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
