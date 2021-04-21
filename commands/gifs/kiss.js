@@ -43,7 +43,7 @@ module.exports = class hugCommand extends Command {
         } else {
             message.channel.send("You have to mention a user")
                 .catch(err => {
-                    message.reply('```css\n [ERROR] Command Error:' + err.code + '(' + err.message + ')\n```');
+                    message.reply('```css\n [ERROR] Discord API Error:' + err.code + '(' + err.message + ')\n```');
                     return console.error(err);
                 })
         }

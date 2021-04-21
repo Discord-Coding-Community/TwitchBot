@@ -44,7 +44,7 @@ module.exports = class GifCommand extends Command {
                 message.channel.send(embed)
             })
             .catch(err => {
-                message.reply('```css\n [ERROR] Command Error:' + err.code + '(' + err.message + ')\n```');
+                message.reply('```css\n [ERROR] Discord API Error:' + err.code + '(' + err.message + ')\n```');
                 return console.error(err);
             })
     }

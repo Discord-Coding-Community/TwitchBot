@@ -47,7 +47,7 @@ module.exports = class AboutCommand extends Command {
     } catch (err) {
         console.error(err)
         channel.send(
-            '```css\n[ERROR] Command Error:' + err.code + ': [' + err.message + ']\n```'
+            '```css\n[ERROR] Discord API Error:' + err.code + ': [' + err.message + ']\n```'
         )
     }
 };
