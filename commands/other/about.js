@@ -36,7 +36,7 @@ module.exports = class AboutCommand extends Command {
             .addField('Total Users', memberCount, true)
             .addField('Total Channels', this.client.channels.cache.size, true)
             .addField('Total Guilds', this.client.guilds.cache.size, true)
-            .addField('Total Shards', client.shards, true)
+            .addField('Total Shards', this.client.shards, true)
             .addField('Current Shard', shard.id, true)
             .addField('Prefix', config.prefix, true)
             .addField('Owners', config.owner_tag_1 + ',\n' + config.owner_tag_2, true)
