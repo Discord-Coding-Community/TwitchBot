@@ -15,9 +15,7 @@ module.exports = class JojoCommand extends Command {
             memberName: 'jojo',
             description: 'Replies with a random jojo gif!',
             examples: [
-                config.prefix + 'jojo',
-                config.prefix + 'jojo-gif',
-                config.prefix + 'jojo-gifs'
+                '`' + config.prefix + 'jojo'
             ],
             throttling: {
                 usages: 2,
@@ -33,13 +31,13 @@ module.exports = class JojoCommand extends Command {
             )
             .then(res => res.json())
             .then(json => {
-            embed.setColor("RANDOM")
-            embed.setImage(json.results[0].media[0].gif.url);
-            message.channel.send(embed)
-        })
-            .catch(e => {
-                message.channel.send('Failed to fetch a gif')
-                return console.error(e);
+                embed.setColor("RANDOM")
+                embed.setImage(json.results[0].media[0].gif.url);
+                message.channel.send(embed)
+            })
+            .catch(err => {
+                message.reply('```css\n [ERROR] Command Error:' + err.code + '(' + err.message + ')\n```');
+                return console.error(err);
             })
     }
 };

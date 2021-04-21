@@ -12,7 +12,7 @@ module.exports = class AddGifCommand extends Command {
             group: 'dev',
             description: 'Adds a gif to the NSFW commands.',
             examples: [
-                config.prefix + 'addgif [Gif URL]'
+                '`' + config.prefix + 'addgif "https://hentai-gif.gif" "hentai"`'
             ],
             guildOnly: false,
             isOwner: true,
@@ -38,6 +38,7 @@ module.exports = class AddGifCommand extends Command {
         if (message.channel.nsfw) {
             try {
 
+
                 let txtFileNumber = txtFileName;
 
                 fs.writeFile('../../resources/nsfw/' + txtFileNumber + '.txt', gifUrl);
@@ -52,7 +53,7 @@ module.exports = class AddGifCommand extends Command {
                 message.reply(embed);
                 return;
             } catch (err) {
-                message.reply('```css\n [ERROR] Discord API Error:' + err.code + '(' + err.message + ')\n```');
+                message.reply('```css\n [ERROR] Command Error:' + err.code + '(' + err.message + ')\n```');
                 return console.error(err);
             }
         }

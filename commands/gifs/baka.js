@@ -11,14 +11,17 @@ module.exports = class BakaCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'baka',
-            aliases: ['anibaka'],
+            aliases: [
+                'animebaka',
+                'bakagif'
+            ],
             group: 'gifs',
             memberName: 'baka',
             description: 'Call a specified user baka!',
             examples: [
-                config.prefix + 'baka @user#1234',
-                config.prefix + 'anibaka @user#1234'
-                      ],
+                '`' + config.prefix + 'baka @user#1234',
+                '`' + config.prefix + 'anibaka @user#1234'
+            ],
             throttling: {
                 usages: 2,
                 duration: 8
@@ -27,29 +30,28 @@ module.exports = class BakaCommand extends Command {
     }
 
     run(message) {
-          if (message.mentions.users.first()) {
-              const embed = new MessageEmbed();              
-              const baka_list = fs.readFileSync('././resources/gifs/baka_answers.json', 'utf8');
-              const baka_Array = JSON.parse(baka_list).answers;
-              const baka_answers =
-                    baka_Array[Math.floor(Math.random() * baka_Array.length)];
-              fetch(
+        if (message.mentions.users.first()) {
+            const embed = new MessageEmbed();
+            const baka_list = fs.readFileSync('././resources/gifs/baka_answers.json', 'utf8');
+            const baka_Array = JSON.parse(baka_list).answers;
+            const baka_answers =
+                baka_Array[Math.floor(Math.random() * baka_Array.length)];
+            fetch(
                     'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-baka&limit=1'
                 )
-                  .then(res => res.json())
-              .then(json => {
-                  embed.setDescription('**' + message.mentions.users.first().username + '** made ' + '**' + message.author.username + '**' + ' ' + baka_answers.text + '... baka!\n')
-            embed.setColor("RANDOM")
-            embed.setImage(json.results[0].media[0].gif.url);
-            message.channel.send(embed)
-        })
-          } else {
-              message.channel.send("You have to mention a user")
-            .catch(e => {
-                message.channel.send('Failed to fetch a gif')
-            .console.error(e);
-            return;
-              })
+                .then(res => res.json())
+                .then(json => {
+                    embed.setDescription('**' + message.mentions.users.first().username + '** made ' + '**' + message.author.username + '**' + ' ' + baka_answers.text + '... baka!\n')
+                    embed.setColor("RANDOM")
+                    embed.setImage(json.results[0].media[0].gif.url);
+                    message.channel.send(embed)
+                })
+        } else {
+            message.channel.send("You have to mention a user")
+                .catch(err => {
+                    message.reply('```css\n [ERROR] Command Error:' + err.code + '(' + err.message + ')\n```');
+                    return console.error(err);
+                })
         }
     };
 };

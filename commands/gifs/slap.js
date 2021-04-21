@@ -14,7 +14,7 @@ module.exports = class SlapCommand extends Command {
             memberName: 'slap',
             description: 'Slap a specified user.',
             examples: [
-                config.prefix + 'slap @user#1234'
+                '`' + config.prefix + 'slap @user#1234'
             ],
             throttling: {
                 usages: 2,
@@ -31,18 +31,18 @@ module.exports = class SlapCommand extends Command {
                 )
                 .then(res => res.json())
                 .then(json => {
-            embed.setDescription('**' + message.author.username + '**' + ' slapped ' + '**' + message.mentions.users.first().username + '**')    
-            embed.setColor("RANDOM")
-            embed.setImage(json.results[0].media[0].gif.url);
-            message.channel.send(embed)
-        })
+                    embed.setDescription('**' + message.author.username + '**' + ' slapped ' + '**' + message.mentions.users.first().username + '**')
+                    embed.setColor("RANDOM")
+                    embed.setImage(json.results[0].media[0].gif.url);
+                    message.channel.send(embed)
+                });
+
         } else {
             message.channel.send("You have to mention a user")
-                .catch(e => {
-                message.channel.send('Failed to fetch a gif')
-            .console.error(e);
-            return;
-              })
+                .catch(err => {
+                    message.reply('```css\n [ERROR] Command Error:' + err.code + '(' + err.message + ')\n```');
+                    return console.error(err);
+                })
         }
-    };
+    }
 };

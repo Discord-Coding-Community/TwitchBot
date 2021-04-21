@@ -14,7 +14,7 @@ module.exports = class GintamaCommand extends Command {
             memberName: 'gintama',
             description: 'Replies with a gintama gif!',
             examples: [
-                config.prefix + 'gintama'
+                '`' + config.prefix + 'gintama'
             ],
             throttling: {
                 usages: 2,
@@ -31,14 +31,13 @@ module.exports = class GintamaCommand extends Command {
             )
             .then(res => res.json())
             .then(json => {
-            embed.setColor("RANDOM")
-            embed.setImage(json.results[0].media[0].gif.url);
-            message.channel.send(embed)
-        })
-            .catch(e => {
-                message.channel.send('Failed to fetch a gif')
-            .console.error(e);
-            return;
+                embed.setColor("RANDOM")
+                embed.setImage(json.results[0].media[0].gif.url);
+                message.channel.send(embed)
+            })
+            .catch(err => {
+                message.reply('```css\n [ERROR] Command Error:' + err.code + '(' + err.message + ')\n```');
+                return console.error(err);
             })
     }
 };

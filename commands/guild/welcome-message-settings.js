@@ -9,19 +9,28 @@ module.exports = class WelcomeSettingsCommand extends Command {
             name: 'welcome-message-settings',
             memberName: 'welcome-message-settings',
             aliases: [
-                'welcomemessagesettings',
-                'welcomesettings',
+                'set-welcome',
                 'welcome-settings'
             ],
             group: 'guild',
             guildOnly: true,
-            userPermissions: ['ADMINISTRATOR'],
-            clientPermissions: ['MANAGE_MESSAGES', 'ATTACH_FILES', 'SEND_MESSAGES'],
+            userPermissions: [
+                'MANAGE_MESSAGES',
+                'MANAGE_GUILD',
+                'MANAGE_CHANNELS',
+                'MANAGE_ROLES'
+            ],
+            clientPermissions: [
+                'MANAGE_MESSAGES',
+                'MANAGE_GUILD',
+                'MANAGE_CHANNELS',
+                'MANAGE_ROLES'
+            ],
             examples: [
-                '`' + config.prefix + 'welcomesettings` - to restore Defaults',
-                '`' + config.prefix + 'welcomesettings "Channel-name" "My Title" "Upper Text" "MainText" "My Wallpaper URL" 700 250`',
-                '`' + config.prefix + 'welcomesettings "" "My Title" "Upper Text" "" "" 800 400`',
-                '`' + config.prefix + 'welcomesettings "s" "s" "s" "Upper Text" "My Wallpaper URL" "700" "250"` - to only change the Main Text and Wallpaper settings'
+                '`' + config.prefix + 'set-welcome` - to restore Defaults',
+                '`' + config.prefix + 'set-welcome "welcome" "Welcome" "A user has entered the guild" "Please give him/her a warm welcome!" "https://wallpaper.jpg" "700" "250"`',
+                '`' + config.prefix + 'set-welcome "welcome" "Welcome" "A user has entered the guild" "800" "400"`',
+                '`' + config.prefix + 'set-welcome "s" "s" "s" "Welcome" "https://wallpaper.jpg" "700" "250"` - to only change the Main Text and Wallpaper settings'
             ],
             description: 'Allows you to customize the welcome message for new members that join the server.',
             args: [{

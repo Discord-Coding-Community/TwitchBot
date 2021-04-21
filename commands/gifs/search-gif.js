@@ -15,14 +15,12 @@ module.exports = class GifCommand extends Command {
             memberName: 'search-gif',
             description: 'Provide a query and replies with a gif!',
             examples: [
-                config.prefix + 'sgif puppy',
-                config.prefix + 'search-gif puppy',
-                config.prefix + 'search-gifs puppy'
-                      ],
+                '`' + config.prefix + 'search-gif puppy'
+            ],
             throttling: {
-                usages: 1,
-                duration: 4
-            },
+                usages: 2,
+                duration: 8
+            }
             args: [{
                 key: 'text',
                 prompt: 'What gif would you like to post?',
@@ -37,18 +35,17 @@ module.exports = class GifCommand extends Command {
     run(message, { text }) {
         const embed = new MessageEmbed();
         fetch(
-            'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=' + text + '&limit=1'
-        )
+                'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=' + text + '&limit=1'
+            )
             .then(res => res.json())
             .then(json => {
-            embed.setColor("RANDOM")
-            embed.setImage(json.results[0].media[0].gif.url);
-            message.channel.send(embed)
-        })
-            .catch(e => {
-                message.channel.send('Failed to fetch a gif')
-            .console.error(e);
-            return;
-        })
-    };
+                embed.setColor("RANDOM")
+                embed.setImage(json.results[0].media[0].gif.url);
+                message.channel.send(embed)
+            })
+            .catch(err => {
+                message.reply('```css\n [ERROR] Command Error:' + err.code + '(' + err.message + ')\n```');
+                return console.error(err);
+            })
+    }
 };

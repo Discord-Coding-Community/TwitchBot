@@ -11,14 +11,13 @@ module.exports = class AnimegifCommand extends Command {
             name: 'animegif',
             group: 'gifs',
             aliases: [
-                'anime-gif',
-                'anime-gifs',
+                'anime'
             ],
             memberName: 'animegif',
             description: 'Return a random anime gif!',
             examples: [
                 '`' + config.prefix + 'animegif`'
-                      ],
+            ],
             throttling: {
                 usages: 1,
                 duration: 4
@@ -34,21 +33,20 @@ module.exports = class AnimegifCommand extends Command {
         });
     }
 
-    run(message, {text}) {
-        const embed = new MessageEmbed();    
+    run(message, { text }) {
+        const embed = new MessageEmbed();
         fetch(
-            'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-' + text + '&limit=1'
-        )
-        .then(res => res.json())
-        .then(json => {
-            embed.setColor("RANDOM")
-            embed.setImage(json.results[0].media[0].gif.url);
-            message.channel.send(embed)
-        })
-            .catch(e => {
-                message.channel.send('Failed to fetch a gif')
-            .console.error(e);
-            return;
-        })
+                'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-' + text + '&limit=1'
+            )
+            .then(res => res.json())
+            .then(json => {
+                embed.setColor("RANDOM")
+                embed.setImage(json.results[0].media[0].gif.url);
+                message.channel.send(embed)
+            })
+            .catch(err => {
+                message.reply('```css\n [ERROR] Command Error:' + err.code + '(' + err.message + ')\n```');
+                return console.error(err);
+            })
     };
 };

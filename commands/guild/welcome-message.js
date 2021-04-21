@@ -8,11 +8,16 @@ module.exports = class WelcomeMessageCommand extends Command {
         super(client, {
             name: 'welcome-message',
             memberName: 'welcome-message',
-            aliases: ['welcomemessage', 'welcome'],
+            aliases: [
+                'welcome'
+            ],
             group: 'guild',
             guildOnly: true,
             userPermissions: ['ADMINISTRATOR'],
-            examples: ['!welcome yes', '!welcome no'],
+            examples: [
+                '`' + config.prefix + 'welcome yes`',
+                '`' + config.prefix + 'welcome no`'
+            ],
             description: 'Allows you to toggle the welcome message for new members that join the server.',
             args: [{
                 key: 'choice',

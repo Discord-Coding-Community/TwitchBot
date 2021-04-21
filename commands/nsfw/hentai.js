@@ -47,7 +47,7 @@ module.exports = class BoobsCommand extends Command {
                 message.channel.send(embed);
                 return;
             } catch (err) {
-                message.reply('```css\n [ERROR] Discord API Error:' + err.code + '(' + err.message + ')\n```');
+                message.reply('```css\n [ERROR] Command Error:' + err.code + '(' + err.message + ')\n```');
                 return console.error(err);
             }
         }
