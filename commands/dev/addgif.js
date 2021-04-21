@@ -16,13 +16,13 @@ module.exports = class AddGifCommand extends Command {
             ],
             guildOnly: false,
             isOwner: true,
-            args: [{
-                    key: 'arg1',
+            giflinks: [{
+                    key: 'gifLink',
                     prompt: 'Which gif would you like to add?',
                     type: 'string'
                 },
                 {
-                    key: 'arg2',
+                    key: 'txtFileName',
                     prompt: 'What should I add it to?\n\n1. blowjoblinks\n2. boobslinks\n3. hentailinks\n\nPlease select a number.\n',
                     type: 'string'
                 }
@@ -34,28 +34,10 @@ module.exports = class AddGifCommand extends Command {
         });
     }
 
-    async run(message, { arg1, arg2 }) {
-        if (message.channel.nsfw) {
-            try {
-
-                fs.writeFile('../../resources/nsfw/' + arg2 + '.txt', arg1, function(err) {
-
-                    if (err) return console.log(err);
-                });
-
-                let embed = new MessageEmbed()
-                    .setTitle(this.client.user.username)
-                    .setDescription('New Gif added to ' + arg2)
-                    .setImage(`${arg1}`)
-                    .setThumbnail(this.client.user.displayAvatarURL())
-                    .setTimestamp(new Date().toISOString())
-                    .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
-                message.reply(embed);
-                return;
-            } catch (err) {
-                message.reply('```css\n [ERROR] Discord API Error: ' + err.code + ': (' + err.message + ')\n```');
-                return console.error(err);
-            }
-        }
+    async run(message, { gifLink, txtFileName }) {
+        fs.writeFile('././resources/nsfw/' + txtFileName + '.txt', gifLink, function(err) {
+            if (err) console.log(err)
+            else return message.channel.send('Successfully added GIF to ' + txtFileName);
+        });
     }
 };
