@@ -35,24 +35,24 @@ module.exports = class AddGifCommand extends Command {
     }
 
     async run(message, { gifUrl, txtFileName }) {
+
         if (message.channel.nsfw) {
             try {
-
                 let txtFileNumber = txtFileName;
 
-                fs.writeFile('../../resources/nsfw/' + txtFileNumber + '.txt', gifUrl);
-
-                let embed = new MessageEmbed()
+                fs.writeFile(`././resources/nsfw/${txtFileNumber}.txt`, 'utf8')
+                    .split('\n');
+                var embed = new MessageEmbed()
                     .setTitle(this.client.user.username)
                     .setDescription('New Gif added to ' + txtFileName)
                     .setImage(`${gifUrl}`)
                     .setThumbnail(this.client.user.displayAvatarURL())
                     .setTimestamp(new Date().toISOString())
                     .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
-                message.reply(embed);
+                message.channel.send(embed);
                 return;
             } catch (err) {
-                message.reply('```css\n [ERROR] Discord API Error: ' + err.code + ': (' + err.message + ')\n```');
+                message.reply('```css\n [ERROR] Discord API Error:' + err.code + '(' + err.message + ')\n```');
                 return console.error(err);
             }
         }
