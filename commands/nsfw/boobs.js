@@ -28,22 +28,22 @@ module.exports = class BoobsCommand extends Command {
         });
     }
 
-    run(message) {        
-        if (message.channel.nsfw) {            
+    run(message) {
+        if (message.channel.nsfw) {
             try {
-      const linkArray = fs
-        .readFileSync('././resources/nsfw/boobslinks.txt', 'utf8')
-        .split('\n');
-      const link = linkArray[Math.floor(Math.random() * linkArray.length)];
+                const linkArray = fs
+                    .readFileSync('././resources/nsfw/boobslinks.txt', 'utf8')
+                    .split('\n');
+                const link = linkArray[Math.floor(Math.random() * linkArray.length)];
                 var embed = new MessageEmbed()
-                .setDescription('Click this link if the image doesn\'t load: [Link](' + link + ')')
-                .setColor('RANDOM')
-                .setImage(link);
-      message.channel.send(embed); 
-      return;
-            } catch (e) {
-      message.reply('```css\n [ERROR] Dioscord API Error:' + e.code + '(' + e.message + ')\n```');
-      return console.error(e);
+                    .setDescription('[Image Link](' + link + ')')
+                    .setColor('RANDOM')
+                    .setImage(link);
+                message.channel.send(embed);
+                return;
+            } catch (err) {
+                message.reply('```css\n [ERROR] Discord API Error:' + err.code + '(' + err.message + ')\n```');
+                return console.error(err);
             }
         }
     }
