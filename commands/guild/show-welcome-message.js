@@ -15,7 +15,7 @@ module.exports = class ShowWelcomeCommand extends Command {
                 'welcomeme'
             ],
             examples: [
-                '`' + config.prefix + 'show-welcome-message'
+                '`' + prefix + 'show-welcome-message'
             ],
             throttling: {
                 usages: 2,
