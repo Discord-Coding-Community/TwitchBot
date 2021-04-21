@@ -12,7 +12,7 @@ module.exports = class FutaCommand extends Command {
                 'futagif'
             ],
             group: 'nsfw',
-            memberName: 'furry',
+            memberName: 'futa',
             description: 'Generate a random hentai futa gif and/or image',
             userPermissions: [
                 'SEND_MESSAGES',
