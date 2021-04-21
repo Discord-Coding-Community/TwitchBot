@@ -23,7 +23,7 @@ module.exports = class AddGifCommand extends Command {
                 },
                 {
                     key: 'txtFileName',
-                    prompt: 'What should I add it to?\n\nPlease choose one of the following:\nblowjoblinks\nboobslinks\nhentailinks\n\n',
+                    prompt: 'What should I add it to?\n\nPlease choose one of the following:\n\nblowjoblinks\nboobslinks\nhentailinks\n',
                     type: 'string'
                 }
             ],
