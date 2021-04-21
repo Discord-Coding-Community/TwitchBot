@@ -53,7 +53,8 @@ client.registry
         ['nsfw', 'NSFW Commands'],
         ['other', 'Other Commands'],
         ['guild', 'Guild Commands'],
-        ['speedrun', 'Speedrun Commands']
+        ['speedrun', 'Speedrun Commands'],
+        ['dev', 'Developer Commands']
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
@@ -79,9 +80,10 @@ client.once('ready', () => {
 
 
     const list_1 = [
-        config.prefix + `help | ${memberCount} users`,
-        config.prefix + `help | ${client.channels.cache.size} channels`,
-        config.prefix + `help | ${client.guilds.cache.size} servers`
+        config.prefix + 'help | ' + memberCount + ' users',
+        config.prefix + 'help | ' + client.channels.cache.size + ' channels',
+        config.prefix + 'help | ' + client.guilds.cache.size + ' servers',
+        config.prefix + 'help | ' + client.shards.size + ' shards'
     ];
 
     const list_2 = [
@@ -91,7 +93,7 @@ client.once('ready', () => {
     ];
 
 
-    console.log('Connecting to ' + client.guilds.cache.size + ' servers...');
+    console.log('Connecting to ' + this.client.guilds.cache.size + ' servers...');
     setInterval(() => {
         const index_1 = Math.floor(Math.random() * (list_1.length - 1) + 1);
         const index_2 = Math.floor(Math.random() * (list_2.length - 1) + 1);
