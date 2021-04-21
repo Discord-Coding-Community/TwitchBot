@@ -9,9 +9,10 @@ module.exports = class AddGifCommand extends Command {
             aliases: ['add-gif', 'agif'],
             memberName: 'addgif',
             group: 'dev',
-            description: 'Adds a gif to the NSFW commands.',
+            description: 'Adds a Gif to the Gif commands.',
             examples: [
-                '`' + config.prefix + 'addgif "https://hentai-gif.gif" "hentailinks"`'
+                '`' + config.prefix + 'addgif https://hentai-gif.gif NSFW Hentai"`',
+                '`' + config.prefix + 'addgif https://jojo-gif.gif SFW Jojo"`'
             ],
             guildOnly: false,
             userPermissions: [
