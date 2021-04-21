@@ -11,8 +11,8 @@ module.exports = class AddGifCommand extends Command {
             group: 'dev',
             description: 'Adds a Gif to the Gif commands.',
             examples: [
-                '`' + config.prefix + 'addgif https://hentai-gif.gif NSFW Hentai"`',
-                '`' + config.prefix + 'addgif https://jojo-gif.gif SFW Jojo"`'
+                '`' + config.prefix + 'addgif https://hentai-gif.gif nsfw Hentai"`',
+                '`' + config.prefix + 'addgif https://jojo-gif.gif sfw Jojo"`'
             ],
             guildOnly: false,
             userPermissions: [
