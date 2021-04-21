@@ -37,7 +37,7 @@ module.exports = class AddGifCommand extends Command {
     async run(message, { gifUrl, txtFileName }) {
         fs.writeFile('././resources/nsfw/' + txtFileName + '.txt', gifUrl + '\n', { flag: 'a+' }, (err) => {
             if (err) return console.error(err)
-            else return message.channel.send('Gif added.')
+            else return message.channel.send('<a:legit_tick:834269513498492968> Successfully added `' + gifUrl + '` to ' + txtFileName + '.')
         })
     }
 };
