@@ -53,7 +53,6 @@ client.registry
         ['nsfw', 'NSFW Commands'],
         ['other', 'Other Commands'],
         ['guild', 'Guild Commands'],
-        ['speedrun', 'Speedrun Commands'],
         ['dev', 'Developer Commands']
     ])
     .registerDefaultGroups()

@@ -12,20 +12,18 @@ module.exports = class AddGifCommand extends Command {
             group: 'dev',
             description: 'Adds a gif to the NSFW commands.',
             examples: [
-                '`' + config.prefix + 'addgif "https://blowjob-gif.gif" "1"`',
-                '`' + config.prefix + 'addgif "https://boobs-gif.gif" "2"`',
-                '`' + config.prefix + 'addgif "https://hentai-gif.gif" "3"`'
+                '`' + config.prefix + 'addgif "https://hentai-gif.gif" "hentai"`'
             ],
             guildOnly: false,
             isOwner: true,
             args: [{
-                    key: 'url',
+                    key: 'gifUrl',
                     prompt: 'Which gif would you like to add?',
                     type: 'string'
                 },
                 {
-                    key: 'choice',
-                    prompt: 'What should I add it to?\n\n1. Blowjob\n2. Boobs\n3. Hentai\n\nPlease select a number.\n',
+                    key: 'txtFileName',
+                    prompt: 'What should I add it to?\n\n1. blowjoblinks\n2. boobslinks\n3. hentailinks\n\nPlease select a number.\n',
                     type: 'string'
                 }
             ],
@@ -36,53 +34,27 @@ module.exports = class AddGifCommand extends Command {
         });
     }
 
-    async run(message, { url, choice }) {
-        if (message.author.bot) return;
+    async run(message, { gifUrl, txtFileName }) {
         if (message.channel.nsfw) {
+            try {
 
-            const { embed1, embed2, embed3 } = new MessageEmbed();
+                let txtFileNumber = txtFileName;
 
-            if (choice.toLowerCase() == '1') choice = 'Blowjob';
-            if (choice.toLowerCase() == '2') choice = 'Boobs';
-            if (choice.toLowerCase() == '3') choice = 'Hentai';
+                fs.writeFile('../../resources/nsfw/' + txtFileNumber + '.txt', gifUrl);
 
-            if (choice.toLowerCase() == 'Blowjob') {
-                fs.writeFile(`././resources/nsfw/blowjoblinks.txt`, 'utf8')
-                    .split('\n');
-                embed1.setDescription('Successfully added gif to ' + choice)
-                embed1.addImage(url)
-                embed1.setTimestamp(new Date().toISOString())
-                embed1.setFooter(this.client.user.username, this.client.user.displayAvatarURL())
-                message.channel.send(embed1)
-                    .catch(err => {
-                        message.reply('```css\n [ERROR] Discord API Error:' + err.code + '(' + err.message + ')\n```');
-                        return console.error(err);
-                    })
-            } else if (choice.toLowerCase() == 'Boobs') {
-                fs.writeFile(`././resources/nsfw/boobslinks.txt`, 'utf8')
-                    .split('\n');
-                embed2.setDescription('Successfully added gif to ' + choice)
-                embed2.addImage(url)
-                embed2.setTimestamp(new Date().toISOString())
-                embed2.setFooter(this.client.user.username, this.client.user.displayAvatarURL())
-                message.channel.send(embed2)
-                    .catch(err => {
-                        message.reply('```css\n [ERROR] Discord API Error:' + err.code + '(' + err.message + ')\n```');
-                        return console.error(err);
-                    })
-            } else if (choice.toLowerCase() == 'Hentai') {
-                fs.writeFile(`././resources/nsfw/hentailinks.txt`, 'utf8')
-                    .split('\n');
-                embed3.setDescription('Successfully added gif to ' + choice)
-                embed3.addImage(url)
-                embed3.setTimestamp(new Date().toISOString())
-                embed3.setFooter(this.client.user.username, this.client.user.displayAvatarURL())
-                message.channel.send(embed3)
-                    .catch(err => {
-                        message.reply('```css\n [ERROR] Discord API Error:' + err.code + '(' + err.message + ')\n```');
-                        return console.error(err);
-                    })
-            };
+                let embed = new MessageEmbed()
+                    .setTitle(this.client.user.username)
+                    .setDescription('New Gif added to ' + txtFileName)
+                    .setImage(`${gifUrl}`)
+                    .setThumbnail(this.client.user.displayAvatarURL())
+                    .setTimestamp(new Date().toISOString())
+                    .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
+                message.reply(embed);
+                return;
+            } catch (err) {
+                message.reply('```css\n [ERROR] Discord API Error: ' + err.code + ': (' + err.message + ')\n```');
+                return console.error(err);
+            }
         }
     }
 };
