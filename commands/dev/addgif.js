@@ -31,7 +31,7 @@ module.exports = class AddGifCommand extends Command {
                 },
                 {
                     key: 'File',
-                    prompt: 'What should I add it to?\n\nPlease choose one of the following:\n\nblowjoblinks\nboobslinks\nhentailinks\n',
+                    prompt: 'Please select a file name from the list below:\n\nBlowjob\nBoobs\nHentai\nFurry\nFuta\nTrap\n',
                     type: 'string'
                 }
             ],
@@ -48,7 +48,8 @@ module.exports = class AddGifCommand extends Command {
                     '834453807056289794',
                     '812947164937715712'
                 ].includes(r.id))) {
-                fs.writeFile('././resources/nsfw/' + File + '.txt', Link + '\n', { flag: 'a+' }, (err) => {
+
+                fs.writeFile('././resources/gifs/nsfw/' + File + '.txt', Link + '\n', { flag: 'a+' }, (err) => {
                     if (err) return console.error(err)
                     else return message.channel.send('<a:legit_tick:834269513498492968> Successfully added `' + Link + '` to ' + File + '.')
                 })

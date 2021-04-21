@@ -3,18 +3,17 @@ const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const config = require('../../config.json');
 
-
-module.exports = class BoobsCommand extends Command {
+module.exports = class FurryCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'hentai',
+            name: 'furry',
             aliases: [
-                'hentai-gif',
-                'hgif'
+                'furry-gif',
+                'furrygif'
             ],
             group: 'nsfw',
-            memberName: 'hentai',
-            description: 'Generate a random hentai gif and/or image',
+            memberName: 'furry',
+            description: 'Generate a random furry gif and/or image',
             userPermissions: [
                 'SEND_MESSAGES',
                 'EMBED_LINKS'
@@ -24,7 +23,7 @@ module.exports = class BoobsCommand extends Command {
                 'EMBED_LINKS'
             ],
             examples: [
-                '`' + config.prefix + 'hentai`'
+                config.prefix + 'furry'
             ],
             throttling: {
                 usages: 2,
@@ -37,7 +36,7 @@ module.exports = class BoobsCommand extends Command {
         if (message.channel.nsfw) {
             try {
                 const linkArray = fs
-                    .readFileSync('././resources/gifs/nsfw/Hentai.txt', 'utf8')
+                    .readFileSync('././resources/gifs/nsfw/Furry.txt', 'utf8')
                     .split('\n');
                 const link = linkArray[Math.floor(Math.random() * linkArray.length)];
                 var embed = new MessageEmbed()

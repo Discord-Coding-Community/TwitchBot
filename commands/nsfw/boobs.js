@@ -36,7 +36,7 @@ module.exports = class BoobsCommand extends Command {
         if (message.channel.nsfw) {
             try {
                 const linkArray = fs
-                    .readFileSync('././resources/nsfw/boobslinks.txt', 'utf8')
+                    .readFileSync('././resources/gifs/nsfw/Boobs.txt', 'utf8')
                     .split('\n');
                 const link = linkArray[Math.floor(Math.random() * linkArray.length)];
                 var embed = new MessageEmbed()
