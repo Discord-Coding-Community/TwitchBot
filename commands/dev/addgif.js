@@ -37,6 +37,7 @@ module.exports = class AddGifCommand extends Command {
     async run(message, { gifUrl, txtFileName }) {
         if (message.channel.nsfw) {
             try {
+
                 let txtFileNumber = txtFileName;
 
                 fs.writeFile('../../resources/nsfw/' + txtFileNumber + '.txt', gifUrl);
@@ -51,7 +52,7 @@ module.exports = class AddGifCommand extends Command {
                 message.reply(embed);
                 return;
             } catch (err) {
-                message.reply('```css\n [ERROR] Command Error:' + err.code + '(' + err.message + ')\n```');
+                message.reply('```css\n [COMMAND ERROR] ' + err.code + ': ' + err.message + '\n```');
                 return console.error(err);
             }
         }
