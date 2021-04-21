@@ -1,4 +1,5 @@
 const fs = require('fs');
+const fetch = require('node-fetch');
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const config = require('../../config.json');
@@ -23,6 +24,7 @@ module.exports = class BlowjobCommand extends Command {
                 'SEND_MESSAGES',
                 'EMBED_LINKS'
             ],
+            function: search,
             examples: [
                 config.prefix + 'blowjob',
                 config.prefix + 'blowjob-gif',
@@ -37,22 +39,23 @@ module.exports = class BlowjobCommand extends Command {
     }
 
     run(message) {
-        if (message.channel.nsfw) {            
-            try {
-      const linkArray = fs
-        .readFileSync('././resources/nsfw/blowjoblinks.txt', 'utf8')
-        .split('\n');
-      const link = linkArray[Math.floor(Math.random() * linkArray.length)];
-                var embed = new MessageEmbed()
-                .setDescription('Click this link if the image doesn\'t load: [Link](' + link + ')')
-                .setColor('RANDOM')
-                .setImage(link);
-      message.channel.send(embed);                  
-      return;
-            } catch (e) {
-      message.reply('```css\n [ERROR] Dioscord API Error:' + e.code + '(' + e.message + ')\n```');
-      return console.error(e);
-            }
+        const embed = new MessageEmbed();
+
+        let url = 'https://api.imgur.com/3/gallery/tag_info/hentai_blowjob/?q=' + search[0];
+
+        for (var i = 1; i < search.length; i++) {
+
+            url += '%20' + search[i];
+
         }
+
+        return fetch(url, {
+            headers: {
+                'Authorization': 'Client-ID ' + config.imgurClientID
+            }
+        })
+
+        .then(embed.setImage(res => res.json())
+            .then(message.send(embed)))
     }
 };
