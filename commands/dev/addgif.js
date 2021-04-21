@@ -11,7 +11,7 @@ module.exports = class AddGifCommand extends Command {
             group: 'dev',
             description: 'Adds a gif to the NSFW commands.',
             examples: [
-                '`' + config.prefix + 'addgif "https://hentai-gif.gif" "hentai"`'
+                '`' + config.prefix + 'addgif "https://hentai-gif.gif" "hentailinks"`'
             ],
             guildOnly: false,
             userPermissions: [
@@ -25,12 +25,12 @@ module.exports = class AddGifCommand extends Command {
                 'SEND_MESSAGES'
             ],
             args: [{
-                    key: 'gifUrl',
+                    key: 'Link',
                     prompt: 'Which gif would you like to add?',
                     type: 'string'
                 },
                 {
-                    key: 'txtFileName',
+                    key: 'File',
                     prompt: 'What should I add it to?\n\nPlease choose one of the following:\n\nblowjoblinks\nboobslinks\nhentailinks\n',
                     type: 'string'
                 }
@@ -42,15 +42,15 @@ module.exports = class AddGifCommand extends Command {
         });
     }
 
-    async run(message, { gifUrl, txtFileName }) {
+    async run(message, { Link, File }) {
         if (message.channel.nsfw) {
             if (message.member.roles.cache.some(r => [
                     '801125364252147745',
                     '812947164937715712'
                 ].includes(r.id))) {
-                fs.writeFile('././resources/nsfw/' + txtFileName + '.txt', gifUrl + '\n', { flag: 'a+' }, (err) => {
+                fs.writeFile('././resources/nsfw/' + File + '.txt', Link + '\n', { flag: 'a+' }, (err) => {
                     if (err) return console.error(err)
-                    else return message.channel.send('<a:legit_tick:834269513498492968> Successfully added `' + gifUrl + '` to ' + txtFileName + '.')
+                    else return message.channel.send('<a:legit_tick:834269513498492968> Successfully added `' + Link + '` to ' + File + '.')
                 })
             } else {
                 return message.channel.send(':x: This command can only be used by my Developers...').catch(err => {
