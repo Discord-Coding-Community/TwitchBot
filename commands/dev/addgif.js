@@ -23,7 +23,7 @@ module.exports = class AddGifCommand extends Command {
                 },
                 {
                     key: 'txtFileName',
-                    prompt: 'What should I add it to?\n\n1. blowjoblinks\n2. boobslinks\n3. hentailinks\n\nPlease select a number.\n',
+                    prompt: 'What should I add it to?\n\nPlease choose one of the following:\nblowjoblinks\nboobslinks\nhentailinks\n\n',
                     type: 'string'
                 }
             ],
@@ -34,9 +34,8 @@ module.exports = class AddGifCommand extends Command {
         });
     }
 
-    async run(message, { gifUrl, txtFileName }) {
-        let txtFileNumber = txtFileName;
-        fs.writeFile('../../resources/nsfw/' + txtFileNumber + '.txt', gifUrl, (err) => {
+    async run(message, { gifUrl }) {
+        fs.writeFile('../../resources/nsfw/' + txtFileName + '.txt', gifUrl, (err) => {
             if (err) return console.error(err)
             else return message.channel.send('Gif added.')
         })
