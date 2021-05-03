@@ -17,7 +17,6 @@ module.exports = class TwitchAnnouncerSettingsCommand extends Command {
             name: 'twitch-announcer-settings',
             memberName: 'twitch-announcer-settings',
             aliases: [
-                'set-twitch',
                 'tasettings'
             ],
             group: 'guild',
@@ -41,7 +40,7 @@ module.exports = class TwitchAnnouncerSettingsCommand extends Command {
                 duration: 8
             },
             examples: [
-                '`' + prefix + 'set-twitch "_lost_pause" "stream-alerts" "25" "Lost Pause is Live on Twitch!"`'
+                '`' + prefix + 'tasettings "Discord" "stream-alerts" "2" "Stream Starting!"`'
             ],
             description: 'Settings for the Twitch Announcer.',
             args: [{
@@ -66,7 +65,7 @@ module.exports = class TwitchAnnouncerSettingsCommand extends Command {
                 {
                     key: 'sayMsg',
                     prompt: '(Optional) Change the default message that comes before the notification.',
-                    default: 'Hey @everyone',
+                    default: 'Stream Starting!',
                     type: 'string',
                     validate: function validateInput(sayMsg) {
                         return sayMsg.length > 0;

@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const { twitchClientID, twitchClientSecret } = require('../../config.json');
+const { twitchClientID, twitchClientSecret } = require('../../../config.json');
 
 // Skips loading if not found in config.json
 if (!twitchClientID || !twitchClientSecret) return;
