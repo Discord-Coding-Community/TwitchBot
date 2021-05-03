@@ -53,11 +53,9 @@ module.exports = class BanCommand extends Command {
                     .setColor('RANDOM')
                 message.channel.send(banEmbed);
             })
-            .catch(err => {
-                message.channel.send(
-                    '```css\n[ERROR] Discord API Error: ' + err.code + '[' + err.message + ']\n```'
-                );
-                return console.error(err);
+            .catch(function onError(err) {
+            message.reply(':x: Something went wrong.... If the problem continues, please contact support.')
+            console.error(err)
             });
     }
 };

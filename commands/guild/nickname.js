@@ -33,9 +33,10 @@ module.exports = class NicknameCommand extends Command {
         if (nickname === 'remove') {
             try {
                 await memberName.setNickname('');
-            } catch (err) {
-                message.reply(`:x: Can't change nickname, requested member has a higher role than you`);
-                console.error(err);
+            } catch {
+                message.reply(
+                    `:x: Can't change nickname, requested member has a higher role than you`
+                );
                 return;
             }
             try {
@@ -49,22 +50,27 @@ module.exports = class NicknameCommand extends Command {
                     .setFooter('Cleared', message.author.displayAvatarURL())
                     .setTimestamp();
 
-                
+                //deletes message from author
+                /* 
+if(message.deletable) {
+message.delete();
+  }
+  */
 
                 message.channel.send(nickRemoved);
                 return;
-            } catch (err) {
+            } catch {
                 message.reply(':x: Something went wrong removing nickname');
-                console.error(err);
                 return;
             }
         } else {
             const oldName = memberName.displayName;
             try {
                 await memberName.setNickname(nickname);
-            } catch (err) {
-                message.reply(`:x: Can't change nickname, requested member has a higher role than you`)
-                console.error(err);
+            } catch {
+                message.reply(
+                    `:x: Can't change nickname, requested member has a higher role than you`
+                );
                 return;
             }
             try {
@@ -79,13 +85,22 @@ module.exports = class NicknameCommand extends Command {
                     .setThumbnail(memberName.user.displayAvatarURL({ dynamic: true }))
                     .setFooter('Changed', message.author.displayAvatarURL())
                     .setTimestamp();
-                    
-                    message.channel.send(nickChanged)
-                    .catch(function onError(err) {
-                    message.channel.send(':x: Something went wrong.... If the problem continues, please contact support.');
-                    return console.error(err);
-                })
-            };
+
+                //deletes message from author
+                /*
+if (message.deletable) {
+  message.delete();
+}
+*/
+
+                message.channel.send(nickChanged);
+                return;
+            } catch (err) {
+                console.error(err)
+                channel.send(
+                    '```css\n[ERROR] Discord API Error: ' + err.code + ': [' + err.message + ']\n```'
+                )
+            }
         }
     }
 };

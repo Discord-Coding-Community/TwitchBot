@@ -43,14 +43,10 @@ module.exports = class KickCommand extends Command {
                     .addField('Kicked:', userToKick)
                     .addField('Reason:', reason)
                     .setColor('RANDOM')
-                message.channel.send(kickEmbed);
-            })
-            .then( () => message.delete()
-        .catch(function onError(err) {
-        message.reply(
-          ':x: Something went wrong.... If the problem continues, please contact support.'
-        );
-        return console.error(err);
-      })
+                message.channel.send(kickEmbed)
+                .catch(function onError(err) {
+            message.reply(':x: Something went wrong.... If the problem continues, please contact support.')
+            console.error(err)
+            });
     }
 };

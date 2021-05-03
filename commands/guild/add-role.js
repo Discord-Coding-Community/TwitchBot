@@ -57,8 +57,8 @@ module.exports = class AddRoleCommand extends Command {
           .setColor(role.hexColor);
         message.channel.send(aroleEmbed);
       })
-      .then( () => message.delete()
-      .catch(function onError(err) {
+      .then( () => message.delete())
+      .catch(err => {
         message.reply(
           ':x: Something went wrong when trying to assign role to this user, I probably do not have the permission to assign role to him!'
         );
