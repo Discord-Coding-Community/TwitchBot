@@ -6,6 +6,7 @@ const { MessageEmbed } = require('discord.js');
 
 // Skips loading if not found in config.json
 if (!tenorAPI) return;
+
 module.exports = class BakaCommand extends Command {
     constructor(client) {
         super(client, {

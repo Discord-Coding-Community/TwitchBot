@@ -4,6 +4,7 @@ const fs = require('fs');
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 
+// Skips loading if not found in config.json
 if (!tenorAPI) return;
 
 module.exports = class hugCommand extends Command {
