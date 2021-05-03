@@ -45,7 +45,7 @@ module.exports = class FurryCommand extends Command {
                     .setImage(link);
                 message.channel.send(embed);
                 return;
-            } catch function onError(err) {
+            } catch (err) {
                 message.channel.send(':x: Something went wrong.... If the problem continues, please contact support.');
                 return console.error(err);
             }
