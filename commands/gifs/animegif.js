@@ -40,6 +40,8 @@ module.exports = class AnimegifCommand extends Command {
             )
             .then(res => res.json())
             .then(json => {
+                embed.setTitle('Anime Gif')
+                embed.setDescription('**Direct Link**: [LINK](' + json.results[0].media[0].gif.url + ')')
                 embed.setColor("RANDOM")
                 embed.setImage(json.results[0].media[0].gif.url);
                 message.channel.send(embed)
