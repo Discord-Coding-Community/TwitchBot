@@ -33,7 +33,7 @@ module.exports = class NicknameCommand extends Command {
         if (nickname === 'remove') {
             try {
                 await memberName.setNickname('');
-            } catch function onError(err) {
+            } catch (err) {
                 message.reply(`:x: Can't change nickname, requested member has a higher role than you`);
                 console.error(err);
                 return;
@@ -53,7 +53,7 @@ module.exports = class NicknameCommand extends Command {
 
                 message.channel.send(nickRemoved);
                 return;
-            } catch function onError(err) {
+            } catch (err) {
                 message.reply(':x: Something went wrong removing nickname');
                 console.error(err);
                 return;
@@ -62,7 +62,7 @@ module.exports = class NicknameCommand extends Command {
             const oldName = memberName.displayName;
             try {
                 await memberName.setNickname(nickname);
-            } catch function onError(err) {
+            } catch (err) {
                 message.reply(`:x: Can't change nickname, requested member has a higher role than you`)
                 console.error(err);
                 return;
