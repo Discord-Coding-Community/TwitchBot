@@ -48,5 +48,4 @@ module.exports = class KickCommand extends Command {
             message.reply(':x: Something went wrong.... If the problem continues, please contact support.')
             console.error(err)
             });
-    }
 };

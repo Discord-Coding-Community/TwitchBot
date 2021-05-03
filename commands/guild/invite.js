@@ -36,5 +36,4 @@ module.exports = class InviteCommand extends Command {
             console.error(err)
             });
         })
-    }
 };
