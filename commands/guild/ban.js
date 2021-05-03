@@ -10,7 +10,7 @@ module.exports = class BanCommand extends Command {
             memberName: 'ban',
             group: 'guild',
             description: 'Bans a tagged member.',
-            examples: [config.prefix + 'ban @user#1234 Bullying 7'],
+            examples: [config.prefix + 'ban @user Bullying 7'],
             guildOnly: true,
             userPermissions: ['BAN_MEMBERS'],
             clientPermissions: ['BAN_MEMBERS'],

@@ -14,7 +14,7 @@ module.exports = class SlapCommand extends Command {
             memberName: 'slap',
             description: 'Slap a specified user.',
             examples: [
-                '`' + config.prefix + 'slap @user#1234'
+                '`' + config.prefix + 'slap @user'
             ],
             throttling: {
                 usages: 2,

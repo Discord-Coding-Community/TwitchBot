@@ -19,7 +19,7 @@ module.exports = class patCommand extends Command {
             memberName: 'pat',
             description: 'Pats a specified user.',
             examples: [
-                '`' + prefix + 'pat @user#1234'
+                '`' + prefix + 'pat @user'
             ],
             throttling: {
                 usages: 2,

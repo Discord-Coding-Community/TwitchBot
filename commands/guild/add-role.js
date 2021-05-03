@@ -11,7 +11,7 @@ module.exports = class AddRoleCommand extends Command {
       group: 'guild',
       description: 'Adds a specific role to a specified user.',
       examples: [
-          `${config.prefix}add-role @user#1234 @member`
+          `${config.prefix}add-role @user @role`
       ],  
       guildOnly: true,
       userPermissions: [

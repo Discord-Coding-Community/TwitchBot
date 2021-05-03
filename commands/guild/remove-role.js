@@ -1,6 +1,6 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
-const config = require('../../config.json');
+const { prefix } = require('../../config.json');
 
 module.exports = class RRCommand extends Command {
   constructor(client) {
@@ -11,9 +11,7 @@ module.exports = class RRCommand extends Command {
       group: 'guild',
       description: 'Removes a specific role from a specified user.',
       examples: [
-          config.prefix + 'remove-role @user#1234 @member',
-          config.prefix + 'del-role @user#1234 @member',
-          config.prefix + 'rr @user#1234 @member'
+        prefix + 'rr @user @role'
       ],  
       guildOnly: true,
       userPermissions: [

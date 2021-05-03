@@ -19,7 +19,7 @@ module.exports = class hugCommand extends Command {
             memberName: 'kiss',
             description: 'Kiss a specified user.',
             examples: [
-                '`' + prefix + 'kiss @user#1234'
+                '`' + prefix + 'kiss @user'
             ],
             throttling: {
                 usages: 2,
