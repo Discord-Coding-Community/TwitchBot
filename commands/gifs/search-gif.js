@@ -43,7 +43,7 @@ module.exports = class GifCommand extends Command {
                 embed.setImage(json.results[0].media[0].gif.url);
                 message.channel.send(embed)
             })
-            .catch(err => {
+            .catch(function onError(err) {
                 message.channel.send(':x: Something went wrong.... If the problem continues, please contact support.');
                 return console.error(err);
             })

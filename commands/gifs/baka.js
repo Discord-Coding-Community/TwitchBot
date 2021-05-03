@@ -46,10 +46,10 @@ module.exports = class BakaCommand extends Command {
                 })
         } else {
             message.channel.send("You have to mention a user")
-                .catch(err => {
-                    message.channel.send(':x: Something went wrong.... If the problem continues, please contact support.');
-                    return console.error(err);
-                })
+            .catch(function onError(err) {
+                message.channel.send(':x: Something went wrong.... If the problem continues, please contact support.');
+                return console.error(err);
+            })
         }
     };
 };

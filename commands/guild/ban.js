@@ -55,7 +55,7 @@ module.exports = class BanCommand extends Command {
             })
             .catch(err => {
                 message.channel.send(
-                    '```css\n[ERROR] Discord API Error: ' + err.code + '[' + err.message + ']\n```'
+                    ':x: Something went wrong.... If the problem continues, please contact support.'
                 );
                 return console.error(err);
             });

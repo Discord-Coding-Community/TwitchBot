@@ -65,7 +65,7 @@ module.exports = class PruneCommand extends Command {
         } catch (err) {
             console.error(err)
             channel.send(
-                '```css\n[ERROR] Discord API Error: ' + err.code + ': [' + err.message + ']\n```'
+                ':x: Something went wrong.... If the problem continues, please contact support.'
             )
         }
     }
