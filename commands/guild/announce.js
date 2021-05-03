@@ -42,9 +42,6 @@ module.exports = class NewsCommand extends Command {
             .addField(`Announcement`, announcement, false)
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
             .setTimestamp(new Date().toISOString())
-        return channel.send(embed)
-        .catch(function onError(err) {
-            message.reply(':x: Something went wrong.... If the problem continues, please contact support.')
-            console.error(err)
-            });
+        return channel.send(embed);
+    }
 };
