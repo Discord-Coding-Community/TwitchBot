@@ -1,21 +1,25 @@
 const fetch = require('node-fetch');
-const config = require('../../config.json');
+const { tenorAPI, prefix } = require('../../config.json');
 const fs = require('fs');
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 
-if (!config.tenorAPI) return;
+if (!tenorAPI) return;
 
 module.exports = class GifCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'search-gif',
             group: 'gifs',
-            aliases: ['sgif', 'search-gifs'],
+            aliases: [
+                'sgif',
+                'search-gifs',
+                'gif'
+                ],
             memberName: 'search-gif',
             description: 'Provide a query and replies with a gif!',
             examples: [
-                '`' + config.prefix + 'search-gif puppy'
+                '`' + prefix + 'search-gif puppy'
             ],
             throttling: {
                 usages: 2,
@@ -35,7 +39,7 @@ module.exports = class GifCommand extends Command {
     run(message, { text }) {
         const embed = new MessageEmbed();
         fetch(
-                'https://g.tenor.com/v1/random?key=' + config.tenorAPI + '&q=' + text + '&limit=1'
+                'https://g.tenor.com/v1/random?key=' + tenorAPI + '&q=' + text + '&limit=1'
             )
             .then(res => res.json())
             .then(json => {

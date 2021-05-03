@@ -1,10 +1,10 @@
 const fetch = require('node-fetch');
-const config = require('../../config.json');
+const { tenorAPI, prefix } = require('../../config.json');
 const fs = require('fs');
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 
-if (!config.tenorAPI) return;
+if (!tenorAPI) return;
 
 module.exports = class hugCommand extends Command {
     constructor(client) {
@@ -18,7 +18,7 @@ module.exports = class hugCommand extends Command {
             memberName: 'kiss',
             description: 'Kiss a specified user.',
             examples: [
-                '`' + config.prefix + 'kiss @user#1234'
+                '`' + prefix + 'kiss @user#1234'
             ],
             throttling: {
                 usages: 2,
@@ -31,7 +31,7 @@ module.exports = class hugCommand extends Command {
         if (message.mentions.users.first()) {
             const embed = new MessageEmbed();
             fetch(
-                    'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-kiss&limit=1'
+                    'https://api.tenor.com/v1/random?key=' + tenorAPI + '&q=anime-kiss&limit=1'
                 )
                 .then(res => res.json())
                 .then(json => {

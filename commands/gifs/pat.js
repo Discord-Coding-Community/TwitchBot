@@ -1,10 +1,10 @@
 const fetch = require('node-fetch');
-const config = require('../../config.json');
+const { tenorAPI, prefix } = require('../../config.json');
 const fs = require('fs');
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 
-if (!config.tenorAPI) return;
+if (!tenorAPI) return;
 
 module.exports = class patCommand extends Command {
     constructor(client) {
@@ -18,7 +18,7 @@ module.exports = class patCommand extends Command {
             memberName: 'pat',
             description: 'Pats a specified user.',
             examples: [
-                '`' + config.prefix + 'pat @user#1234'
+                '`' + prefix + 'pat @user#1234'
             ],
             throttling: {
                 usages: 2,
@@ -31,7 +31,7 @@ module.exports = class patCommand extends Command {
         if (message.mentions.users.first()) {
             const embed = new MessageEmbed();
             fetch(
-                    'https://g.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-pat&limit=1'
+                    'https://g.tenor.com/v1/random?key=' + tenorAPI + '&q=anime-pat&limit=1'
                 )
                 .then(res => res.json())
                 .then(json => {

@@ -1,10 +1,10 @@
 const fetch = require('node-fetch');
-const config = require('../../config.json');
+const { tenorAPI, prefix } = require('../../config.json');
 const fs = require('fs');
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 
-if (!config.tenorAPI) return;
+if (!tenorAPI) return;
 
 module.exports = class GintamaCommand extends Command {
     constructor(client) {
@@ -14,7 +14,7 @@ module.exports = class GintamaCommand extends Command {
             memberName: 'gintama',
             description: 'Replies with a gintama gif!',
             examples: [
-                '`' + config.prefix + 'gintama'
+                '`' + prefix + 'gintama'
             ],
             throttling: {
                 usages: 2,
@@ -27,7 +27,7 @@ module.exports = class GintamaCommand extends Command {
     run(message) {
         const embed = new MessageEmbed();
         fetch(
-                'https://g.tenor.com/v1/random?key=' + config.tenorAPI + '&q=gintama&limit=1'
+                'https://g.tenor.com/v1/random?key=' + tenorAPI + '&q=gintama&limit=1'
             )
             .then(res => res.json())
             .then(json => {
