@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
-const config = require('../../config.json');
+const { prefix } = require('../../config.json');
 
 module.exports = class FutaCommand extends Command {
     constructor(client) {
@@ -23,7 +23,7 @@ module.exports = class FutaCommand extends Command {
                 'EMBED_LINKS'
             ],
             examples: [
-                config.prefix + 'futa'
+                prefix + 'futa'
             ],
             throttling: {
                 usages: 2,
@@ -45,7 +45,7 @@ module.exports = class FutaCommand extends Command {
                     .setImage(link);
                 message.channel.send(embed);
                 return;
-            } catch (err) {
+            } catch function onError(err) {
                 message.channel.send(':x: Something went wrong.... If the problem continues, please contact support.');
                 return console.error(err);
             }

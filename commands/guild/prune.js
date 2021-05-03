@@ -62,11 +62,10 @@ module.exports = class PruneCommand extends Command {
                 .setTimestamp(new Date().toISOString())
                 .setFooter(this.client.user.username, this.client.user.displayAvatarURL());
             channel.send(embed)
-        } catch (err) {
-            console.error(err)
-            channel.send(
-                '```css\n[ERROR] Discord API Error: ' + err.code + ': [' + err.message + ']\n```'
-            )
-        }
+        } catch function onError(err) {
+        message.reply(
+          ':x: Something went wrong.... If the problem continues, please contact support.'
+        );
+        return console.error(err);
     }
 };

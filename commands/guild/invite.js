@@ -31,6 +31,12 @@ module.exports = class InviteCommand extends Command {
             .setTimestamp(new Date().toISOString())
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL());
         message.channel.send(embed)
-        })
+        .then( () => message.delete()
+        .catch(function onError(err) {
+        message.reply(
+          ':x: Something went wrong.... If the problem continues, please contact support.'
+        );
+        return console.error(err);
+      });
     }
 };

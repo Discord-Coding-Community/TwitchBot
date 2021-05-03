@@ -1,12 +1,11 @@
 const fetch = require('node-fetch');
-const config = require('../../config.json');
+const { tenorAPI, prefix } = require('../../config.json');
 const fs = require('fs');
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 
-if (!config.tenorAPI) return;
-
-
+// Skips loading if not found in config.json
+if (!tenorAPI) return;
 module.exports = class BakaCommand extends Command {
     constructor(client) {
         super(client, {
@@ -19,8 +18,7 @@ module.exports = class BakaCommand extends Command {
             memberName: 'baka',
             description: 'Call a specified user baka!',
             examples: [
-                '`' + config.prefix + 'baka @user#1234',
-                '`' + config.prefix + 'anibaka @user#1234'
+                '`' + prefix + 'baka @johndoe'
             ],
             throttling: {
                 usages: 2,
@@ -37,7 +35,7 @@ module.exports = class BakaCommand extends Command {
             const baka_answers =
                 baka_Array[Math.floor(Math.random() * baka_Array.length)];
             fetch(
-                    'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-baka&limit=1'
+                    'https://g.tenor.com/v1/random?key=' + tenorAPI + '&q=anime-baka&limit=1'
                 )
                 .then(res => res.json())
                 .then(json => {
@@ -48,7 +46,7 @@ module.exports = class BakaCommand extends Command {
                 })
         } else {
             message.channel.send("You have to mention a user")
-                .catch(err => {
+                .catch(function onError(err) {
                     message.channel.send(':x: Something went wrong.... If the problem continues, please contact support.');
                     return console.error(err);
                 })

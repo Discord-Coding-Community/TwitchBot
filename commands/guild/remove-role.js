@@ -59,10 +59,10 @@ module.exports = class RRCommand extends Command {
           .setColor(role.hexColor);
         message.channel.send(rroleEmbed);
       })
-      .then( () => message.delete().catch(e => console.error(e)) ) // nested promise
-      .catch(err => {
+      .then( () => message.delete()
+      .catch(function onError(err) {
         message.reply(
-          ':x: Something went wrong when trying to remove Role from this user, I probably do not have the permission of removing role from him!'
+          ':x: Something went wrong.... If the problem continues, please contact support.'
         );
         return console.error(err);
       });

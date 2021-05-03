@@ -27,7 +27,7 @@ module.exports = class SlapCommand extends Command {
         const embed = new MessageEmbed();
         if (message.mentions.users.first()) {
             fetch(
-                    'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-slap&limit=1'
+                    'https://g.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-slap&limit=1'
                 )
                 .then(res => res.json())
                 .then(json => {
@@ -39,7 +39,7 @@ module.exports = class SlapCommand extends Command {
 
         } else {
             message.channel.send("You have to mention a user")
-                .catch(err => {
+                .catch(function onError(err) {
                     message.channel.send(':x: Something went wrong.... If the problem continues, please contact support.');
                     return console.error(err);
                 })

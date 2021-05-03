@@ -36,7 +36,7 @@ module.exports = class AnimegifCommand extends Command {
     run(message, { text }) {
         const embed = new MessageEmbed();
         fetch(
-                'https://api.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-' + text + '&limit=1'
+                'https://g.tenor.com/v1/random?key=' + config.tenorAPI + '&q=anime-' + text + '&limit=1'
             )
             .then(res => res.json())
             .then(json => {
@@ -44,9 +44,9 @@ module.exports = class AnimegifCommand extends Command {
                 embed.setImage(json.results[0].media[0].gif.url);
                 message.channel.send(embed)
             })
-            .catch(err => {
-                message.channel.send(':x: Something went wrong.... If the problem continues, please contact support.');
-                return console.error(err);
-            })
+            .catch(function onError(err) {
+                    message.channel.send(':x: Something went wrong.... If the problem continues, please contact support.');
+                    return console.error(err);
+                })
     };
 };
