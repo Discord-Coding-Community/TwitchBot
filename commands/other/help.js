@@ -23,8 +23,8 @@ module.exports = class HelpCommand extends Command {
 
     run(message) {
         let embed = new MessageEmbed()
-            .setTitle('TwitchBot')
-            .setDescription('Thank you for using TwitchBot\n\n**__Commands__**\n:white_small_square:[Base Commands](https://discord-coding-community.gitbook.io/twitchbot/commands)\n:white_small_square:[All Commands](https://discord-coding-community.gitbook.io/twitchbot/twitchbot/wiki#commands)\n\n**__Support Servers__**\n:white_small_square:[MountainT Development](https://discord.me/mtdev)\n:white_small_square:[Discord Coding Community](https://discord.me/discord-coding-community)')
+            .setTitle(this.client.user.username)
+            .setDescription('Thank you for choosing ' + this.client.user.username + ' \n\n**__Commands__**\n:white_small_square:[Base Commands](https://discord-coding-community.gitbook.io/' + this.client.user.username + '/commands)\n:white_small_square:[All Commands](https://discord-coding-community.gitbook.io/' + this.client.user.username + '/wiki#commands)\n\n**__Support Servers__**\n:white_small_square:[MountainT Development](https://discord.me/mtdev)\n:white_small_square:[Discord Coding Community](https://discord.me/discord-coding-community)')
             .setColor('RANDOM')
             .setThumbnail(this.client.user.displayAvatarURL())
             .setTimestamp(new Date().toISOString())
