@@ -7,6 +7,12 @@ module.exports = class BotStatusCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'bot-status',
+            aliases: [
+                'botstatus',
+                'bstatus',
+                'botinfo',
+                'binfo'
+            ],
             group: 'other',
             memberName: 'bot-status',
             description: 'Shows the current system status'
@@ -63,7 +69,7 @@ module.exports = class BotStatusCommand extends Command {
             .addField(`Platform`, `${platform} ${archInfo}`, true)
             .addField('Operated By', this.client.owners)
 
-            .addField(
+        .addField(
                 'Available Commands',
                 `${commandTotal.length} Commands Available`,
                 true
@@ -81,7 +87,7 @@ module.exports = class BotStatusCommand extends Command {
             .setTimestamp(this.client.user.createdAt);
 
         message.channel.send(embed)
-    } catch(err) {
+    } catch (err) {
         console.error(err)
         channel.send(
             '```css\n[ERROR] ' + err.code + ': [' + err.message + ']\n```'
