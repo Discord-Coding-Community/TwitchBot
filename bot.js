@@ -80,9 +80,9 @@ client.once('ready', () => {
 
 
     const list_1 = [
-        prefix + `help | Shard: ${this.client.shard.id} | ${memberCount} users`,
-        prefix + `help | Shard: ${this.client.shard.id} | ${client.channels.cache.size} channels`,
-        prefix + `help | Shard: ${this.client.shard.id} | ${client.guilds.cache.size} servers`
+        prefix + `help | Shard: ${client.shard.id} | ${memberCount} users`,
+        prefix + `help | Shard: ${client.shard.id} | ${client.channels.cache.size} channels`,
+        prefix + `help | Shard: ${client.shard.id} | ${client.guilds.cache.size} servers`
     ];
 
     const list_2 = [
