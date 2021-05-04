@@ -26,6 +26,7 @@ module.exports = class HelpCommand extends Command {
             .setTitle('TwitchBot')
             .setDescription('Thank you for using TwitchBot\n\nHere is a list of our base commands: [Commands](https://discord-coding-community.gitbook.io/twitchbot/commands)\nYou can find a full list of commands on our wiki here: [Wiki](https://discord-coding-community.gitbook.io/twitchbot/twitchbot/wiki#commands)\n\nIf you need to contact support you can do so here: [MountainT Development](https://discord.me/mtdev)')
             .setColor('RANDOM')
+            .setThumbnail(this.client.user.displayAvatarURL())
             .setTimestamp(new Date().toISOString())
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
         message.channel.send(embed)
