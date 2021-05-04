@@ -301,14 +301,6 @@ client.on('voiceStateUpdate', async(___, newState) => {
     }
 });
 
-client.on('shardError', error => {
-    try {} catch (e) {
-        let (e) = error;
-        if ((e) instanceof shardError) Error.captureStackTrace(e);
-        console.error('[ERROR] A web socket has encountered an error:', (e));
-    }
-});
-
 client.on('unhandledRejection', error => {
     try {} catch (e) {
         let (e) = error;
