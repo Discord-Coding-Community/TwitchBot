@@ -26,11 +26,6 @@ module.exports = class AddGifCommand extends Command {
                 'SEND_MESSAGES'
             ],
             args: [{
-                    key: 'Link',
-                    prompt: 'Which gif would you like to add?',
-                    type: 'string'
-                },
-                {
                     key: 'Type',
                     prompt: 'Is the gif SFW or NSFW?',
                     type: 'string'
@@ -38,6 +33,11 @@ module.exports = class AddGifCommand extends Command {
                 {
                     key: 'File',
                     prompt: 'Please select a file name from the list below:\n\n**__SFW__**\n\nAnime\nBaka\nGintama\nJojo\nSlap\n\nHug\nKiss\n\n**__NSFW__**\n\nBlowjob\nBoobs\nHentai\nFurry\nFuta\nTrap\n',
+                    type: 'string'
+                },
+                {
+                    key: 'Link',
+                    prompt: 'Which gif would you like to add?',
                     type: 'string'
                 }
             ],
