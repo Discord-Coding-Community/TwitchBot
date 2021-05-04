@@ -17,4 +17,4 @@ const manager = new ShardingManager('./bot.js', {
 
 manager.on('shardCreate', (shard) => console.log('Connecting to Shard: ' + shard.id));
 
-manager.spawn(5);
+manager.spawn('auto');
