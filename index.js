@@ -3,8 +3,13 @@ const { shards, clientTOKEN } = require('./config.json');
 
 
 const manager = new ShardingManager('./bot.js', {
-    execArgv: ['--trace-warnings'],
-    shardArgs: ['--ansi', '--color'],
+    execArgv: [
+        '--trace-warnings'
+    ],
+    shardArgs: [
+        '--ansi',
+        '--color'
+    ],
     totalShards: shards,
     token: clientTOKEN
 
