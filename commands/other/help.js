@@ -24,7 +24,7 @@ module.exports = class HelpCommand extends Command {
     run(message) {
         let embed = new MessageEmbed()
             .setTitle('TwitchBot')
-            .setDescription('Thank you for using TwitchBot\n\nHere is a list of our base commands: [Commands](https://discord-coding-community.gitbook.io/twitchbot/commands)\nYou can find a full list of commands on our wiki here: [Wiki](https://discord-coding-community.gitbook.io/twitchbot/twitchbot/wiki#commands)\n\nIf you need to contact support you can do so here: [MountainT Development](https://discord.me/mtdev)')
+            .setDescription('Thank you for using TwitchBot\n\n**__Base Commands__**\n:white_small_square:[Commands](https://discord-coding-community.gitbook.io/twitchbot/commands)\n**__Full Command List__**\n:white_small_square:[Wiki](https://discord-coding-community.gitbook.io/twitchbot/twitchbot/wiki#commands)\n\n**__Support Servers__**\n:white_small_square:[MountainT Development](https://discord.me/mtdev)\n[Discord Coding Community](https://discord.me/discord-coding-community)')
             .setColor('RANDOM')
             .setThumbnail(this.client.user.displayAvatarURL())
             .setTimestamp(new Date().toISOString())
