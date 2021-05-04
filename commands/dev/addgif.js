@@ -28,17 +28,17 @@ module.exports = class AddGifCommand extends Command {
             args: [{
                     key: 'gifTYPE',
                     prompt: 'Is the gif SFW or NSFW?',
-                    giftype: 'string'
+                    type: 'string'
                 },
                 {
                     key: 'txtFILE',
                     prompt: 'Please select a File Name from the list below:\n\n**__SFW__**\n\nAnime\nBaka\nGintama\nJojo\nSlap\n\nHug\nKiss\n\n**__NSFW__**\n\nBlowjob\nBoobs\nHentai\nFurry\nFuta\nTrap\n',
-                    giftype: 'string'
+                    type: 'string'
                 },
                 {
                     key: 'gifURL',
                     prompt: 'Which gif would you like to add?',
-                    giftype: 'string'
+                    type: 'string'
                 }
             ],
             throttling: {
