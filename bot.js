@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 const AutoPoster = require('topgg-autoposter');
 const db = require('quick.db');
 const Canvas = require('canvas');
-const config = require('./config.json');
+const { prefix, apAPI, twitch_url, discord_owner_id } = require('./config.json');
 
 Structures.extend('Guild', function(Guild) {
     class MusicGuild extends Guild {
@@ -41,8 +41,8 @@ Structures.extend('Guild', function(Guild) {
 });
 
 const client = new CommandoClient({
-    commandPrefix: config.prefix,
-    owner: config.discord_owner_id
+    commandPrefix: prefix,
+    owner: discord_owner_id
 });
 
 client.registry
@@ -80,9 +80,10 @@ client.once('ready', () => {
 
 
     const list_1 = [
-        config.prefix + `help | ${memberCount}  users`,
-        config.prefix + `help | ${client.channels.cache.size} channels`,
-        config.prefix + `help | ${client.guilds.cache.size} servers`
+        prefix + `help | ${memberCount}  users`,
+        prefix + `help | ${client.channels.cache.size} channels`,
+        prefix + `help | ${client.guilds.cache.size} servers`,
+        prefix + `help | Current Shard: ${client.shard.id}`
     ];
 
     const list_2 = [
@@ -98,7 +99,7 @@ client.once('ready', () => {
         const index_2 = Math.floor(Math.random() * (list_2.length - 1) + 1);
         client.user.setActivity(list_1[index_1], {
             type: list_2[index_2],
-            url: config.twitch_url
+            url: twitch_url
         });
     }, 10000);
 
@@ -108,7 +109,7 @@ client.once('ready', () => {
         family: 'Open Sans Light'
     });
 
-    const ap = AutoPoster(config.apAPI, client)
+    const ap = AutoPoster(apAPI, client)
 
     ap.on('posted', () => {
 
