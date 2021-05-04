@@ -26,19 +26,19 @@ module.exports = class AddGifCommand extends Command {
                 'SEND_MESSAGES'
             ],
             args: [{
-                    key: 'Type',
+                    key: 'gifTYPE',
                     prompt: 'Is the gif SFW or NSFW?',
-                    type: 'string'
+                    giftype: 'string'
                 },
                 {
-                    key: 'File',
-                    prompt: 'Please select a file name from the list below:\n\n**__SFW__**\n\nAnime\nBaka\nGintama\nJojo\nSlap\n\nHug\nKiss\n\n**__NSFW__**\n\nBlowjob\nBoobs\nHentai\nFurry\nFuta\nTrap\n',
-                    type: 'string'
+                    key: 'txtFILE',
+                    prompt: 'Please select a File Name from the list below:\n\n**__SFW__**\n\nAnime\nBaka\nGintama\nJojo\nSlap\n\nHug\nKiss\n\n**__NSFW__**\n\nBlowjob\nBoobs\nHentai\nFurry\nFuta\nTrap\n',
+                    giftype: 'string'
                 },
                 {
-                    key: 'Link',
+                    key: 'gifURL',
                     prompt: 'Which gif would you like to add?',
-                    type: 'string'
+                    giftype: 'string'
                 }
             ],
             throttling: {
@@ -48,15 +48,15 @@ module.exports = class AddGifCommand extends Command {
         });
     }
 
-    async run(message, { Link, Type, File }) {
+    async run(message, { gifURL, gifTYPE, txtFILE }) {
         if (message.member.roles.cache.some(r => [
                 '834453807056289794',
                 '812947164937715712'
             ].includes(r.id))) {
 
-            fs.writeFile('././resources/gifs/' + Type + '/' + File + '.txt', Link + '\n', { flag: 'a+' }, (err) => {
+            fs.writeTxtFILE('././resources/gifs/' + gifTYPE + '/' + txtFILE + '.txt', gifURL + '\n', { flag: 'a+' }, (err) => {
                 if (err) return console.error(err)
-                else return message.channel.send('<a:legit_tick:834269513498492968> Successfully added `' + Link + '` to `../../resources/gifs/' + Type + '/' + File + '/.txt`')
+                else return message.channel.send('<a:legit_tick:834269513498492968> Successfully added `' + gifURL + '` to `../../resources/gifs/' + gifTYPE + '/' + txtFILE + '/.txt`')
             })
         } else {
             return message.channel.send(':x: This command can only be used by my Developers...').catch(err => {
