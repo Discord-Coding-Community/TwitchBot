@@ -97,8 +97,8 @@ if (message.deletable) {
                 return;
             } catch (err) {
                 console.error(err)
-                channel.send(
-                    ':x: Something went wrong.... If the problem continues, please contact support.'
+                message.reply(
+                    '```css\n[ERROR] Discord API Error: ' + err.code + '(' + err.message + '\n```)'
                 )
             }
         }

@@ -46,7 +46,9 @@ module.exports = class BlowjobCommand extends Command {
                 message.channel.send(embed);
                 return;
             } catch (err) {
-                message.channel.send(':x: Something went wrong.... If the problem continues, please contact support.');
+                message.reply(
+                    '```css\n[ERROR] Discord API Error: ' + err.code + '(' + err.message + '\n```)'
+                );
                 return console.error(err);
             }
         } else {
