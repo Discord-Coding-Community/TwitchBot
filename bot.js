@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 const AutoPoster = require('topgg-autoposter');
 const db = require('quick.db');
 const Canvas = require('canvas');
-const { prefix, apAPI, twitch_url, discord_owner_id } = require('./config.json');
+const { prefix, apAPI, twitch_url, discord_owner_id, clientTOKEN } = require('./config.json');
 
 Structures.extend('Guild', function(Guild) {
     class MusicGuild extends Guild {
@@ -80,9 +80,9 @@ client.once('ready', () => {
 
 
     const list_1 = [
-        prefix + `help | ${memberCount} users`,
-        prefix + `help | ${client.channels.cache.size} channels`,
-        prefix + `help | ${client.guilds.cache.size} servers`
+        prefix + `help | Shard: ${this.client.shard.id} | ${memberCount} users`,
+        prefix + `help | Shard: ${this.client.shard.id} | ${client.channels.cache.size} channels`,
+        prefix + `help | Shard: ${this.client.shard.id} | ${client.guilds.cache.size} servers`
     ];
 
     const list_2 = [
@@ -325,4 +325,4 @@ client.on('DiscordAPIError', error => {
     }
 });
 
-client.login(config.clientTOKEN);
+client.login(clientTOKEN);
