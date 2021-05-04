@@ -18,7 +18,7 @@ module.exports = class InviteCommand extends Command {
     }
 
     async run(message) {
-        const inviteURL = 'https://discord.com/api/oauth2/authorize?client_id=$' + config.applicationID + '&permissions=8&scope=bot';
+        const inviteURL = 'https://top.gg/bot/' + config.topgg_client_id + '/invite/';
         const dsc = new Link.Client(config.dscAPI)
         dsc.fetchLink("discord").then((link) => {
             const embed = new MessageEmbed()
