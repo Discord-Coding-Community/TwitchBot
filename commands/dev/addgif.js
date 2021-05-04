@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { Command } = require('discord.js-commando');
-const config = require('../../config.json');
+const { prefix } = require('../../config.json');
 
 module.exports = class AddGifCommand extends Command {
     constructor(client) {
@@ -11,8 +11,8 @@ module.exports = class AddGifCommand extends Command {
             group: 'dev',
             description: 'Adds a Gif to the Gif commands.',
             examples: [
-                '`' + config.prefix + 'addgif https://hentai-gif.gif nsfw Hentai"`',
-                '`' + config.prefix + 'addgif https://jojo-gif.gif sfw Jojo"`'
+                '`' + prefix + 'addgif nsfw Hentai https://hentai-gif.gif"`',
+                '`' + prefix + 'addgif sfw Jojo https://jojo-gif.gif"`'
             ],
             guildOnly: false,
             userPermissions: [
