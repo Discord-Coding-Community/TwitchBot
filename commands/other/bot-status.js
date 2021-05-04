@@ -9,9 +9,7 @@ module.exports = class BotStatusCommand extends Command {
             name: 'bot-status',
             aliases: [
                 'botstatus',
-                'bstatus',
-                'botinfo',
-                'binfo'
+                'bstatus'
             ],
             group: 'other',
             memberName: 'bot-status',
