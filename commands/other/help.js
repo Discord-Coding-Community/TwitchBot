@@ -24,7 +24,7 @@ module.exports = class HelpCommand extends Command {
     run(message) {
         let embed = new MessageEmbed()
             .setTitle(this.client.user.username)
-            .setDescription('Thank you for choosing ' + this.client.user.username + ' \n\n**__Commands__**\n\n:white_small_square:[Base Commands](https://discord-coding-community.gitbook.io/twitchbot/commands)\n:white_small_square:[All Commands](https://discord-coding-community.gitbook.io/twitchbot/wiki#commands)\n\n\n**__Support Servers__**\n\n:white_small_square:[MountainT Development](https://discord.me/mtdev)\n:white_small_square:[Discord Coding Community](https://discord.me/discord-coding-community)')
+            .setDescription('Thank you for choosing ' + this.client.user.username + ' \n\n**__Commands__**\n:white_small_square:[Base Commands](https://discord-coding-community.gitbook.io/twitchbot/commands)\n:white_small_square:[All Commands](https://discord-coding-community.gitbook.io/twitchbot/wiki#commands)\n\n**__Support Servers__**\n:white_small_square:[MountainT Development](https://discord.me/mtdev)\n:white_small_square:[Discord Coding Community](https://discord.me/discord-coding-community)')
             .setColor('RANDOM')
             .setThumbnail(this.client.user.displayAvatarURL())
             .setTimestamp(new Date().toISOString())
