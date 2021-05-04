@@ -56,7 +56,7 @@ module.exports = class AddGifCommand extends Command {
 
             fs.writeFile('././resources/gifs/' + Type + '/' + File + '.txt', Link + '\n', { flag: 'a+' }, (err) => {
                 if (err) return console.error(err)
-                else return message.channel.send('<a:legit_tick:834269513498492968> Successfully added `' + Link + '` to ' + File + '.')
+                else return message.channel.send('<a:legit_tick:834269513498492968> Successfully added `' + Link + '` to `../../resources/gifs/' + Type + '/' + File + '/.txt`')
             })
         } else {
             return message.channel.send(':x: This command can only be used by my Developers...').catch(err => {
