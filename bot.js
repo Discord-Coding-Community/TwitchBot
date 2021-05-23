@@ -7,7 +7,7 @@ const db = require('quick.db');
 const Canvas = require('canvas');
 const { prefix, apAPI, twitch_url, discord_owner_id, clientTOKEN } = require('./config.json');
 
-Structures.extend('Guild', function(Guild) {
+Structures.extend('Guild', function (Guild) {
     class MusicGuild extends Guild {
         constructor(client, data) {
             super(client, data);
@@ -48,17 +48,17 @@ const client = new CommandoClient({
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ['music', 'Music Commands'],
-        ['gifs', 'Gif Commands'],
-        ['nsfw', 'NSFW Commands'],
-        ['other', 'Other Commands'],
-        ['guild', 'Guild Commands']
+        ['music', ':notes: Music Command Group:'],
+        ['gifs', ':film_frames: Gif Command Group:'],
+        ['nsfw', ':underage: NSFW Command Group:'],
+        ['other', ':loud_sound: Other Command Group:'],
+        ['guild', ':gear: Guild Related Commands:'],
+        ['speedrun', ':athletic_shoe: Speedrun Related Commands:']
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
         eval: false,
         ping: false,
-        help: true,
         unknownCommand: false
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
@@ -279,7 +279,7 @@ client.on('guildMemberAdd', async member => {
 });
 
 
-client.on('voiceStateUpdate', async(___, newState) => {
+client.on('voiceStateUpdate', async (___, newState) => {
     if (
         newState.member.user.bot &&
         !newState.channelID &&
@@ -301,24 +301,24 @@ client.on('voiceStateUpdate', async(___, newState) => {
 });
 
 client.on('shardError', error => {
-    try {} catch (e) {
-        let (e) = error;
+    try { } catch (e) {
+        let(e) = error;
         if ((e) instanceof shardError) Error.captureStackTrace(e);
         console.error('[ERROR] A web socket has encountered an error:', (e));
     }
 });
 
 client.on('unhandledRejection', error => {
-    try {} catch (e) {
-        let (e) = error;
+    try { } catch (e) {
+        let(e) = error;
         if ((e) instanceof unhandledRejection) Error.captureStackTrace(e);
         console.error('[ERROR] unhandledRejection:' + client.message.guild.name + '(' + client.message.guild.id + ')][#' + client.message.channel.name + ']', (e));
     }
 });
 
 client.on('DiscordAPIError', error => {
-    try {} catch (e) {
-        let (e) = error;
+    try { } catch (e) {
+        let(e) = error;
         if ((e) instanceof DiscordAPIError) Error.captureStackTrace(e);
         console.error('[ERROR] DiscordAPIError:' + client.message.guild.name + '(' + client.message.guild.id + ')][#' + client.message.channel.name + ']', (e));
     }
