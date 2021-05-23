@@ -5,8 +5,8 @@ const { prefix } = require('../../config.json');
 module.exports = class AddGifCommand extends Command {
     constructor(client) {
         super(client, {
-            name: 'addHentai',
-            memberName: 'addHentai',
+            name: 'addhentai',
+            memberName: 'addhentai',
             group: 'dev',
             description: 'Adds a Hentai Gif.',
             examples: [
