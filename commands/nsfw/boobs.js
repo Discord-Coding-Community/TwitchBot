@@ -9,7 +9,8 @@ module.exports = class BoobsCommand extends Command {
             name: 'boobs',
             aliases: [
                 'boob-gif',
-                'bgif'
+                'bgif',
+                'bb'
             ],
             group: 'nsfw',
             memberName: 'boobs',
