@@ -52,14 +52,13 @@ client.registry
         ['gifs', 'Gif Commands'],
         ['nsfw', 'NSFW Commands'],
         ['other', 'Other Commands'],
-        ['guild', 'Guild Commands'],
-        ['dev', 'Developer Commands']
+        ['guild', 'Guild Commands']
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
         eval: false,
         ping: false,
-        help: false,
+        help: true,
         unknownCommand: false
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
