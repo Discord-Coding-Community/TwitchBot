@@ -58,7 +58,9 @@ client.registry
     .registerDefaultGroups()
     .registerDefaultCommands({
         eval: false,
-        ping: false
+        ping: false,
+        help: false,
+        commandState: false
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
