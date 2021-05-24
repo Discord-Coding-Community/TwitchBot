@@ -1,5 +1,16 @@
 const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
+const { 
+    prefix, 
+    Full_Commands, 
+    Base_Commands, 
+    Support_Server_Name_1, 
+    Support_Server_Name_2, 
+    Support_Server_Invite_1, 
+    Support_Server_Invite_2, 
+    RedBot_Name, 
+    RedBot_Invite_URL 
+} = require('../../config.js');
 
 module.exports = class AvatarCommand extends Command {
     constructor(client) {
@@ -9,13 +20,16 @@ module.exports = class AvatarCommand extends Command {
             group: 'other',
             memberName: 'help',
             description: "TwitchBot Help",
+            examples: [
+                prefix + 'help'
+            ],
         });
     }
 
     run(message, { user }) {
         const embed = new MessageEmbed()
             .setTitle(this.client.name)
-            .setDescription(`**__Base Commands__**\n:white_small_square: [Link](${config.baseCommands})\n\n**__All Commands__**\n:white_small_square: [Link](${config.fullCommands})\n\n**__Important__**\nDue to issues with Discord.js-Commando, Twitch Integration is becoming more and more unstable. As such we have implemented our own instance of **RedBot** for use with **ALL** of our stream commands.\n\nOur instance of **RedBot** is now enforeced for stream integration and comes with a ton of added features for everyone to enjoy.\n\n You can invite our instance of **RedBot** from the link below:\n:white_small_square: [Link](${config.redInviteURL})'n'n**__Support Discord__**\n:white_small_square: [Discord Coding Community](${config.SUPPORT_SERVER_1})\n[MountainT Development](${SUPPORT_SERVER_2})`)
+            .setDescription(`**__Base Commands__**\n:white_small_square: [Link](${Base_Commands})\n\n**__All Commands__**\n:white_small_square: [Link](${Full_Commands})\n\n**__Important__**\nDue to issues with Discord.js-Commando, Twitch Integration is becoming more and more unstable. As such we have implemented our own instance of **RedBot** for use with **ALL** of our stream commands.\n\nOur instance of **RedBot** is now enforeced for stream integration and comes with a ton of added features for everyone to enjoy.\n\n You can invite our instance of **RedBot** from the link below:\n:white_small_square: [${RedBot_Name}](${RedBot_Invite_URL})'n'n**__Support Discord__**\n:white_small_square: [${Support_Server_Name_1}](${Support_Server_Invite_1})\n[${Support_Server_Name_2}](${Support_Server_Invite_2})`)
             .setImage(this.client.displayAvatarURL({ dynamic: true }))
             .setColor('RANDOM')
             .setTimestamp();
