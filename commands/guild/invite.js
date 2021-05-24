@@ -27,6 +27,7 @@ module.exports = class InviteCommand extends Command {
                 .setColor('RANDOM')
                 .addField('TwitchBot', ':white_small_square: [Top.gg](' + inviteURL + ')' + '\n:white_small_square: [dsc.gg](' + config.dscInviteURL + ')', true)
                 .addField('Support Servers', ':white_small_square: [' + config.Support_Server_Name_1 + '](' + config.Support_Server_Invite_1 + ')\n:white_small_square: [' + config.Support_Server_Name_2 + '](' + config.Support_Server_Invite_2 + ')', true)
+                .addField('RedBot', `:white_small_square: [${RedBot_Name}](${RedBot_Invite_URL})`, true)
                 .setThumbnail(this.client.user.displayAvatarURL())
                 .setTimestamp(new Date().toISOString())
                 .setFooter(this.client.user.username, this.client.user.displayAvatarURL());
