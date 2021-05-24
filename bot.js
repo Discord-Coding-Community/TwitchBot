@@ -60,12 +60,6 @@ client.registry
         eval: false,
         ping: false,
         help: false,
-        load: true,
-        reload: true,
-        unload: true,
-        disable: true,
-        enable: true,
-        commandState: false,
         unknownCommandResponse: false
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
