@@ -1,6 +1,13 @@
 const { MessageEmbed } = require('discord.js');
 const { Command } = require('discord.js-commando');
-const config = require('../../config.json');
+const { 
+    prefix, 
+    github_repo, 
+    github_team, 
+    github_team_name, 
+    owner_tag_1, 
+    owner_tag_2
+} = require('../../config.json');
 
 module.exports = class AboutCommand extends Command {
     constructor(client) {
@@ -13,7 +20,7 @@ module.exports = class AboutCommand extends Command {
             group: 'other',
             description: "Displays the bot's info.",
             examples: [
-                `${config.prefix}about`
+                `${prefix}about`
             ]
         });
     }
@@ -36,9 +43,9 @@ module.exports = class AboutCommand extends Command {
             .addField('Total Users', memberCount, true)
             .addField('Total Channels', this.client.channels.cache.size, true)
             .addField('Total Guilds', this.client.guilds.cache.size, true)
-            .addField('Prefix', config.prefix, true)
-            .addField('Owners', config.owner_tag_1 + ',\n' + config.owner_tag_2, true)
-            .addField('Github', '[' + config.github_team_name + '](https://github.com/' + config.github_team + '/' + config.github_repo + ')', true)
+            .addField('Prefix', prefix, true)
+            .addField('Owners', owner_tag_1 + ',\n' + owner_tag_2, true)
+            .addField('Github', '[' + github_team_name + '](https://github.com/' + github_team + '/' + github_repo + ')', true)
             .setThumbnail(this.client.user.displayAvatarURL())
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())

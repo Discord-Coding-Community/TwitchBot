@@ -12,7 +12,7 @@ const {
     Support_Server_Invite_2, 
     Support_Server_Name_1, 
     Support_Server_Name_2
-} = require('../../json');
+} = require('../../config.json');
 
 if (!invite) return;
 
