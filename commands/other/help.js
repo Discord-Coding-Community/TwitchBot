@@ -10,7 +10,7 @@ const {
     Support_Server_Invite_2, 
     RedBot_Name, 
     RedBot_Invite_URL 
-} = require('../../config.js');
+} = require('../../config.json');
 
 module.exports = class AvatarCommand extends Command {
     constructor(client) {
