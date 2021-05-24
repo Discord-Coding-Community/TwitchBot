@@ -5,7 +5,13 @@ const fetch = require("node-fetch");
 const AutoPoster = require('topgg-autoposter');
 const db = require('quick.db');
 const Canvas = require('canvas');
-const { prefix, apAPI, twitch_url, discord_owner_id, clientTOKEN } = require('./config.json');
+const { 
+    prefix, 
+    apAPI, 
+    twitch_url, 
+    discord_owner_id,
+    clientTOKEN
+} = require('./config.json');
 
 Structures.extend('Guild', function (Guild) {
     class MusicGuild extends Guild {

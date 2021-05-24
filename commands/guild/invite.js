@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const Link = require("dsc.js");
 const { 
     prefix, 
+    invite, 
     RedBot_Name, 
     RedBot_Invite_URL, 
     topgg_client_id, 
