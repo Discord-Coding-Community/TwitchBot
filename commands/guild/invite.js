@@ -32,7 +32,7 @@ module.exports = class InviteCommand extends Command {
     async run(message) {
         const invite_URL = 'https://top.gg/bot/' + topgg_client_id + '/invite/';
         const embed = new MessageEmbed()
-            .setTitle(this.client.user.username)
+            .setTitle(this.client.user.username + ' Official Invites')
             .setDescription('A list of invites for ' + this.client.user.username)
             .setColor('RANDOM')
             .addField('TwitchBot', ':white_small_square: [Top.gg](' + invite_URL + ')' + '\n:white_small_square: [dsc.gg](' + dsc_Invite_URL + ')', false)

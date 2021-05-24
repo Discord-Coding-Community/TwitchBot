@@ -38,7 +38,7 @@ module.exports = class AboutCommand extends Command {
         }
 
         let embed = new MessageEmbed()
-            .setTitle('TwitchBot')
+            .setTitle(this.client.user.name + ' Information')
             .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.')
             .addField('Total Users', memberCount, true)
             .addField('Total Channels', this.client.channels.cache.size, true)
