@@ -45,7 +45,7 @@ module.exports = class AvatarCommand extends Command {
         .addField("Information", `The base version of **TwitchBot** carries a limited amount of functionality.\n\nTo get the full functionality you need to invite our instance of **RedBot**.`, false)
         .addField("RedBot", `:white_small_square: Twitch, YouTube, Smashcast, and Picarto stream integration\n:white_small_square: Autoplay support in the Music Player\n:white_small_square: Image Commands\n:white_small_square: Per Guild Configuration\n:white_small_square: much, much, more...\n\nYou can invite our instance of **RedBot** from the following link : [${RedBot_Name}](${RedBot_Invite_URL})`, false)
         .addField("Support Servers", `:white_small_square: [${Support_Server_Name_1}](${Support_Server_Invite_1})\n:white_small_square: [${Support_Server_Name_2}](${Support_Server_Invite_2})`, false)
-        .addField("Privacy and API", `:white_small_square: [Link](${Policy})\n\nAPI Usage:\n:white_small_square: [Link](${API_Usage})`, false)
+        .addField("Privacy and API", `:white_small_square: [Privacy Policy](${Policy})\n:white_small_square: [API Usage](${API_Usage})`, false)
         .setThumbnail(this.client.user.displayAvatarURL())
         .setColor('RANDOM')
         .setTimestamp()
