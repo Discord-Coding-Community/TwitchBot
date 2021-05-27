@@ -7,7 +7,7 @@ const {
     GIF_Commands,
     Speedrun_Commands,
     Other_Commands,
-    Polic,
+    Policy,
     API_Usage,
     Support_Server_Name_1,
     Support_Server_Name_2,
