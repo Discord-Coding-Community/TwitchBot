@@ -34,8 +34,8 @@ module.exports = class AvatarCommand extends Command {
 
     async run(message) {
         const embed = new MessageEmbed()
-        .setThumbnail(this.client.user.name + ' Help')
-        .setDescription(`${this.client.user.username} Help`)
+        .setTitle(`${this.client.user.username} Help`)
+        .setDescription(`The default prefix for ${this.client.user.username} is \`t!\`.`)
         .addField("Music Commands", `[Link](${Music_Commands})`, true)
         .addField("Guild Commands", `[Link](${Guild_Commands})`, true)
         .addField("GIF Commands", `[Link](${GIF_Commands})`, true)
