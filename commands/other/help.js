@@ -34,12 +34,21 @@ module.exports = class AvatarCommand extends Command {
 
     async run(message) {
         const embed = new MessageEmbed()
-            .setThumbnail(this.client.user.name + ' Help')
-            .setDescription(`**__TwitchBot__**\n\nMusic Commands:\n[Link](${Music_Commands})\n\nGuild Commands:\n[Link](${Guild_Commands})\n\nGIF Commands:\n[Link](${GIF_Commands})\n\nSpeedrun Commands:\n[Link](${Speedrun_Commands})\n\nOther Commands:\n[Link](${Other_Commands})\n\nUtility Commands:\n[Link](${Utility_Commands})\n\n**__Privacy and API__**\n\nPrivacy Policy:\n[Link](${Policy})\n\nAPI Usage:\n[Link](${API_Usage})\n\n**__Notice__**\n\nThe base version of **TwitchBot** carries a limited amount of functionality.\n\nTo get the full functionality you need to invite our instance of **RedBot**.\n\n **__RedBot Features__**\n\n:white_small_square: Twitch, YouTube, Smashcast, and Picarto stream integration\n:white_small_square: Autoplay support in the Music Player\n:white_small_square: Image Commands\n:white_small_square: Per Guild Configuration\n:white_small_square: much, much, more...\n\nYou can invite our instance of **RedBot** from the following link : [${RedBot_Name}](${RedBot_Invite_URL})\n\n**__Support__**\n\n:white_small_square: [${Support_Server_Name_1}](${Support_Server_Invite_1})\n:white_small_square: [${Support_Server_Name_2}](${Support_Server_Invite_2})`)
-            .setThumbnail(this.client.user.displayAvatarURL())
-            .setColor('RANDOM')
-            .setTimestamp()
-            .setFooter(this.client.user.username, this.client.user.displayAvatarURL());
+        .setThumbnail(this.client.user.name + ' Help')
+        .setDescription(`${this.client.user.username} Help`)
+        .addField("Music Commands", `[Link](${Music_Commands})`, true)
+        .addField("Guild Commands", `[Link](${Guild_Commands})`, true)
+        .addField("GIF Commands", `[Link](${GIF_Commands})`, true)
+        .addField("Speedrun Commands", `[Link](${Speedrun_Commands})`, true)
+        .addField("Other Commands", `[Link](${Other_Commands})`, true)
+        .addField("Utility Commands", `[Link](${Utility_Commands})`, true)
+        .addField("Notice", `The base version of **TwitchBot** carries a limited amount of functionality.\n\nTo get the full functionality you need to invite our instance of **RedBot**.\n\n **__RedBot Features__**\n\n:white_small_square: Twitch, YouTube, Smashcast, and Picarto stream integration\n:white_small_square: Autoplay support in the Music Player\n:white_small_square: Image Commands\n:white_small_square: Per Guild Configuration\n:white_small_square: much, much, more...\n\nYou can invite our instance of **RedBot** from the following link : [${RedBot_Name}](${RedBot_Invite_URL})`, false)
+        .addField("Support Servers", `:white_small_square: [${Support_Server_Name_1}](${Support_Server_Invite_1})\n:white_small_square: [${Support_Server_Name_2}](${Support_Server_Invite_2})`, false)
+        .addField("Privacy and API", `:white_small_square: [Link](${Policy})\n\nAPI Usage:\n:white_small_square: [Link](${API_Usage})`, false)
+        .setThumbnail(this.client.user.displayAvatarURL())
+        .setColor('RANDOM')
+        .setTimestamp()
+        .setFooter(this.client.user.username, this.client.user.displayAvatarURL());
         message.embed(embed);
         return;
     }
