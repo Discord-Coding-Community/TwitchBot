@@ -32,7 +32,7 @@ module.exports = class AvatarCommand extends Command {
             .setThumbnail(this.client.user.displayAvatarURL())
             .setColor('RANDOM')
             .setTimestamp()
-            .setFooter(this.client.username, this.client.user.displayAvatarURL());
+            .setFooter(this.client.user.username, this.client.user.displayAvatarURL());
         message.embed(embed);
         return;
     }
