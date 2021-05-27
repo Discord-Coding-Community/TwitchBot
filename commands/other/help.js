@@ -2,8 +2,7 @@ const { Command } = require('discord.js-commando');
 const { MessageEmbed } = require('discord.js');
 const {
     prefix,
-    Full_Commands,
-    Base_Commands,
+    Bot_Commands,
     Support_Server_Name_1,
     Support_Server_Name_2,
     Support_Server_Invite_1,
