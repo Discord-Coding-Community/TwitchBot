@@ -16,8 +16,8 @@ module.exports = class BumpCommand extends Command {
     run(message) {
         let embed = new MessageEmbed()
             .setTitle('TwitchBot')
-            .setDescription('Vote for TwitchBot.\nYou can vote once every 12 hours.')
-            .addField('Top.GG', '[Link](https://top.gg/bot/' + config.topgg_client_id + '/vote)', false)
+            .setDescription(`Vote for TwitchBot.\nYou can vote once every 12 hours.`)
+            .addField('Top.GG', `[Link](https://top.gg/bot/${config.topgg_client_id}/vote)`, false)
             .setThumbnail(this.client.user.displayAvatarURL())
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
@@ -26,7 +26,7 @@ module.exports = class BumpCommand extends Command {
     } catch (err) {
         console.error(err)
         message.reply(
-            '```css\n[ERROR] Discord API Error: ' + err.code + '(' + err.message + '\n```)'
+            `\`\`\`css\n[ERROR] Discord API Error: ${err.code} [${err.message}]\n\`\`\``
         )
-    }
+    };
 };

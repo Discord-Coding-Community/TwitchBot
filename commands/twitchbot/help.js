@@ -21,7 +21,7 @@ module.exports = class AvatarCommand extends Command {
             memberName: 'help',
             description: "TwitchBot Help",
             examples: [
-                prefix + 'help'
+                `${prefix}help`
             ],
         });
     }
@@ -29,12 +29,17 @@ module.exports = class AvatarCommand extends Command {
     async run(message) {
         const embed = new MessageEmbed()
             .setThumbnail(this.client.user.name + ' Help')
-            .setDescription(`**__Commands__**\n\n:white_small_square: [Base Commands](${Base_Commands})\n:white_small_square: [All Commands](${Full_Commands})\n\n**__Important__**\nDue to issues with Discord.js-Commando, Twitch Integration is becoming more and more unstable. As such we have implemented our own instance of **RedBot** for use with **ALL** of our stream commands.\n\nOur instance of **RedBot** is now enforeced for stream integration and comes with a ton of added features for everyone to enjoy.\n\n You can invite our instance of **RedBot** from the link below:\n\n:white_small_square: [${RedBot_Name}](${RedBot_Invite_URL})\n\n**__Support__**\n\n:white_small_square: [${Support_Server_Name_1}](${Support_Server_Invite_1})\n:white_small_square: [${Support_Server_Name_2}](${Support_Server_Invite_2})`)
+            .setDescription(`**TwitchBot uses a series of seperate bots to seperate it's features so that users will only have what they want and/or use.\nTo get the features you desire, simply invite our seperate instances from the links below:\n:white_small_square:[TwitchMusic](${TwitchMusic_Invite_URL}\n:white_small_square:[TwitchStreams](${TwitchStreams_Invite_URL}\n:white_small_square:[TwitchGuardian](${TwitchGuardian_Invite_URL}\n:white_small_square:[TwitchUtils](${TwitchUtils_Invite_URL}\n:white_small_square:[TwitchEconomy](${TwitchEconomy_Invite_URL}\n\n**__Support__**\n\n:white_small_square: [${Support_Server_Name_1}](${Support_Server_Invite_1})\n:white_small_square: [${Support_Server_Name_2}](${Support_Server_Invite_2})`)
             .setThumbnail(this.client.user.displayAvatarURL())
             .setColor('RANDOM')
             .setTimestamp()
             .setFooter(this.client.user.name, this.client.user.displayAvatarURL());
         message.embed(embed);
         return;
-    }
+    } catch (err) {
+        console.error(err)
+        message.reply(
+            `\`\`\`css\n[ERROR] Discord API Error: ${err.code} [${err.message}]\n\`\`\``
+        )
+    };
 };

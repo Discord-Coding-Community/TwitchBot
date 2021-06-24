@@ -39,13 +39,12 @@ module.exports = class AboutCommand extends Command {
 
         let embed = new MessageEmbed()
             .setTitle(this.client.user.username + ' Information')
-            .setDescription('Twitch Integration bot built with `Discord.JS-Commando` and Twitch API.')
             .addField('Total Users', memberCount, true)
             .addField('Total Channels', this.client.channels.cache.size, true)
             .addField('Total Guilds', this.client.guilds.cache.size, true)
             .addField('Prefix', prefix, true)
-            .addField('Owners', owner_tag_1 + ',\n' + owner_tag_2, true)
-            .addField('Github', '[' + github_team_name + '](https://github.com/' + github_team + '/' + github_repo + ')', true)
+            .addField('Owners', `${owner_tag_1},\n${owner_tag_2}`, true)
+            .addField('Github', `[${github_team_name}](https://github.com/${github_team}/${github_repo})`, true)
             .setThumbnail(this.client.user.displayAvatarURL())
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
@@ -54,7 +53,7 @@ module.exports = class AboutCommand extends Command {
     } catch (err) {
         console.error(err)
         message.reply(
-            '```css\n[ERROR] Discord API Error: ' + err.code + '(' + err.message + '\n```)'
+            `\`\`\`css\n[ERROR] Discord API Error: ${err.code} [${err.message}]\n\`\`\``
         )
-    }
+    };
 };

@@ -54,7 +54,7 @@ const client = new CommandoClient({
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ['other', ':loud_sound: **Other Command Group**:']
+        ['twitchbot', '**TwitchBot Commands**:']
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({

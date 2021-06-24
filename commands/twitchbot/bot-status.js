@@ -88,7 +88,7 @@ module.exports = class BotStatusCommand extends Command {
     } catch (err) {
         console.error(err)
         message.reply(
-            '```css\n[ERROR] Discord API Error: ' + err.code + '(' + err.message + '\n```)'
+            `\`\`\`css\n[ERROR] Discord API Error: ${err.code} [${err.message}]\n\`\`\``
         )
     };
 };
