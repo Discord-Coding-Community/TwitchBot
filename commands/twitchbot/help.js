@@ -17,7 +17,7 @@ module.exports = class AvatarCommand extends Command {
         super(client, {
             name: 'help',
             aliases: ['h'],
-            group: 'other',
+            group: 'twitchbot',
             memberName: 'help',
             description: "TwitchBot Help",
             examples: [

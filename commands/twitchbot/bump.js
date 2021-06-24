@@ -8,7 +8,7 @@ module.exports = class BumpCommand extends Command {
             name: 'bump',
             aliases: ['upvote'],
             memberName: 'bump',
-            group: 'other',
+            group: 'twitchbot',
             description: "Vote for TwitchBot on Top.GG"
         });
     }

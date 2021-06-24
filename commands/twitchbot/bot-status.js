@@ -11,7 +11,7 @@ module.exports = class BotStatusCommand extends Command {
                 'botstatus',
                 'bstatus'
             ],
-            group: 'other',
+            group: 'twitchbot',
             memberName: 'bot-status',
             description: 'Shows the current system status'
         });

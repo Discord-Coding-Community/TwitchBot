@@ -17,7 +17,7 @@ module.exports = class AboutCommand extends Command {
                 'botinfo'
             ],
             memberName: 'about',
-            group: 'other',
+            group: 'twitchbot',
             description: "Displays the bot's info.",
             examples: [
                 `${prefix}about`
