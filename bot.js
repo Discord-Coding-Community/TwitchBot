@@ -54,13 +54,11 @@ const client = new CommandoClient({
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ['other', ':loud_sound: **Other Command Group**:'],
-        ['guild', ':gear: **Guild Related Commands**:'],
+        ['other', ':loud_sound: **Other Command Group**:']
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
         eval: false,
-        ping: false,
         help: false,
         unknownCommandResponse: false
     })
