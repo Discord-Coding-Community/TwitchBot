@@ -54,12 +54,8 @@ const client = new CommandoClient({
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ['music', ':notes: **Music Command Group**:'],
-        ['gifs', ':film_frames: **Gif Command Group**:'],
-        ['nsfw', ':underage: **NSFW Command Group**:'],
         ['other', ':loud_sound: **Other Command Group**:'],
         ['guild', ':gear: **Guild Related Commands**:'],
-        ['speedrun', ':athletic_shoe: **Speedrun Related Commands**:']
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
