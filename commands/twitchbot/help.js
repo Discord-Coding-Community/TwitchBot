@@ -5,6 +5,7 @@ const {
     TwitchMusic_Invite_URL,
     TwitchStreams_Invite_URL,
     TwitchGaurdian_Invite_URL,
+    TwitchUtils_Invite_URL,
     Support_Server_Name_1,
     Support_Server_Name_2,
     Support_Server_Invite_1,
