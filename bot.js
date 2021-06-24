@@ -92,7 +92,7 @@ client.once('ready', () => {
     ];
 
 
-    console.log('Connecting to ' + client.guilds.cache.size + ' servers...');
+    console.log(`Connecting to ${client.guilds.cache.size} servers...`);
     setInterval(() => {
         const index_1 = Math.floor(Math.random() * (list_1.length - 1) + 1);
         const index_2 = Math.floor(Math.random() * (list_2.length - 1) + 1);
@@ -103,10 +103,7 @@ client.once('ready', () => {
     }, 10000);
 
 
-    console.log(client.user.tag + ' connected to ' + client.guilds.cache.size + ' servers!');
-    Canvas.registerFont('./resources/welcome/OpenSans-Light.ttf', {
-        family: 'Open Sans Light'
-    });
+    console.log(`${client.user.tag} connected to ${client.guilds.cache.size} servers!`);
 
     const ap = AutoPoster(apAPI, client)
 
@@ -115,170 +112,6 @@ client.once('ready', () => {
         console.log('Posted stats to Top.gg!');
     })
 });
-
-client.on('guildMemberAdd', async member => {
-
-    const serverSettingsFetch = db.get(member.guild.id);
-    if (!serverSettingsFetch || serverSettingsFetch == null) return;
-
-    const welcomeMsgSettings = serverSettingsFetch.serverSettings.welcomeMsg;
-    if (welcomeMsgSettings == undefined) return;
-
-    if (welcomeMsgSettings.status == 'no') return;
-
-    if (welcomeMsgSettings.status == 'yes') {
-        var applyText = (canvas, text) => {
-            const ctx = canvas.getContext('2d');
-            let fontSize = 70;
-
-            do {
-                ctx.font = `${(fontSize -= 10)}px Open Sans Light`;
-            } while (ctx.measureText(text).width > canvas.width - 300);
-
-            return ctx.font;
-        };
-
-
-        var canvas = await Canvas.createCanvas(
-            welcomeMsgSettings.imageWidth,
-            welcomeMsgSettings.imageHeight
-        );
-
-
-        var ctx = canvas.getContext('2d');
-
-
-        var background = await Canvas.loadImage(welcomeMsgSettings.wallpaperURL);
-
-        ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-
-
-        ctx.strokeStyle = '#000000';
-        ctx.strokeRect(0, 0, canvas.width, canvas.height);
-
-
-        if (welcomeMsgSettings.topImageText == 'default') {
-            ctx.font = '26px Open Sans Light';
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillText(
-                `Welcome to ${member.guild.name}`,
-                canvas.width / 2.5,
-                canvas.height / 3.5
-            );
-
-            ctx.strokeStyle = `#FFFFFF`;
-            ctx.strokeText(
-                `Welcome to ${member.guild.name}`,
-                canvas.width / 2.5,
-                canvas.height / 3.5
-            );
-
-        } else {
-
-            ctx.font = '26px Open Sans Light';
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillText(
-                welcomeMsgSettings.topImageText,
-                canvas.width / 2.5,
-                canvas.height / 3.5
-            );
-
-            ctx.strokeStyle = `#FFFFFF`;
-            ctx.strokeText(
-                welcomeMsgSettings.topImageText,
-                canvas.width / 2.5,
-                canvas.height / 3.5
-            );
-        }
-
-
-        if (welcomeMsgSettings.bottomImageText == 'default') {
-            ctx.font = applyText(canvas, `${member.displayName}!`);
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillText(
-                `${member.displayName}!`,
-                canvas.width / 2.5,
-                canvas.height / 1.8
-            );
-            ctx.strokeStyle = `#FF0000`;
-            ctx.strokeText(
-                `${member.displayName}!`,
-                canvas.width / 2.5,
-                canvas.height / 1.8
-            );
-        } else {
-
-            ctx.font = applyText(canvas, `${member.displayName}!`);
-            ctx.fillStyle = '#FFFFFF';
-            ctx.fillText(
-                welcomeMsgSettings.bottomImageText,
-                canvas.width / 2.5,
-                canvas.height / 1.8
-            );
-            ctx.strokeStyle = `#FF0000`;
-            ctx.strokeText(
-                welcomeMsgSettings.bottomImageText,
-                canvas.width / 2.5,
-                canvas.height / 1.8
-            );
-        }
-
-
-        ctx.beginPath();
-        ctx.arc(125, 125, 100, 0, Math.PI * 2, true);
-        ctx.closePath();
-        ctx.clip();
-
-        const avatar = await Canvas.loadImage(
-            member.user.displayAvatarURL({
-                format: 'jpg'
-            })
-        );
-
-
-        ctx.drawImage(avatar, 25, 25, 200, 200);
-
-
-        const attachment = new MessageAttachment(
-            canvas.toBuffer(),
-            'welcome-image.png'
-        );
-
-
-        var embed = new MessageEmbed()
-            .setColor(`RANDOM`)
-            .attachFiles(attachment)
-            .setImage('attachment://welcome-image.png')
-            .setFooter(`Type help for a feature list!`)
-            .setTimestamp();
-        if (welcomeMsgSettings.embedTitle == 'default') {
-            embed.setTitle(
-                `:speech_balloon: Hey ${member.displayName}, You look new to ${member.guild.name}!`
-            );
-        } else embed.setTitle(welcomeMsgSettings.embedTitle);
-
-
-        if (
-            welcomeMsgSettings.destination == 'direct message' ||
-            !welcomeMsgSettings.destination
-        )
-            try {
-                await member.user.send(embed);
-            } catch {
-                console.log(`${member.user.username}'s dms are private`);
-            }
-
-
-        if (welcomeMsgSettings.destination != 'direct message') {
-            const channel = member.guild.channels.cache.find(
-                channel => channel.name === welcomeMsgSettings.destination
-            );
-            await channel.send(`${member}`);
-            await channel.send(embed);
-        }
-    }
-});
-
 
 client.on('voiceStateUpdate', async (___, newState) => {
     if (
