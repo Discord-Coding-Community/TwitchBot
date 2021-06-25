@@ -20,7 +20,7 @@ module.exports = class AvatarCommand extends Command {
 
     async run(message) {
         const embed = new MessageEmbed()
-            .setDescription(`**TwitchBot** uses a series of seperate bots to seperate it's features so that users will only have what they want.\n\nTo get the features you desire, simply invite your preferred instances.\n\n:white_small_square: **Commands**: \`help\`, \`about\`, \`ping\`\n:white_small_square: **Instances**: [Link](https://discord-coding-community.gitbook.io/discord-coding-community/twitchbot#instances)\n\n**__Support__**\n\n:white_small_square: [MountainT Development](https://discord.me/mtdev)\n:white_small_square: [Discord Coding Community](https://discord.me/discord-coding-community)`)
+            .setDescription(`**TwitchBot** uses a series of seperate bots to seperate it's features so that users will only have what they want.\n\nTo get the features you desire, simply invite your preferred instances.\n\n:white_small_square: **Commands**: \`help\`, \`invite\`, \`about\`\n:white_small_square: **Instances**: [Link](https://discord-coding-community.gitbook.io/discord-coding-community/twitchbot#instances)\n\n**__Support__**\n\n:white_small_square: [MountainT Development](https://discord.me/mtdev)\n:white_small_square: [Discord Coding Community](https://discord.me/discord-coding-community)`)
             .setThumbnail(this.client.user.displayAvatarURL())
             .setColor('RANDOM')
             .setTimestamp()
