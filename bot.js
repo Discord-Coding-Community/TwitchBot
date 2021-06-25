@@ -54,12 +54,13 @@ const client = new CommandoClient({
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ['twitchbot', '**TwitchBot Commands**:']
+        ['twitchbot', '**TwitchBot Help**:']
     ])
     .registerDefaultGroups()
     .registerDefaultCommands({
         eval: false,
         help: false,
+        ping: false,
         unknownCommandResponse: false
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
