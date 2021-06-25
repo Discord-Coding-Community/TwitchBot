@@ -43,8 +43,6 @@ module.exports = class AboutCommand extends Command {
             .addField('Total Users', memberCount, true)
             .addField('Total Channels', this.client.channels.cache.size, true)
             .addField('Total Guilds', this.client.guilds.cache.size, true)
-            .addField('Owners', `Nimbi#4961,\nMountainTiger#9733`, true)
-            .addField('Github', `[Discord Coding Community](https://github.com/Discord-Coding-Community/TwitchBot)`, true)
             .setThumbnail(this.client.user.displayAvatarURL())
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
