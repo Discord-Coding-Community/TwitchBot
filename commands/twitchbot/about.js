@@ -1,12 +1,7 @@
 const { MessageEmbed } = require('discord.js');
 const { Command } = require('discord.js-commando');
 const { 
-    prefix, 
-    github_repo, 
-    github_team, 
-    github_team_name, 
-    owner_tag_1, 
-    owner_tag_2
+    prefix,
 } = require('../../config.json');
 
 module.exports = class AboutCommand extends Command {
@@ -43,8 +38,8 @@ module.exports = class AboutCommand extends Command {
             .addField('Total Channels', this.client.channels.cache.size, true)
             .addField('Total Guilds', this.client.guilds.cache.size, true)
             .addField('Prefix', prefix, true)
-            .addField('Owners', `${owner_tag_1},\n${owner_tag_2}`, true)
-            .addField('Github', `[${github_team_name}](https://github.com/${github_team}/${github_repo})`, true)
+            .addField('Owners', `Nimbi#4961,\nMountainTiger#9733`, true)
+            .addField('Github', `[Discord Coding Community](https://github.com/Discord-Coding-Community/TwitchBot)`, true)
             .setThumbnail(this.client.user.displayAvatarURL())
             .setColor('RANDOM')
             .setTimestamp(new Date().toISOString())
