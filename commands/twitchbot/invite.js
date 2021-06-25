@@ -4,7 +4,7 @@ const {
     prefix,
 } = require('../../config.json');
 
-module.exports = class AvatarCommand extends Command {
+module.exports = class InviteCommand extends Command {
     constructor(client) {
         super(client, {
             name: 'invite',
