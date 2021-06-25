@@ -20,7 +20,8 @@ module.exports = class AvatarCommand extends Command {
 
     async run(message) {
         const embed = new MessageEmbed()
-            .setDescription(`\`\`\`\nTwitchBot is a Multi-Purpose bot with plenty of different features to enjoy.\n\nTo start using TwitchBot, simply type \`t!invite\` and invite your preferred instances.\n\`\`\`\n\n:white_small_square: **Commands**: \`help\`, \`invite\`, \`about\`\n\n**__Support__**\n\n:white_small_square: [MountainT Development](https://discord.me/mtdev)\n:white_small_square: [Discord Coding Community](https://discord.me/discord-coding-community)`)
+            .setTitle(`${this.client.user.username} Help`)
+            .setDescription(`\`\`\`\nTwitchBot is a Multi-Purpose bot with plenty of different features to enjoy.\n\nTo start using TwitchBot, simply type [p]invite and invite your preferred instances.\n\n Note that [p] stands for the bot prefix.\n\`\`\`\n\n:white_small_square: **Commands**: \`help\`, \`invite\`, \`about\`\n\n**__Support__**\n\n:white_small_square: [MountainT Development](https://discord.me/mtdev)\n:white_small_square: [Discord Coding Community](https://discord.me/discord-coding-community)`)
             .setThumbnail(this.client.user.displayAvatarURL())
             .setColor('RANDOM')
             .setTimestamp()
