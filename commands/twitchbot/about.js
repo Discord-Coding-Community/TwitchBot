@@ -34,7 +34,7 @@ module.exports = class AboutCommand extends Command {
 
         let embed = new MessageEmbed()
             .setTitle(this.client.user.username + ' Information')
-            .setDescription(`Information about ${this.client.user.username} and it's instances.`)
+            .setDescription(`\`Information about ${this.client.user.username} and it's instances.\``)
             .addField('TwitchBot', `**Prefix**: \`t!\`\n**Instance**:\n\`Primary Gateway\``, true)
             .addField('TwitchMusic', `**Prefix**: \`m!\`\n**Instance**:\n\`Music and Audio\``, true)
             .addField('TwitchUtils', `**Prefix**: \`u!\`\n**Instance**:\n\`Utility and Fun\``, true)
