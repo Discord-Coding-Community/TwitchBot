@@ -81,7 +81,7 @@ module.exports = class BotStatusCommand extends Command {
                 `node: ${process.version.replace(/v/, '')}
         ${libList}`
             )
-            .setFooter('Created', this.client.user.avatarURL())
+            .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
             .setTimestamp(this.client.user.createdAt);
 
         message.channel.send(embed)
