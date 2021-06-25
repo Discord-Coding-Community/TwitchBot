@@ -9,7 +9,7 @@
     <p>Multi-purpose Discord bot ready to skill up and boost your server.</p>
     <h3 id="link-s-">Link(s)</h3>
     <ul>
-      <li><a href="https://discord-coding-community.github.io/TwitchBot/">Website</a></li>
+      <li><a href="https://discord-coding-community.gitbook.io/">Website</a></li>
       <li><a href="https://top.gg/bot/727930437997166653">Top.gg</a></li>
     </ul>    
   </main>
