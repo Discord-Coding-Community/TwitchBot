@@ -1,17 +1,17 @@
-# Environment Variables File [Only needed if using dotenv]
+# Environment Variables Files
 .env
 .env.test
-# Directories [Required]
-node_modules/*
-.vscode/*
-# Logs [Only needed if logging to any of these files]
+# Directories
+node_modules/
+.vscode/
+# Logs
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-# Config Files [Only needed if using config.json]
+# Config Files
 config.json
-# Package Lock Files [Required to prevent issues with git pull and git clone when hosting on VPS]
+# Package Lock Files
 package-lock.json
