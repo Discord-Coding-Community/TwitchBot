@@ -1,7 +1,7 @@
 # Environment Variables Files
 .env
 .env.test
-# Directories
+# Dependency Directories
 node_modules/
 .vscode/
 # Logs
