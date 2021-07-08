@@ -22,7 +22,7 @@ module.exports = class InviteCommand extends Command {
         const embed = new MessageEmbed()
             .setTitle(`${this.client.user.username} Instances`)
             .setThumbnail(this.client.user.displayAvatarURL())
-            .addField('Twitch Maid', `**Invite**: [Link](https://discord.com/api/oauth2/authorize?client_id=857756784709075004&permissions=574094928&redirect_uri=https%3A%2F%2Fdiscord.com%2Fapi%2Foauth2%2Fauthorize&scope=bot)`, true)
+            .addField('TwitchBot Maid', `**Invite**: [Link](https://discord.com/api/oauth2/authorize?client_id=857756784709075004&permissions=574094928&redirect_uri=https%3A%2F%2Fdiscord.com%2Fapi%2Foauth2%2Fauthorize&scope=bot)`, true)
             .setColor('RANDOM')
             .setTimestamp()
             .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
