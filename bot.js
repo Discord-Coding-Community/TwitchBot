@@ -58,7 +58,7 @@ client.registry
         eval: false,
         help: false,
         ping: false,
-        unknownCommandResponse: false
+        unknownCommand: false
     })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
