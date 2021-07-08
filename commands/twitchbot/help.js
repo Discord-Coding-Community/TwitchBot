@@ -23,7 +23,6 @@ module.exports = class AvatarCommand extends Command {
             .setTitle(`${this.client.user.username} Help`)
             .setDescription("TwitchBot is a Multi-Purpose bot with plenty of different features to enjoy.\n\nTo start using TwitchBot, simply invite **TwitchBot Maid** into your server. \n\n")
             .addField("TwitchBot Maid", "**Invite**: [Link](https://discord.com/api/oauth2/authorize?client_id=857756784709075004&permissions=574094928&redirect_uri=https%3A%2F%2Fdiscord.com%2Fapi%2Foauth2%2Fauthorize&scope=bot)", false)
-            .addField("Support", "**MountainT Development**: [Link](https://discord.me/mtdev)\n**Discord Coding Community**: [Link](https://discord.me/discord-coding-community)", false)
             .setThumbnail(this.client.user.displayAvatarURL())
             .setColor('RANDOM')
             .setTimestamp()
