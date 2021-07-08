@@ -21,11 +21,12 @@ module.exports = class AvatarCommand extends Command {
     async run(message) {
         const embed = new MessageEmbed()
             .setTitle(`${this.client.user.username} Help`)
-            .setDescription(`\`\`\`\nTwitchBot is a Multi-Purpose bot with plenty of different features to enjoy.\n\nTo start using TwitchBot, simply type t!invite and invite **TwitchBot Maid** into your server. \n\n\`\`\`\n\n:white_small_square: **Commands**: \`t!help\`, \`t!invite\`, \`t!bump\`\n\n**__Support__**\n\n:white_small_square: [MountainT Development](https://discord.me/mtdev)\n:white_small_square: [Discord Coding Community](https://discord.me/discord-coding-community)`)
+            .setDescription(`\`\`\`\nTwitchBot is a Multi-Purpose bot with plenty of different features to enjoy.\n\nTo start using TwitchBot, simply invite **TwitchBot Maid** into your server. \n\n\`\`\`\n\n\n\n**__Support__**\n\n:white_small_square: [MountainT Development](https://discord.me/mtdev)\n:white_small_square: [Discord Coding Community](https://discord.me/discord-coding-community)`)
+            .addField('TwitchBot Maid', `**Invite**: [Link](https://discord.com/api/oauth2/authorize?client_id=857756784709075004&permissions=574094928&redirect_uri=https%3A%2F%2Fdiscord.com%2Fapi%2Foauth2%2Fauthorize&scope=bot)`, true)
             .setThumbnail(this.client.user.displayAvatarURL())
             .setColor('RANDOM')
             .setTimestamp()
-            .setFooter(this.client.user.username, this.client.user.displayAvatarURL())
+            .setFooter(`Type t!bump to bump TwitchBot on top.gg`, this.client.user.displayAvatarURL())
         message.embed(embed);
         return;
     } catch (err) {
