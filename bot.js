@@ -53,13 +53,6 @@ client.registry
     .registerGroups([
         ['twitchbot', '**TwitchBot Help**:']
     ])
-    .registerDefaultGroups()
-    .registerDefaultCommands({
-        eval: false,
-        help: false,
-        ping: false,
-        unknownCommand: false
-    })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
 
